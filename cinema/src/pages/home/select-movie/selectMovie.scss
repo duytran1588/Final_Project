@@ -1,0 +1,34 @@
+@import "../../../scss/helper/_variable.scss";
+@import "../../../scss/helper/mixin";
+
+.buyTicketForm{
+    
+    position: relative;
+    z-index: 1;
+    margin: -35px auto 0;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 63rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: solid rgba(0, 0, 0, 0.281) 1px;
+    box-shadow: 1px 1px 1px 2px #0000004d;
+    .btnBuyTicket{
+        background-color: $color-black-1 !important;
+        color: $color-white-0 !important;
+        padding: 10px 25px !important;
+    }
+    .MuiSelect-select {
+        color: black !important;
+    }
+
+   
+}
+
+// for responsive 
+@include respond-to("large") { //max-width: 992px
+    .buyTicketForm{
+        display: none;
+    }
+}

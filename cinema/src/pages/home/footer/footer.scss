@@ -1,0 +1,210 @@
+@import "../../../scss/helper/variable";
+@import "../../../scss/helper/mixin";
+
+#footer {
+    background-color: #222;
+    padding: 2rem 0;
+    .small-container {
+        width: 60%;
+        margin: auto;
+        ul {
+            li:nth-child(3) {
+                text-align: center;
+                width: 27%;
+                height: 14rem;
+                overflow: hidden;
+                .partner {
+                    .row {
+                        div {
+                            width: 20%;
+                            margin-bottom: 11px;
+                            a {
+                                img {
+                                    width: 30px !important;
+                                    height: 30px !important;
+                                    border-radius: 50%;
+                                    background-color: white;
+                                    margin-right: 20px;
+                                    transition: all 0.5s;
+                                    &:hover {
+                                        opacity: 0.5;
+                                    }
+                                }
+                                position: relative;
+                                p {
+                                    color: black !important;
+                                    background-color: white;
+                                    padding: 4px 4px;
+                                    position: absolute;
+                                    top: 2rem;
+                                    right: 1rem;
+                                    border: solid black 1px;
+                                    z-index: 1;
+                                    visibility: hidden;
+                                    width: max-content; /*kích thước ô chứa to nhỏ tùy nội dung*/
+                                }
+                            }
+                        }
+                    }
+                }
+                .partner {
+                    padding-left: 20px;
+                }
+            }
+            li {
+                p {
+                    color: $color-white-0;
+                }
+                a {
+                    color: #949494;
+                    text-decoration: none;
+                    transition: all 0.5s;
+                    &:hover {
+                        color: white;
+                    }
+                }
+                list-style-type: none;
+            }
+            display: flex;
+            justify-content: space-between;
+            .app__logo {
+                a {
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .social__network {
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                }
+            }
+        }
+        hr {
+            border-top: 1px solid #4a4a4a;
+        }
+        .footer__ending {
+            margin-top: 1.5rem;
+            justify-content: space-between;
+            .col-8 {
+                p:nth-child(2),
+                p:last-child {
+                    font-size: 0.8rem;
+                    color: #949494 !important;
+                    a {
+                        text-decoration: none;
+                        color: $color-red-3 !important;
+                    }
+                }
+                margin-left: -7rem !important;
+                padding-right: 0 !important;
+            }
+            .col-2:nth-child(1) {
+                img {
+                    width: 80px;
+                    border-radius: 8px;
+                }
+            }
+            .col-2:last-child {
+                img {
+                    width: 130px;
+                }
+            }
+            .col-2 {
+                max-width: 35%;
+            }
+        }
+    }
+}
+
+@include respond-to("extend_2"){
+    #footer{
+        .small-container{
+            width: 95%;
+            ul{
+                li:nth-child(3){
+                    width: 18%;
+                    overflow: visible;
+                }
+            }
+        }
+    } 
+}
+
+@include respond-to("large") {
+    //<=992px
+    #footer {
+        .small-container {
+            ul {
+                li:nth-child(3) {
+                    display: none;
+                }
+                display: block;
+                li {
+                    p {
+                        display: none;
+                    }
+                    a {
+                    }
+                }
+                li:first-child {
+                    display: none;
+                }
+                li:nth-child(2) {
+                    display: flex;
+                    justify-content: center;
+                    a:nth-child(2) {
+                        margin-right: 2rem !important;
+                    }
+                }
+                .app__logo {
+                    display: none !important;
+                }
+                .social__network {
+                    max-width: 40%;
+                    margin: 1rem auto 1.5rem;
+                    text-align: center;
+                    display: block !important;
+                }
+            }
+            .footer__ending {
+                display: block;
+                text-align: center;
+                padding-bottom: 2rem;
+                .col-2{
+                    max-width: 100%;
+                    text-align: center !important;
+                }
+                .col-8{
+                    max-width: 100%;
+                    margin: 2rem auto 0 !important;
+                    padding: 0 !important;
+                    p:first-child{
+                        font-size: 13px;
+                        margin-bottom: 0.5rem !important;
+                    }
+                    p:nth-child(2){
+                        word-spacing: 2px;
+                        line-height: 1.5rem;
+                        width: 85%;
+                        margin: auto;
+                        text-align: justify;
+                    }
+                    p:last-child{
+                        color: #949494 !important;
+                        font-size: 2rem;
+                        a{
+                            color: $color-white-0 !important;
+                        }
+                    }
+                }
+            }
+        
+        }
+    }
+}
+

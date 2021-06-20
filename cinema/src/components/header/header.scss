@@ -1,0 +1,167 @@
+// @import "../../../scss/helper/_variable.scss";
+// @import "../../../scss/helper/_mixin.scss";
+@import "../../scss/helper/mixin";
+@import "../../scss/helper/variable";
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-white-0;
+    max-width: 95%;
+    margin: auto;
+    .brand-title {
+        font-size: $fs-2;
+        margin: $mg-0;
+    }
+
+    .navbar-links {
+        ul {
+            z-index: 10;
+            margin: 0;
+            padding: 0;
+            display: flex;
+           
+            li {
+                list-style: none;
+
+                a {
+                    text-decoration: none;
+                    // font-size: $fs-0;
+                    // color: $color-black-0;
+                    @include text($color-black-0, $fs-0, $fw-bold-0);
+                    padding: $pd-1;
+                    display: block;
+                    &:hover {
+                        color: $color-red-1;
+                    }
+                }
+            }
+            li:first-child,
+            li:nth-child(2) {
+                visibility: collapse;
+                transition: 1s;
+            }
+        }
+    }
+
+    .toggle-button {
+        position: absolute;
+        top: 18px;
+        right: 1rem;
+        display: none; //default
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: $color-black-1;
+            border-radius: 10px;
+        }
+    }
+
+    .login_location {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 17.5rem;
+        .login {
+            position: relative;
+            font-size: 1rem;
+            @include text($color-black-3 !important, $fs-6, $fw-normal);
+            margin-top: -4px;
+            &:before {
+                content: "";
+                position: absolute;
+                border: solid $color-black-3 1px;
+                height: 28px;
+                top: 1%;
+                right: -11%;
+                background-color: $color-black-3;
+            }
+        }
+        .location {
+            color: $color-black-3;
+        }
+    }
+}
+
+
+//for responsive
+@include respond-to("extend_1") {
+    .login_location{
+        display: none !important;
+    }
+}
+
+@include respond-to("medium") {
+    .navbar {
+        height: 30rem;
+        .brand-title{
+            position: absolute;
+            top: 0;
+        }
+        .toggle-button {
+            display: flex !important;
+        }
+        .navbar-links {
+            height: 30rem;
+            display: flex;
+            width: 0;
+            transition: all 0.5s;
+            position: absolute;
+            top: 0;
+            right: -51px;
+            overflow: hidden;
+            ul {
+                padding: 12px;
+                flex-direction: column;
+                align-items: flex-end;
+                background-color: $color-black-1;
+                width: 100%;
+
+                li {
+                    position: relative;
+                    width: 100%;
+                    text-align: right;
+                    padding: 10px 2rem 10px 0;
+                    a {
+                        
+                        overflow: hidden; //khi ô thu nhỏ lại chữ ko bị xuống hàng
+                        white-space: nowrap; //ô thu nhỏ chũ ko bị xuống hàng
+                        @include text($color-white-0!important, $fs-2, $fw-bold-0);
+                        
+                        &:focus {
+                            background-color: $color-red-1 !important;
+                        }
+                    }
+                    // &:focus {
+                    //     background-color: $color-red-1 !important;
+                    // }
+                }
+            }
+        }
+        .login_location {
+            display: none;
+        }
+        .navbar-links.active {
+            transition: all 0.5s;
+            width: 70%;
+            position: absolute;
+            right: -51px !important;
+            top: 0;
+            height: 30rem; 
+            li:first-child,
+            li:nth-child(2) {
+                visibility: visible;
+            }
+            li {
+                padding: 10px 2rem 10px 0;
+            }
+        }
+    }
+}
+
+//https://www.youtube.com/watch?v=At4B7A4GOPg 11:40;

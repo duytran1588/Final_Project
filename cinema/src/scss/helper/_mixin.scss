@@ -1,0 +1,50 @@
+@mixin text($color, $fs, $fw) {
+    //text thường hay dùng mixin(cùng thuộc tính khác value)
+    color: $color;
+    font-size: $fs;
+    font-weight: $fw;
+}
+
+@mixin button($color, $bg-color, $border-color, $fw, $bg-color-hover) {
+    color: $color;
+    background-color: $bg-color;
+    font-weight: $fw;
+    border: solid 1px $border-color;
+    &:hover {
+        background-color: $bg-color-hover;
+        color: $color;
+    }
+}
+
+//for responsive
+@mixin respond-to($breakpoint) { //nhập loại màn hình "sm" etc,..
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) { //map là mảng các màng hình, key: "sm" ở trên nhập vào
+        $value: map-get( 
+            $map: $breakpoints,
+            $key: $breakpoint,
+        );
+        //nếu trong mảng các màn hình tìm thấy value "sm" thì xử lý tiếp
+        @media screen and (max-width: $value){
+            @content;
+        }
+    }
+    @else{
+        @warn "breakpoint không tồn tại trong breakpoints";
+    }
+}
+
+@mixin respond-to-min($breakpoint) { //nhập loại màn hình "sm" etc,..
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) { //map là mảng các màng hình, key: "sm" ở trên nhập vào
+        $value: map-get( 
+            $map: $breakpoints,
+            $key: $breakpoint,
+        );
+        //nếu trong mảng các màn hình tìm thấy value "sm" thì xử lý tiếp
+        @media screen and (min-width: $value){
+            @content;
+        }
+    }
+    @else{
+        @warn "breakpoint không tồn tại trong breakpoints";
+    }
+}

@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+html{
+    height: 100%;
+}
+body {
+    position: relative;
+    font-family: 'SF Text Regular';
+    font-size: $fs-0;
+    color: $color-black-0;
+    background-color: $color-white-0;
+    line-height: $line-height-0;
+    max-width: 100%;
+    overflow-x: hidden;
+    min-height: 100%
+}
+.wrapper{
+    overflow-x: hidden;
+}

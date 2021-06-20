@@ -1,0 +1,364 @@
+@import "../../../scss/helper/variable";
+@import "../../../scss/helper/mixin";
+#schedule {
+    margin-top: -90px;
+    .small-container {
+        max-width: 60%;
+        margin: auto;
+        > .row {
+            //directive child of small-container
+            margin-top: -2rem;
+
+            /*cột 1*/
+            .col-md-1 {
+                padding: 0;
+                text-align: center;
+                cursor: pointer;
+                height: 615px;
+                border: solid #c1c1c157 1px;
+                ul {
+                    list-style: none;
+                    li {
+                        position: relative;
+                        &:after {
+                            content: "";
+                            width: 60%;
+                            border: dotted 1px #c1c1c157;
+                            bottom: 0;
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        padding: 13px;
+                        a {
+                            text-decoration: none;
+                            border: none !important;
+                            background: none !important; /*muốn tắt background-color -> background: none*/
+                            img {
+                                opacity: 0.5;
+                                transition: all 0.5s;
+                                &:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        .nav-link {
+                            padding: 0 !important;
+                        }
+                        /* cột 1 - link nào active thì opacity = 1  */
+                        a.active {
+                            img {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+                .nav-tabs {
+                    border-bottom: none;
+                }
+            }
+            /*end cột 1*/
+
+            /*cột 2*/
+            .col-md-4 {
+                height: 615px;
+                border-bottom: solid #c1c1c157 1px;
+                border-top: solid #c1c1c157 1px;
+                ul {
+                    list-style-type: none;
+                    padding-left: 5px;
+                    li {
+                        margin-top: 20px;
+                        padding-bottom: 20px;
+                        border-bottom: dotted 1px #c1c1c157;
+                        position: relative; /*để chỉnh thẻ a của nav-tabs */
+                        > a {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            border: none !important;
+                            z-index: 1;
+                            background-color: transparent !important;
+                        }
+                        .row {
+                            .col-md-9 {
+                                .cinema__info {
+                                    a {
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        z-index: 1;
+                                        position: relative;
+                                        &:hover {
+                                            color: #dc3545 !important;
+                                        }
+                                    }
+                                    p {
+                                        //kí tự dài thì dùng tắt 3 chấm
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 1;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;
+                                    }
+                                    p:nth-child(2) {
+                                        color: #949494;
+                                    }
+                                    p {
+                                        margin: -4px 0 -3px;
+                                    }
+                                }
+                                padding-left: 0;
+                            }
+                        }
+                    }
+                    li.active {
+                        opacity: 1 !important;
+                    }
+                }
+            }
+
+            #addInfo {
+                ul {
+                    li {
+                        opacity: 0.5;
+                        transition: all 0.5s;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            // .click {
+            //     opacity: 1 !important; /*vì ở trên cũng set opacity: .5 nên phải thêm important cho .click*/
+            // }
+            /* end cột 2 */
+
+            /* cột 3 */
+            .col-md-7 {
+                border: solid #c1c1c157 1px;
+                overflow: auto;
+                height: 615px;
+                /*chỉnh scrollbar cho cột 3*/
+                &::-webkit-scrollbar {
+                    width: 4px;
+                    background-color: #e8e3e3cd;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    width: 4px;
+                }
+                ul {
+                    list-style-type: none;
+                    padding: 17px 0px;
+                    li {
+                        margin: -18px 0 3rem;
+                        padding-top: 1rem;
+                        border-top: dotted 1px #c1c1c157;
+                        .row {
+                            .col-3 {
+                                max-width: 15%;
+                                img {
+                                    height: 46px;
+                                }
+                            }
+                            .col-9 {
+                                cursor: pointer;
+                                .film__title {
+                                    margin-left: -20px;
+                                    height: 46px;
+                                    span:nth-child(1) {
+                                        margin-right: 10px;
+                                        padding: 3px 5px;
+                                        border-radius: 4px;
+                                        min-width: 33px;
+                                        font-size: 0.8rem;
+                                        text-align: center;
+                                        color: white;
+                                        display: inline-block; /*thẻ span không chỉnh width height bình thường như div được phải có thêm display: inline-block mới định hình được*/
+                                        background-color: red;
+                                    }
+                                    span:nth-child(2) {
+                                        font-weight: bolder;
+                                        font-size: 1rem;
+                                        color: black;
+                                    }
+                                    p {
+                                        color: #9b9b9b;
+                                        font-size: 0.9rem;
+                                        margin-top: 0.4rem;
+                                    }
+                                }
+                            }
+                        }
+                        .show {
+                            a {
+                                text-decoration: none;
+                                border: solid 1px #e4e4e4;
+                                background-color: rgba(246, 246, 246, 0.5);
+                                border-radius: 7px;
+                                padding: 12px 9px;
+                                margin-right: 0.5rem;
+                                span:first-child {
+                                    color: #108f3e;
+                                    font-size: 1.3rem;
+                                    font-weight: bolder;
+                                    margin-right: 4px;
+                                    &:hover {
+                                        color: red;
+                                    }
+                                }
+                                span:nth-child(2) {
+                                    color: #9b9b9b;
+                                    font-size: 0.9rem;
+                                }
+                            }
+                            p {
+                                margin-top: 1rem;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            /* end cột 3 */
+        }
+    }
+}
+
+//for responsive
+@include respond-to("medium") {
+    // <= 768px
+    #schedule {
+        display: none;
+    }
+}
+
+@include respond-to("large") {
+    //< = 992px
+    #schedule {
+        .small-container {
+            max-width: 90%;
+            .row {
+                .col-md-1 {
+                    max-width: 8.33% !important;
+                    ul {
+                        padding: 0 14% !important;
+                        li {
+                            padding: 13px 4px;
+                        }
+                    }
+                }
+                .col-md-4 {
+                    max-width: 33.33% !important;
+                    ul {
+                        li {
+                            margin-top: 20px;
+                            padding-bottom: 10px;
+                            height: 63px;
+                            .row {
+                                height: 100%;
+                                margin: 0;
+                                .col-md-3 {
+                                    max-width: 58px !important;
+                                    flex: 1 0 25% !important;
+                                    margin-right: 14px;
+                                    overflow: hidden;
+                                    height: 100%;
+                                    padding: 0;
+                                }
+                                .col-md-9 {
+                                    max-width: 66% !important;
+                                    .cinema__info {
+                                        p:first-child {
+                                            font-size: 13px;
+                                            line-height: 20px;
+                                        }
+                                        p:nth-child(2) {
+                                            font-size: 13px;
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .col-md-7 {
+                    max-width: 58.33% !important;
+                    ul {
+                        li {
+                            .row {
+                                .col-9 {
+                                    .film__title {
+                                        height: 83px;
+                                    }
+                                }
+                                margin-bottom: -2rem;
+                            }
+                            .show {
+                                a {
+                                    padding: 12px 4px;
+                                    margin-right: 0.5rem;
+                                    display: inline-block;
+                                    margin-bottom: 1rem;
+                                    span {
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("extend_2") {
+    #schedule {
+        .small-container {
+            max-width: 90%;
+            .row {
+                .col-md-1 {
+                    height: auto;
+                }
+                .col-md-4 {
+                    height: auto;
+                }
+                .col-md-7 {
+                    height: 700px;
+                    ul {
+                        li {
+                            .row {
+                                .col-9 {
+                                    .film__title {
+                                        span:first-child {
+                                            font-size: 12px;
+                                        }
+                                        span:nth-child(2) {
+                                            font-size: 14px;
+                                        }
+                                        p {
+                                            font-size: 12px;
+                                        }
+                                    }
+                                }
+                            }
+                            .film__time {
+                                a {
+                                    span:first-child {
+                                        font-size: 16px;
+                                    }
+                                    span:nth-child(2) {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

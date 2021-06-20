@@ -1,0 +1,46 @@
+@import "../../../scss/helper/_variable.scss";
+@import "../../../scss/helper/mixin";
+
+.buyTicketForm {
+    position: relative;
+    z-index: 1;
+    margin: -35px auto 0;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 63rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: solid rgba(0, 0, 0, 0.281) 1px;
+    box-shadow: 1px 1px 1px 2px #0000004d;
+    .btnBuyTicket {
+        background-color: $color-black-1 !important;
+        color: $color-white-0 !important;
+        padding: 10px 25px !important;
+    }
+    div {
+        width: 86%;
+        border: solid #00000024 1px;
+        padding: 0 20px;
+        border-radius: 7px;
+        box-shadow: 2px 2px 2px #00000017;
+    }
+}
+
+.search_movie {
+    tr {
+        th,
+        td {
+            border: solid 1px $color-black-4;
+        }
+    }
+}
+
+// for responsive
+@include respond-to("large") {
+    //max-width: 992px
+    .buyTicketForm,
+    .search_movie {
+        display: none;
+    }
+}

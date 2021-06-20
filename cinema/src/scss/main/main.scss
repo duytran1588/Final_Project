@@ -1,0 +1,21 @@
+@import "../helper/variable";
+
+@import "../base/reset";
+@import "../components/button";
+
+@import "../helper/mixin";
+@import "../helper/function";
+@import "../helper/extend";
+
+@import "../../components/selectComponent/select_component.scss";
+// @import "../../components/test.scss";
+@import "../../components/header/header.scss";
+@import "../../pages/home/carousel/carousel.scss";
+// @import "../../pages/home/select-movie/selectMovie.scss";
+@import "../../pages/home/select-movie-name/selectMovieName.scss";
+@import "../../pages/home/coming-movie/coming-movie.scss";
+@import "../../pages/home/cinemas-info/cinema-info.scss";
+@import "../../pages/home/news/news.scss";
+@import "../../pages/home/mobile-app/mobile-app.scss";
+@import "../../pages/home/footer/footer.scss";
+//import layouts.scss respectively in pages.

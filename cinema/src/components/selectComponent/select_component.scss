@@ -1,0 +1,15 @@
+@import "../../scss/helper/_variable.scss";
+.MuiInput-underline {
+    &:before,
+    &:after {
+        border: none !important;
+    }
+}
+
+.MuiSelect-select {
+    color: $color-black-3 !important;
+}
+
+.MuiPaper-root {
+    // top: 60px !important;
+}

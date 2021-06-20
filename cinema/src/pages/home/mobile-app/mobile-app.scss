@@ -1,0 +1,306 @@
+@import "../../../scss/helper/variable";
+@import "../../../scss/helper/mixin";
+
+#homeApp {
+    margin-top: 4rem;
+    padding: 7rem 0;
+    background-image: url("./app-images/backapp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 40rem;
+    .small-container {
+        width: 82%;
+        margin: auto;
+        .row {
+            .col-6:first-child {
+                color: $color-white-0;
+                padding-right: 12rem;
+                h1 {
+                    line-height: 3rem;
+                    font-size: xx-large;
+                    font-weight: $fw-bold-1;
+                }
+                p {
+                    font-size: 1.1rem;
+                }
+                a:nth-child(3) {
+                    width: 17rem;
+                    font-size: 1.2rem;
+                    background-color: $color-red-1;
+                    padding: 10px 20px;
+                    font-weight: $fw-bold-1;
+                    color: $color-white-0;
+                    margin-bottom: 0.5rem;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    display: block;
+                }
+                p:nth-child(2) {
+                    margin: 2rem 0 2rem;
+                }
+                p:nth-child(4) {
+                    a {
+                        text-decoration: underline;
+                        color: white;
+                    }
+                }
+            }
+            .phone__slider {
+                padding: 0;
+                background-image: url("./app-images/mobile.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 27.5rem;
+                max-width: 16.33% !important;
+                border-radius: 23px; /*để khung bo tròn khớp với hình điện thoại */
+                overflow: hidden;
+                border: solid #111111 1px;
+                box-shadow: 0px 0px 10px #5b5252;
+                .slide__item {
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    height: 438px;
+                    width: 100% !important;
+                }
+
+                .slide__item1 {
+                    background-image: url("./app-images/slide1.jpg");
+                }
+                .slide__item2 {
+                    background-image: url("./app-images/slide2.jpg");
+                }
+                .slide__item3 {
+                    background-image: url("./app-images/slide3.jpg");
+                }
+                .slide__item4 {
+                    background-image: url("./app-images/slide4.jpg");
+                }
+                .slide__item5 {
+                    background-image: url("./app-images/slide5.jpg");
+                }
+                .slide__item6 {
+                    background-image: url("./app-images/slide6.jpg");
+                }
+                .slide__item7 {
+                    background-image: url("./app-images/slide7.jpg");
+                }
+                .slide__item8 {
+                    background-image: url("./app-images/slide8.jpg");
+                }
+                .slide__item9 {
+                    background-image: url("./app-images/slide9.jpg");
+                }
+                .slide__item10 {
+                    background-image: url("./app-images/slide10.jpg");
+                }
+            }
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+// responsive
+@include respond-to("extend_2"){
+    #homeApp {
+        .small-container {
+            width: 82%;
+            .row {
+                justify-content: space-evenly;
+                .col-6 {
+                    padding-right: 3rem !important;
+                    max-width: 50%;
+                }
+                .phone__slider {
+                    padding-right: 0 !important;
+                    max-width: 23.33% !important;
+                    .slide__item{
+                        max-width: 100%;
+                    }
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("extra-large") {
+    #homeApp {
+        .small-container {
+            width: 82%;
+            .row {
+                justify-content: space-evenly;
+                .col-6 {
+                    padding: 0 !important;
+                    max-width: 50%;
+                }
+                .phone__slider {
+                    max-width: 24.33% !important;
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("large") {
+    #homeApp {
+        height: 67rem;
+        background-repeat: repeat;
+        background-size: contain;
+        padding: 5rem 0;
+        .small-container {
+            width: 100%;
+            .row {
+                display: block !important;
+                .col-6 {
+                    padding: 0 !important;
+                    max-width: 100%;
+                    h1 {
+                        text-align: center;
+                        width: 21rem;
+                        margin: auto;
+                        font-size: 1.8rem !important;
+                    }
+                    p:nth-child(2) {
+                        text-align: center;
+                        width: 88%;
+                        margin: 2rem auto 1.5rem !important;
+                    }
+                    a {
+                        margin: auto;
+                    }
+                    p:last-child {
+                        text-align: center;
+                        margin-bottom: 0 !important;
+                    }
+                }
+
+                .phone__slider {
+                    height: 38.5rem;
+                    max-width: 34.33% !important;
+                    margin: 1rem auto 0;
+                    .slide__item {
+                        height: 38.5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("medium") {
+    //<= 768px
+    #homeApp {
+        height: 977px;
+        background-repeat: repeat;
+        background-size: contain;
+        padding: 5rem 0;
+        .small-container {
+            width: 100%;
+            .row {
+                display: block !important;
+                .col-6 {
+                    padding: 0 !important;
+                    max-width: 100%;
+                    h1 {
+                        text-align: center;
+                        width: 21rem;
+                        margin: auto;
+                        font-size: 1.8rem !important;
+                    }
+                    p:nth-child(2) {
+                        text-align: center;
+                        width: 88%;
+                        margin: 2rem auto 1.5rem !important;
+                    }
+                    a {
+                        margin: auto;
+                    }
+                    p:last-child {
+                        text-align: center;
+                        margin-bottom: 0 !important;
+                    }
+                }
+
+                .phone__slider {
+                    height: 33.5rem;
+                    max-width: 34.33% !important;
+                    margin: 1rem auto 0;
+                    .slide__item {
+                        height: 33.5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("small") {
+    //<=576px
+    #homeApp {
+        height: 852px;
+        background-repeat: repeat;
+        background-size: contain;
+        padding: 5rem 0;
+        .small-container {
+            width: 100%;
+            .row {
+                display: block !important;
+                .col-6 {
+                    padding: 0 !important;
+                    max-width: 100%;
+                    h1 {
+                        text-align: center;
+                        width: 70%;
+                        margin: auto;
+                        font-size: 1.8rem !important;
+                    }
+                    p:nth-child(2) {
+                        text-align: center;
+                        width: 88%;
+                        margin: 2rem auto 1.5rem !important;
+                    }
+                    a {
+                        margin: auto;
+                    }
+                    p:last-child {
+                        text-align: center;
+                        margin-bottom: 0 !important;
+                    }
+                }
+
+                .phone__slider {
+                    height: 24.5rem;
+                    max-width: 34.33% !important;
+                    margin: 1rem auto 0;
+                    .slide__item {
+                        height: 24.5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+@include respond-to("super-small") {
+    #homeApp {
+        height: 742px;
+        .small-container {
+            .row {
+                .phone__slider {
+                    height: 17.5rem;
+                    .slide__item {
+                        height: 17.5rem;
+                    }
+                }
+                .col-6 {
+                    h1 {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
