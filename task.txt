@@ -1,0 +1,8 @@
+1 - L?y danh sách phim, tìm ki?m phim (carousel, coming&showing movie) done
+
+6 - dang ký
+7 - dang nh?p 
+
+2, 3 - L?y thông tin h? th?ng r?p (cinema_info)  _undone (d?t vé theo ngày c?a c?m r?p làm sau ph?n dang ký, dang nh?p)
+
+	

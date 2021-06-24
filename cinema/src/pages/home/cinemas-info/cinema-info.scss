@@ -116,6 +116,16 @@
                         opacity: 1 !important;
                     }
                 }
+                //scroll bar cho cot 2
+                &::-webkit-scrollbar {
+                    width: 4px;
+                    background-color: #e8e3e3cd;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    width: 4px;
+                }
+                overflow: auto;
             }
 
             #addInfo {
@@ -129,10 +139,6 @@
                     }
                 }
             }
-            // .click {
-            //     opacity: 1 !important; /*vì ở trên cũng set opacity: .5 nên phải thêm important cho .click*/
-            // }
-            /* end cột 2 */
 
             /* cột 3 */
             .col-md-7 {
@@ -148,6 +154,7 @@
                     background-color: rgba(0, 0, 0, 0.3);
                     width: 4px;
                 }
+                overflow: auto;
                 ul {
                     list-style-type: none;
                     padding: 17px 0px;
@@ -165,23 +172,28 @@
                             .col-9 {
                                 cursor: pointer;
                                 .film__title {
+                                    width: 100%;
                                     margin-left: -20px;
                                     height: 46px;
-                                    span:nth-child(1) {
-                                        margin-right: 10px;
-                                        padding: 3px 5px;
-                                        border-radius: 4px;
-                                        min-width: 33px;
-                                        font-size: 0.8rem;
-                                        text-align: center;
-                                        color: white;
-                                        display: inline-block; /*thẻ span không chỉnh width height bình thường như div được phải có thêm display: inline-block mới định hình được*/
-                                        background-color: red;
-                                    }
-                                    span:nth-child(2) {
+                                    // span:first-child {
+                                    //     margin-right: 10px;
+                                    //     padding: 3px 5px;
+                                    //     border-radius: 4px;
+                                    //     min-width: 33px;
+                                    //     font-size: 0.8rem;
+                                    //     text-align: center;
+                                    //     color: white;
+                                    //     display: inline-block; /*thẻ span không chỉnh width height bình thường như div được phải có thêm display: inline-block mới định hình được*/
+
+                                    // }
+                                    span {
                                         font-weight: bolder;
                                         font-size: 1rem;
                                         color: black;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 1;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;
                                     }
                                     p {
                                         color: #9b9b9b;
@@ -192,27 +204,31 @@
                             }
                         }
                         .show {
-                            a {
-                                text-decoration: none;
-                                border: solid 1px #e4e4e4;
-                                background-color: rgba(246, 246, 246, 0.5);
-                                border-radius: 7px;
-                                padding: 12px 9px;
-                                margin-right: 0.5rem;
-                                span:first-child {
-                                    color: #108f3e;
-                                    font-size: 1.3rem;
-                                    font-weight: bolder;
-                                    margin-right: 4px;
-                                    &:hover {
-                                        color: red;
+                            .premiere {
+                                padding-left: 0;
+                                .row {
+                                    div {
+                                        a {
+                                            text-decoration: none;
+                                            border: solid 1px #e4e4e4;
+                                            background-color: rgba(246, 246, 246, 0.5);
+                                            border-radius: 7px;
+                                            padding: 12px 9px;
+                                            margin-right: 0.5rem;
+                                            span {
+                                                color: #108f3e;
+                                                font-size: 1.3rem;
+                                                font-weight: bolder;
+                                                margin-right: 4px;
+                                                &:hover {
+                                                    color: red;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
-                                span:nth-child(2) {
-                                    color: #9b9b9b;
-                                    font-size: 0.9rem;
-                                }
                             }
+
                             p {
                                 margin-top: 1rem;
                                 font-weight: bold;
@@ -321,10 +337,10 @@
             max-width: 90%;
             .row {
                 .col-md-1 {
-                    height: auto;
+                    height: 700px;
                 }
                 .col-md-4 {
-                    height: auto;
+                    height: 700px;
                 }
                 .col-md-7 {
                     height: 700px;
@@ -353,6 +369,7 @@
                                     span:nth-child(2) {
                                         font-size: 14px;
                                     }
+                                    // display: inline-block;
                                 }
                             }
                         }

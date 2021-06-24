@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  GET_CINEMA_DETAIL,
+  GET_CINEMA_LIST,
   GET_MOVIE_LIST,
   GET_MOVIE_LIST_COMING,
   SEARCH_MOVIE,
@@ -43,7 +45,7 @@ export const searchMovie = (movieName) => {
   return async (dispatch) => {
     try {
       const res = await axios({
-        metho: "GET",
+        method: "GET",
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${movieName}`,
       });
       // console.log(res.data);
@@ -56,3 +58,22 @@ export const searchMovie = (movieName) => {
     }
   };
 };
+
+export const getCinemaList = () => {
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "GET",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=gp01",
+      });
+      dispatch({
+        type: GET_CINEMA_LIST,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+

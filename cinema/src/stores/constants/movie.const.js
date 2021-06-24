@@ -1,3 +1,4 @@
 export const GET_MOVIE_LIST = "GET_MOVIE_LIST";
 export const GET_MOVIE_LIST_COMING = "GET_MOVIE_LIST_COMING"; 
 export const SEARCH_MOVIE = "SEARCH_MOVIE";
+export const GET_CINEMA_LIST = "GET_CINEMA_LIST";

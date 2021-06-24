@@ -112,6 +112,7 @@ function ComingMovie() {
                     </div>
                     <p class="card-text">100 phút</p>
                   </div>
+                  <button className="btnTicket btn btn-success">Đặt vé</button>
                 </div>
               );
             })}
@@ -150,6 +151,7 @@ function ComingMovie() {
 
                     <p class="card-text">100 phút</p>
                   </div>
+                  <button className="btnTicket btn btn-success">Đặt vé</button>
                 </div>
               );
             })}

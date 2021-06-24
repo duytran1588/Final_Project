@@ -13,7 +13,7 @@ function ModalComing(props) {
               width="100%"
               height="100%"
               controls={true}
-              url={movie.trailer}
+              // url={movie.trailer}
             />
           </div>
 

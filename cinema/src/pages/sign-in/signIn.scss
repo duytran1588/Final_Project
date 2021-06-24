@@ -1,0 +1,114 @@
+@import "../../scss/helper/variable";
+@import "../../scss/helper/mixin";
+/* form starting stylings ------------------------------- */
+.signIn {
+    background-image: url("./background-image/backapp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7rem 0 7rem;
+    height: 47rem;
+    .sign-in {
+        .sign_in_form {
+            h1{
+                font-size: 2rem;
+            }
+            width: 22rem;
+            margin: auto;
+            background-color: $color-white-0;
+            border: solid $color-black-3 1px;
+            padding: 2rem;
+            height: 33rem;
+            .row {
+                .col-12 {
+                    .group {
+                        position: relative;
+                        margin-bottom: 4rem;
+                        input {
+                            font-size: 20px;
+                            padding: 10px 10px 10px 5px;
+                            display: block;
+                            width: 100%;
+                            border: none;
+                            border-bottom: 1px solid #757575;
+                            &:focus {
+                                outline: none;
+                            }
+                            &:focus ~ label,
+                            &:valid ~ label {
+                                top: -20px;
+                                font-size: 13px;
+                                color: $color-red-3;
+                            }
+                            &:focus ~ .bar {
+                                &:before,
+                                &:after {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                        /* LABEL ======================================= */
+                        label {
+                            color: #999;
+                            font-size: 17px;
+                            font-weight: normal;
+                            position: absolute;
+                            pointer-events: none;
+                            left: 5px;
+                            top: 10px;
+                            transition: 0.2s ease all;
+                            -moz-transition: 0.2s ease all;
+                            -webkit-transition: 0.2s ease all;
+                        }
+                        /* BOTTOM BARS ================================= */
+                        .bar {
+                            position: relative;
+                            display: block;
+                            width: 100%;
+                            &:before,
+                            &:after {
+                                content: "";
+                                height: 1px;
+                                width: 0;
+                                bottom: 1px;
+                                position: absolute;
+                                background: #5264ae;
+                                transition: 0.2s ease all;
+                                -moz-transition: 0.2s ease all;
+                                -webkit-transition: 0.2s ease all;
+                            }
+                            &:before {
+                                left: 50%;
+                            }
+                            &:after {
+                                right: 50%;
+                            }
+                        }
+
+                        /* HIGHLIGHTER ================================== */
+                        .highlight {
+                            position: absolute;
+                            width: 100px;
+                            top: 25%;
+                            left: 0;
+                            pointer-events: none;
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//responsive
+
+
+@include respond-to("super-small") {
+    .signIn {
+        .sign-in {
+            .sign_in_form {
+                width: 18rem;
+            }
+        }
+    }
+}

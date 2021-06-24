@@ -1,0 +1,1 @@
+dùng maLichChieu để call Api tiếp

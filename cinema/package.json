@@ -32,6 +32,7 @@
     "reactjs-popup": "^2.0.4",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.0.18",
     "venobox": "^1.9.3",
     "web-vitals": "^1.1.2"
   },
