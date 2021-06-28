@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import Header from "../../components/header/header";
-import Footer from "../../../src/components/footer/footer";
 import "./signIn.scss";
 import Swal from "sweetalert2";
+import { NavLink, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { signInApi } from "../../stores/actions/movie.action";
+
 class SignIn extends Component {
   state = {
     values: {
@@ -11,8 +13,7 @@ class SignIn extends Component {
     },
     errors: {
       taiKhoan: "",
-      matKhau: "",
-    },
+      matKhau: "",    },
   };
 
   handleChangeValue = (e) => {
@@ -25,6 +26,8 @@ class SignIn extends Component {
     if (value.trim() === "") {
       //loại bỏ các khoảng trắng bằng trim()
       newErrors[name] = "Vui lòng không để trống!";
+    } else {
+      newErrors[name] = "";
     }
 
     //note: setState là phương thức bất đồng bộ => hạn chế gọi trong code
@@ -34,7 +37,7 @@ class SignIn extends Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSignIn = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
     console.log("submit");
     //xét dk cho submit
@@ -56,11 +59,6 @@ class SignIn extends Component {
     for (let key in errors) {
       if (errors[key] !== "") {
         valid = false;
-        // errorContent += `
-        //     <p class="text-left">
-        //       <b>${key}</b>: invalid
-        //     </p>
-        //     `;
         break;
       }
     }
@@ -77,23 +75,15 @@ class SignIn extends Component {
       return;
     }
 
-    Swal.fire({
-      title: "Xin chào",
-      // text: 'Do you want to continue',
-      //có thể thay text bằng html
-      //   html: profileContent,
-      icon: "success", //success, error, warning
-      confirmButtonText: "Đăng nhập thành công",
-    });
+    this.props.dispatch(signInApi(this.state.values, this.props.history));
   };
   render() {
     return (
       <div>
-        <Header />
         <div className="signIn">
           <section>
             <div className="sign-in container">
-              <form onSubmit={this.handleSubmit} className="sign_in_form">
+              <form onSubmit={this.handleSignIn} className="sign_in_form">
                 <h1 className="text-center mt-0 mb-5">Đăng nhập</h1>
                 <div className="row">
                   <div className="col-12">
@@ -103,6 +93,7 @@ class SignIn extends Component {
                         onChange={this.handleChangeValue}
                         name="taiKhoan"
                         type="text"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -121,6 +112,7 @@ class SignIn extends Component {
                         onChange={this.handleChangeValue}
                         name="matKhau"
                         type="password"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -142,16 +134,17 @@ class SignIn extends Component {
                   </div>
                 </div>
                 <div className="mt-5 row">
-                  <div className="col-12">
+                  <div className="col-12 guide">
                     <span>
                       Bạn chưa có tài khoản? Vui lòng{" "}
-                      <a
+                      <NavLink
+                        to="/sign-up"
+                        exact
                         className="text-danger"
                         style={{ textDecoration: "none" }}
-                        href="#"
                       >
                         đăng ký
-                      </a>
+                      </NavLink>
                     </span>
                   </div>
                 </div>
@@ -159,10 +152,9 @@ class SignIn extends Component {
             </div>
           </section>
         </div>
-        <Footer />
       </div>
     );
   }
 }
 
-export default SignIn;
+export default withRouter(connect()(SignIn));

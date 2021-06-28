@@ -10,7 +10,7 @@
     height: 47rem;
     .sign-in {
         .sign_in_form {
-            h1{
+            h1 {
                 font-size: 2rem;
             }
             width: 22rem;
@@ -102,12 +102,16 @@
 }
 //responsive
 
-
 @include respond-to("super-small") {
     .signIn {
         .sign-in {
             .sign_in_form {
                 width: 18rem;
+                .row:nth-child(5) {
+                    .guide {
+                        text-align: center;
+                    }
+                }
             }
         }
     }

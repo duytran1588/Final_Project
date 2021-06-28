@@ -18,10 +18,10 @@ function Home() {
       {/* <SelectMovie/> */}
       {/* <SelectMovieName/> */}
       {/* <ComingMovie /> */}
-      <CinemaInfo />
+      {/* <CinemaInfo /> */}
       {/* <News /> */}
       {/* <MobileApp /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

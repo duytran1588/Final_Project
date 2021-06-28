@@ -3,6 +3,9 @@ import Header from "../../components/header/header";
 import Footer from "../../../src/components/footer/footer";
 import "./signUp.scss";
 import Swal from "sweetalert2";
+import { connect } from "react-redux";
+import { signUpAPI } from "../../stores/actions/movie.action";
+import { withRouter } from "react-router"; //để dùng history, location, match (để lấy params)
 class SignUp extends Component {
   state = {
     values: {
@@ -69,6 +72,14 @@ class SignUp extends Component {
     });
   };
 
+  // mapDispatchStateToProps = (dispatch) => {
+  //   return{
+  //     abc: () => {
+
+  //     }
+  //   }
+  // }
+
   handleSubmit = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
     console.log("submit");
@@ -76,11 +87,12 @@ class SignUp extends Component {
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
     let valid = true;
-
+    // console.log(this.props.history);
+    // console.log(this.props.match);
     //dùng for in để xét vòng lặp trog object
-    let profileContent = "";
+    // let profileContent = "";
     //th error
-    let errorContent = "";
+    // let errorContent = "";
     for (let key in values) {
       if (values[key] === "") {
         valid = false;
@@ -93,7 +105,7 @@ class SignUp extends Component {
       //     </p>`;
       // }
     }
-    
+
     for (let key in errors) {
       if (errors[key] !== "") {
         valid = false;
@@ -105,9 +117,9 @@ class SignUp extends Component {
         break;
       }
     }
-   
+    
+
     if (!valid) {
-     
       Swal.fire({
         title: "Thông tin của Bạn chưa đúng",
         // text: 'Do you want to continue',
@@ -118,20 +130,21 @@ class SignUp extends Component {
       });
       return;
     }
-    
-    Swal.fire({
-      title: "Chào mừng bạn đã tham gia",
-      // text: 'Do you want to continue',
-      //có thể thay text bằng html
-      // html: profileContent,
-      icon: "success", //success, error, warning
-      confirmButtonText: "Thành công",
-    });
+
+    //nếu valid = true => gán thêm gp01 và maLoaiNguoiDung: khachhang
+    const userLogin = {
+      ...this.state.values,
+      maNhom: "GP01",
+      maLoaiNguoiDung: "KhachHang",
+    };
+   
+
+    this.props.dispatch(signUpAPI(userLogin, this.props.history));
   };
   render() {
     return (
       <div>
-        <Header />
+       
         <div className="signUp">
           <section>
             <div className="sign-up container">
@@ -145,6 +158,7 @@ class SignUp extends Component {
                         onChange={this.handleChangeValue}
                         name="taiKhoan"
                         type="text"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -164,6 +178,7 @@ class SignUp extends Component {
                         onChange={this.handleChangeValue}
                         name="hoTen"
                         type="text"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -182,6 +197,7 @@ class SignUp extends Component {
                         onChange={this.handleChangeValue}
                         name="soDt"
                         type="text"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -200,6 +216,7 @@ class SignUp extends Component {
                         onChange={this.handleChangeValue}
                         name="email"
                         type="email"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -218,6 +235,7 @@ class SignUp extends Component {
                         onChange={this.handleChangeValue}
                         name="matKhau"
                         type="password"
+                        required
                       />
                       <span className="highlight" />
                       <span className="bar" />
@@ -242,10 +260,11 @@ class SignUp extends Component {
             </div>
           </section>
         </div>
-        <Footer />
+       
       </div>
     );
   }
 }
 
-export default SignUp;
+
+export default withRouter(connect()(SignUp));
