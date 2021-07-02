@@ -21,6 +21,8 @@ import { useDispatch } from "react-redux";
 import { SIGN_IN } from "./stores/constants/movie.const";
 import { useEffect } from "react";
 import UserProfile from "./pages/user-profile/user_profile";
+import MovieDetail from "./pages/movie-detail/movie-detail";
+import TicketBooking from "./pages/ticket-booking/ticket-booking";
 // import MultipleSelect from "./components/test";
 
 library.add(
@@ -39,7 +41,6 @@ function App() {
   // mở đúng local host đó (vd http://localhost:3000/))
   const getUserFromLocal = () => {
     const user = localStorage.getItem("userLogin");
-    console.log(user);
     if (user) {
       dispatch({
         type: SIGN_IN,
@@ -68,6 +69,12 @@ function App() {
         </Route>
         <Route path="/user-profile" exact={true}>
           <UserProfile />
+        </Route>
+        <Route path="/movie-detail/:maPhim" exact>
+          <MovieDetail/>
+        </Route>
+        <Route path="/ticket-booking/:maLichChieu" exact>
+          <TicketBooking/>
         </Route>
       </Switch>
       <Footer />

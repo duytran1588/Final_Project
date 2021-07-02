@@ -13,15 +13,13 @@ import SelectMovieName from "./select-movie-name/select_Movie_Name";
 function Home() {
   return (
     <div>
-      {/* <Header /> */}
-      {/* <Carousel /> */}
+      <Carousel />
       {/* <SelectMovie/> */}
-      {/* <SelectMovieName/> */}
-      {/* <ComingMovie /> */}
-      {/* <CinemaInfo /> */}
-      {/* <News /> */}
-      {/* <MobileApp /> */}
-      {/* <Footer /> */}
+      <SelectMovieName />
+      <ComingMovie />
+      <CinemaInfo />
+      <News />
+      <MobileApp />
     </div>
   );
 }

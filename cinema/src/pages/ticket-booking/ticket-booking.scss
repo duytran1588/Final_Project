@@ -1,0 +1,106 @@
+@import "../../scss/helper/variable";
+@import "../../scss/helper/mixin";
+
+#booking-ticket {
+    border-top: $color-black-3 solid 1px;
+    .small-container {
+        max-width: 100%;
+        margin: auto;
+        .cinema_form {
+            margin: auto;
+            max-width: 100%;
+            > div:first-child {
+                padding: 3rem 1rem;
+                .container {
+                    .screen {
+                        background-color: black;
+                        height: 1rem;
+                    }
+                    .container:nth-child(4) {
+                        margin-top: 2rem;
+                        width: 100%;
+                        .explain {
+                            div {
+                                margin-bottom: 1rem;
+                            }
+                        }
+                    }
+                    .chairList {
+                        margin-top: 3rem;
+                        .row {
+                            .col-11 {
+                                .container {
+                                    .row {
+                                        .first-aisle {
+                                            max-width: 14%;
+                                            padding: 0;
+                                            .row {
+                                                .chair {
+                                                    max-width: max-content;
+                                                    padding: 0;
+                                                }
+                                            }
+                                        }
+                                        .second-aisle {
+                                            max-width: 48%;
+                                            .row {
+                                                .chair {
+                                                    max-width: max-content;
+                                                    padding: 0;
+                                                }
+                                            }
+                                        }
+                                        .last-aisle {
+                                            max-width: 30%;
+                                            .row {
+                                                .chair {
+                                                    max-width: max-content;
+                                                    padding: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .col-1 {
+                                .alphabet {
+                                    button {
+                                        &:focus {
+                                            box-shadow: none !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            > div:nth-child(2) {
+                box-shadow: -3px 0px 3px $color-black-3;
+                padding: 1rem 0;
+                .container {
+                    .image_movie {
+                        height: 16rem;
+                    }
+                    .table_ticket {
+                        table {
+                            width: 100%;
+                            tbody{
+                                vertical-align: middle;
+                                button{
+                                    width: 5rem;
+                                }
+                            }
+                            tfoot{
+                                button{
+                                    width: 5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

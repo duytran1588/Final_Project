@@ -14,6 +14,7 @@ import LinesEllipsis from "react-lines-ellipsis"; // to make ellipsis "..."
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsive of ellipsis
 import ModalShowing from "./modal-showing";
 import ModalComing from "./modal-coming";
+import { useHistory } from "react-router";
 
 function ComingMovie() {
   const settings = {
@@ -65,6 +66,17 @@ function ComingMovie() {
     dispatch(getMovieListComing());
   }, []);
 
+  const history = useHistory();
+  const handleDetail = (maPhim) => {
+    const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    if (userLogin) {
+      history.push(`/movie-detail/${maPhim}`);
+    }
+    else{
+      history.push("/sign-in");
+    }
+  };
+
   return (
     <div className="comingMovie">
       <ul className="nav nav-tabs">
@@ -112,7 +124,14 @@ function ComingMovie() {
                     </div>
                     <p class="card-text">100 phút</p>
                   </div>
-                  <button className="btnTicket btn btn-success">Đặt vé</button>
+                  <button
+                    onClick={() => {
+                      handleDetail(movie.maPhim);
+                    }}
+                    className="btnTicket btn btn-success"
+                  >
+                    Đặt vé
+                  </button>
                 </div>
               );
             })}
@@ -151,7 +170,14 @@ function ComingMovie() {
 
                     <p class="card-text">100 phút</p>
                   </div>
-                  <button className="btnTicket btn btn-success">Đặt vé</button>
+                  <button
+                    onClick={() => {
+                      handleDetail(movie.maPhim);
+                    }}
+                    className="btnTicket btn btn-success"
+                  >
+                    Đặt vé
+                  </button>
                 </div>
               );
             })}

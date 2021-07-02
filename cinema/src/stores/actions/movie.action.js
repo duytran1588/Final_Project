@@ -1,13 +1,16 @@
+import { Collapse } from "@material-ui/core";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
-  GET_CINEMA_DETAIL,
   GET_CINEMA_LIST,
   GET_MOVIE_LIST,
   GET_MOVIE_LIST_COMING,
+  MOVIE_CALENDAR,
+  MOVIE_DETAIL,
   SEARCH_MOVIE,
   SIGN_IN,
   SIGN_OUT,
+  UPDATE_USER,
   USER_PROFILE,
 } from "../constants/movie.const";
 
@@ -191,5 +194,75 @@ export const signOutApi = (history) => {
     });
     //trở về home
     history.push("/");
+  };
+};
+
+export const updateUserApi = (user) => {
+  return async (dispatch) => {
+    try {
+      const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+      const token = userLogin.accessToken;
+      const res = await axios({
+        method: "PUT",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+        data: user,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const { thongTinDatVe, ...userProfile } = res.data;
+
+      //đưa lại lên store để re render userProfile
+      //lưu ý: vì api thông tin tài khoản có chứa thông tin đặt vé, khác với api cập nhật user (thông tin đặt vé là null) => tạm không cập nhật
+      //lại thông tin đặt vé của api cập nhật user
+      dispatch({
+        type: UPDATE_USER,
+        payload: userProfile,
+      });
+
+      //thông báo thành công
+      Swal.fire({
+        title: "Thông tin đã được cập nhật",
+        icon: "success", //success, error, warning
+        confirmButtonText: "Thành công",
+      });
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+};
+
+export const getMovieDetail = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "GET",
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+      });
+      dispatch({
+        type: MOVIE_DETAIL,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getMovieCalendar = (maLichChieu) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "GET",
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+      });
+      dispatch({
+        type: MOVIE_CALENDAR,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 };

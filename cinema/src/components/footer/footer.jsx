@@ -1,5 +1,29 @@
 import React, { useState } from "react";
-
+import cgv from "./contacts/cgv.png";
+import bhd from "./contacts/f32670fd0eb083c9c4c804f0f3a252ed.png"
+import laban from "./contacts/laban.png";
+import go123 from "./contacts/123go.png";
+import IVB from "./contacts/IVB.png";
+import viettinBank from "./contacts/VIETTINBANK.png";
+import agribank from "./contacts/AGRIBANK.png";
+import dcine from "./contacts/dcine-ben-thanh-15738149453578.png";
+import star from "./contacts/star.png";
+import payoo from "./contacts/payoo.jpg";
+import zaloPay from "./contacts/zalopay_icon.png"
+import starlight from "./contacts/STARLIGHT.png";
+import touch from "./contacts/TOUCH.png";
+import ddc from "./contacts/ddc.png";
+import beta from "./contacts/bt.jpg";
+import mega from "./contacts/mega.png";
+import cinestar from "./contacts/cinestar.png";
+import galaxy from "./contacts/galaxycine.png";
+import lotte from "./contacts/lotte.png";
+import android from "./mobile-app/android-logo.png";
+import apple from "./mobile-app/apple-logo.png";
+import facebook from "./social-network/facebook-logo.png";
+import zalo from "./social-network/zalo-logo.png";
+import zion from "./contacts/zion-logo.jpg";
+import unknown from "./contacts/d1e6bd560daa9e20131ea8a0f62e87f8.png";
 const handleOver = (choose, id) => {
   let icon = document.getElementById(id);
   if (choose == 1) {
@@ -13,102 +37,102 @@ function Footer() {
   const [contacts, setContacts] = useState([
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/cgv.png",
+      logo: cgv,
       ma: "cgv",
     },
     {
       link: "https://www.bhdstar.vn/",
-      logo: "./assets/images/contacts/f32670fd0eb083c9c4c804f0f3a252ed.png",
+      logo: bhd,
       ma: "bhd",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/laban.png",
+      logo: laban,
       ma: "laban",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/123go.png",
+      logo: go123,
       ma: "124go",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/IVB.png",
+      logo: IVB,
       ma: "ivb",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/VIETTINBANK.png",
+      logo: viettinBank,
       ma: "viettinBank2",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/AGRIBANK.png",
+      logo: agribank,
       ma: "agribank",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/VIETTINBANK.png",
+      logo: viettinBank,
       ma: "viettinBank",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/payoo.jpg",
+      logo: payoo,
       ma: "payoo",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/zalopay_icon.png",
+      logo: zaloPay,
       ma: "zaloPay",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/dcine-ben-thanh-15738149453578.png",
+      logo: dcine,
       ma: "dcine",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/STARLIGHT.png",
+      logo: starlight,
       ma: "starLight",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/star.png",
+      logo: star,
       ma: "star",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/TOUCH.png",
+      logo: touch,
       ma: "touch",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/ddc.png",
+      logo: ddc,
       ma: "ddc",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/bt.jpg",
+      logo: beta,
       ma: "beta",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/mega.png",
+      logo: mega,
       ma: "mega",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/cinestar.png",
+      logo: cinestar,
       ma: "cinestar",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/galaxycine.png",
+      logo: galaxy,
       ma: "galaxy",
     },
     {
       link: "https://www.cgv.vn/",
-      logo: "./assets/images/contacts/lotte.png",
+      logo: lotte,
       ma: "lotte",
     },
   ]);
@@ -159,26 +183,26 @@ function Footer() {
           <li className="app__logo">
             <p>Mobile App</p>
             <a target="_blank" href="https://www.cgv.vn/">
-              <img src="./assets/images/mobile-app/android-logo.png" />
+              <img src={android} />
             </a>
             <a target="_blank" href="https://www.cgv.vn/">
-              <img src="./assets/images/mobile-app/apple-logo.png" />
+              <img src={apple} />
             </a>
           </li>
           <li className="social__network">
             <p>Social</p>
             <a target="_blank" href="https://www.cgv.vn/">
-              <img src="./assets/images/social-network/facebook-logo.png" />
+              <img src={facebook} />
             </a>
             <a target="_blank" href="https://www.cgv.vn/">
-              <img src="./assets/images/social-network/zalo-logo.png" />
+              <img src={zalo} />
             </a>
           </li>
         </ul>
         <hr />
         <div className="row footer__ending">
           <div className="col-2">
-            <img src="./assets/images/contacts/zion-logo.jpg" />
+            <img src={zion} />
           </div>
           <div className="col-8">
             <p className="text-white mb-0">
@@ -197,7 +221,7 @@ function Footer() {
           </div>
           <div className="col-2 text-right">
             <a href="http://online.gov.vn/Home/WebDetails/62782?AspxAutoDetectCookieSupport=1">
-              <img src="./assets/images/contacts/d1e6bd560daa9e20131ea8a0f62e87f8.png" />
+              <img src={unknown} />
             </a>
           </div>
         </div>

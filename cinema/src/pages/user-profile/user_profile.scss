@@ -5,6 +5,12 @@
     .profile_info {
         > div {
             margin-top: 2rem;
+            div {
+                button {
+                    width: 10rem;
+                    padding: 7px;
+                }
+            }
         }
         .trade_1,
         .trade_2 {
@@ -71,12 +77,12 @@
                 }
                 .trade_2 {
                     visibility: visible;
-                    .payment_2{
-                        tbody{
-                            tr{
-                                td{
-                                    tr{
-                                        td{
+                    .payment_2 {
+                        tbody {
+                            tr {
+                                td {
+                                    tr {
+                                        td {
                                             padding: 0;
                                         }
                                     }
@@ -90,11 +96,24 @@
     }
 }
 
+@include respond-to("super-small") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    button {
+                        width: 8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @include respond-to("very-small") {
     .user-profile {
         .profile_info {
             .trade_modal {
-                
                 .trade_2 {
                     .payment_2 {
                         thead {

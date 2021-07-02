@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Header from "../../components/header/header";
-import Footer from "../../../src/components/footer/footer";
 import "./signUp.scss";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
@@ -72,14 +70,6 @@ class SignUp extends Component {
     });
   };
 
-  // mapDispatchStateToProps = (dispatch) => {
-  //   return{
-  //     abc: () => {
-
-  //     }
-  //   }
-  // }
-
   handleSubmit = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
     console.log("submit");
@@ -117,7 +107,6 @@ class SignUp extends Component {
         break;
       }
     }
-    
 
     if (!valid) {
       Swal.fire({
@@ -137,14 +126,12 @@ class SignUp extends Component {
       maNhom: "GP01",
       maLoaiNguoiDung: "KhachHang",
     };
-   
 
     this.props.dispatch(signUpAPI(userLogin, this.props.history));
   };
   render() {
     return (
       <div>
-       
         <div className="signUp">
           <section>
             <div className="sign-up container">
@@ -260,11 +247,9 @@ class SignUp extends Component {
             </div>
           </section>
         </div>
-       
       </div>
     );
   }
 }
-
 
 export default withRouter(connect()(SignUp));

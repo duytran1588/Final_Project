@@ -5,3 +5,6 @@ export const GET_CINEMA_LIST = "GET_CINEMA_LIST";
 export const SIGN_IN = "SIGN_IN";
 export const USER_PROFILE = "USER_PROFILE";
 export const SIGN_OUT = "SIGN_OUT";
+export const UPDATE_USER = "UPDATE_USER";
+export const MOVIE_DETAIL = "MOVIE_DETAIL";
+export const MOVIE_CALENDAR = "MOVIE_CALENDAR"; 

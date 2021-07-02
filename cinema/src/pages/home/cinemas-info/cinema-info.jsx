@@ -75,7 +75,7 @@ function CinemaInfo() {
   return (
     <div>
       <section id="schedule">
-        <div className="small-container text-align">
+        <div className="small-container">
           <div>
             <img
               className="img-fluid"
@@ -200,8 +200,8 @@ function CinemaInfo() {
                           {cumRap.danhSachPhim.map((phim, index) => {
                             return (
                               <li
-                                data-toggle="collapse"
-                                data-target="#film__time"
+                              // data-toggle="collapse"
+                              // data-target="#film__time"
                               >
                                 {/*collapse in bootstrap 4*/}
                                 <div className="row">
@@ -229,10 +229,7 @@ function CinemaInfo() {
                                         (lichChieu, index) => {
                                           return (
                                             <div className="col-4 mb-4">
-                                              <a
-                                                key={index}
-                                                href="https://tix.vn/login"
-                                              >
+                                              <a key={index}>
                                                 <span>
                                                   {format(
                                                     "dd/MM/yyyy",

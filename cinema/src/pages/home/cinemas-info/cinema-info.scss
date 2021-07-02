@@ -170,22 +170,11 @@
                                 }
                             }
                             .col-9 {
-                                cursor: pointer;
                                 .film__title {
                                     width: 100%;
                                     margin-left: -20px;
                                     height: 46px;
-                                    // span:first-child {
-                                    //     margin-right: 10px;
-                                    //     padding: 3px 5px;
-                                    //     border-radius: 4px;
-                                    //     min-width: 33px;
-                                    //     font-size: 0.8rem;
-                                    //     text-align: center;
-                                    //     color: white;
-                                    //     display: inline-block; /*thẻ span không chỉnh width height bình thường như div được phải có thêm display: inline-block mới định hình được*/
 
-                                    // }
                                     span {
                                         font-weight: bolder;
                                         font-size: 1rem;
@@ -243,10 +232,55 @@
 }
 
 //for responsive
-@include respond-to("medium") {
-    // <= 768px
+
+@include respond-to("extend_2") {
     #schedule {
-        display: none;
+        .small-container {
+            max-width: 90%;
+            .row {
+                .col-md-1 {
+                    height: 700px;
+                }
+                .col-md-4 {
+                    height: 700px;
+                }
+                .col-md-7 {
+                    height: 700px;
+                    ul {
+                        li {
+                            .row {
+                                .col-9 {
+                                    .film__title {
+                                        span:first-child {
+                                            font-size: 12px;
+                                        }
+                                        span:nth-child(2) {
+                                            font-size: 14px;
+                                        }
+                                        p {
+                                            font-size: 12px;
+                                        }
+                                    }
+                                }
+                            }
+                            #film__time {
+                                .premiere {
+                                    .row {
+                                        div {
+                                            a {
+                                                span {
+                                                    font-size: 16px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -331,51 +365,9 @@
     }
 }
 
-@include respond-to("extend_2") {
+@include respond-to("medium") {
+    // <= 768px
     #schedule {
-        .small-container {
-            max-width: 90%;
-            .row {
-                .col-md-1 {
-                    height: 700px;
-                }
-                .col-md-4 {
-                    height: 700px;
-                }
-                .col-md-7 {
-                    height: 700px;
-                    ul {
-                        li {
-                            .row {
-                                .col-9 {
-                                    .film__title {
-                                        span:first-child {
-                                            font-size: 12px;
-                                        }
-                                        span:nth-child(2) {
-                                            font-size: 14px;
-                                        }
-                                        p {
-                                            font-size: 12px;
-                                        }
-                                    }
-                                }
-                            }
-                            .film__time {
-                                a {
-                                    span:first-child {
-                                        font-size: 16px;
-                                    }
-                                    span:nth-child(2) {
-                                        font-size: 14px;
-                                    }
-                                    // display: inline-block;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        display: none;
     }
 }

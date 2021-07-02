@@ -8,6 +8,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import { style } from "./headerStyle";
 import { connect } from "react-redux";
 import { signOutApi } from "../../stores/actions/movie.action";
+import logo from "./logo/tix_logo.png";
 
 class Header extends Component {
   // state = {
@@ -44,24 +45,16 @@ class Header extends Component {
   signOut_hideToggle = () => {
     this.handleSignOut();
     this.handleHideToggle();
-  }
-
-  //xử lý nút đăng xuất trên header sau mục tin tức
-  
+  };
 
   render() {
     const { classes, user } = this.props; //sau khi import withStyle và headerStyle => xuất hiện props classes
-    console.log(user);
 
     let renderUserToggle;
     if (user) {
       renderUserToggle = (
         <>
-          {/* <li onClick={this.signOut_hideToggle}>
-            <NavLink to="/">
-            <span>Đăng xuất</span>
-            </NavLink>
-          </li> */}
+         
 
           <li onClick={this.handleHideToggle}>
             <NavLink to="/user-profile">
@@ -120,7 +113,7 @@ class Header extends Component {
             <NavLink to="/" exact>
               <img
                 style={{ width: "50px" }}
-                src={"./assets/images/logo/tix_logo.png"}
+                src={logo}
               />
             </NavLink>
           </div>

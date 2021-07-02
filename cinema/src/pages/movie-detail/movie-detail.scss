@@ -1,0 +1,377 @@
+@import "../../scss/helper/variable";
+@import "../../scss/helper/mixin";
+.movie-detail {
+    > div {
+        padding: 4rem 0;
+        background-image: url("./movie-detail-background/night_star.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .container {
+            .movie-info-detail {
+                justify-content: center;
+                align-items: center;
+                max-width: 68%;
+                margin: auto;
+                .movie-img {
+                    max-width: 30%;
+                    height: 18rem;
+                }
+                .movie-content {
+                    color: $color-white-0;
+                    p {
+                        text-align: justify;
+                    }
+                    .trailer_ticket {
+                        margin-top: 1.5rem;
+                        button {
+                            font-size: 12px;
+                            font-weight: bolder;
+                            padding: 10px 15px;
+                        }
+                    }
+                    .movie-intro {
+                        padding-left: 0;
+                        .row {
+                            div:first-child {
+                                max-width: 32%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//for cinema_schedule
+
+#movie_schedule {
+    margin: 4rem 0;
+    .small-container {
+        max-width: 70%;
+        margin: auto;
+        > .row {
+            justify-content: center;
+            /*cột 1*/
+            .cinema_icon {
+                padding: 0;
+                text-align: center;
+                cursor: pointer;
+                height: 615px;
+                border: solid #c1c1c157 1px;
+                ul {
+                    list-style: none;
+                    li {
+                        position: relative;
+                        &:after {
+                            content: "";
+                            width: 60%;
+                            border: dotted 1px #c1c1c157;
+                            bottom: 0;
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        padding: 13px;
+                        a {
+                            text-decoration: none;
+                            border: none !important;
+                            background: none !important; /*muốn tắt background-color -> background: none*/
+                            img {
+                                opacity: 0.5;
+                                transition: all 0.5s;
+                                &:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        .nav-link {
+                            padding: 0 !important;
+                        }
+                        /* cột 1 - link nào active thì opacity = 1  */
+                        a.active {
+                            img {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+                .nav-tabs {
+                    border-bottom: none;
+                }
+            }
+            /*end cột 1*/
+
+            #addInfo {
+                ul {
+                    li {
+                        opacity: 0.5;
+                        transition: all 0.5s;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            /* cột 2 */
+            .cinema_system {
+                border: solid #c1c1c157 1px;
+                overflow: auto;
+                height: 615px;
+                /*chỉnh scrollbar cho cột 3*/
+                &::-webkit-scrollbar {
+                    width: 4px;
+                    background-color: #e8e3e3cd;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    width: 4px;
+                }
+                overflow: auto;
+                ul {
+                    list-style-type: none;
+                    padding: 17px 0px;
+                    li {
+                        margin: -18px 0 3rem;
+                        padding-top: 1rem;
+                        border-top: dotted 1px #c1c1c157;
+                        .row {
+                            .col-3 {
+                                max-width: 15%;
+                                img {
+                                    height: 46px;
+                                }
+                            }
+                            .col-9 {
+                                
+                                .film__title {
+                                    width: 100%;
+                                    margin-left: -20px;
+                                    height: 46px;
+
+                                    span {
+                                        font-weight: bolder;
+                                        font-size: 1rem;
+                                        color: black;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 1;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;
+                                    }
+                                    p {
+                                        color: #9b9b9b;
+                                        font-size: 0.9rem;
+                                        margin-top: 0.4rem;
+                                    }
+                                }
+                            }
+                        }
+                        .show {
+                            .premiere {
+                                padding-left: 0;
+                                .row {
+                                    .day_time_show {
+                                        display: inline-block;
+                                        margin: 2.5rem 0 0 1rem;
+                                        a {
+                                            text-decoration: none;
+                                            border: solid 1px #e4e4e4;
+                                            background-color: rgba(246, 246, 246, 0.5);
+                                            border-radius: 7px;
+                                            padding: 12px 9px;
+                                            margin-right: 0.5rem;
+                                            span {
+                                                color: #108f3e;
+                                                font-size: 1rem;
+                                                font-weight: bolder;
+                                                margin-right: 4px;
+                                                &:hover {
+                                                    color: red;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            p {
+                                margin-top: 1rem;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//for modal
+#trailer-movie {
+    .modal-dialog {
+        .content-movie {
+            background-color: black !important;
+            .header-movie {
+                border-bottom: none;
+            }
+            .body-movie {
+                border-top: solid #ffffff36;
+                border-bottom: solid #ffffff36;
+            }
+            .footer-movie {
+                border-top: none;
+            }
+        }
+    }
+}
+
+//for responsive - cinema_schedule
+
+@include respond-to("extra-large"){
+    .movie-detail{
+        div{
+            .container{
+                .movie-info-detail{
+                    max-width: 80%;
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("moreLarge") {
+    //< = 992px
+    .movie-detail {
+        div {
+            .container {
+                .movie-info-detail {
+                    display: block;
+                    max-width: 42%;
+                    .movie-img {
+                        max-width: 75%;
+                        margin: auto;
+                    }
+                    .movie-content {
+                        margin-top: 2rem;
+                        max-width: 100%;
+                        .movie-intro {
+                            width: 26rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #movie_schedule {
+        .small-container {
+            max-width: 95%;
+            > div {
+                justify-content: flex-start;
+                .cinema_icon {
+                    width: 10%;
+                }
+                .cinema_system {
+                    width: 84%;
+                    > ul {
+                        li {
+                            .show {
+                                .premiere {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("medium") {
+    //<= 768px
+    .movie-detail {
+        div {
+            .container {
+                .movie-info-detail {
+                    max-width: 65%;
+                    display: block;
+                    .movie-img {
+                        max-width: 75%;
+                        margin: auto;
+                    }
+                    .movie-content {
+                        margin-top: 2rem;
+                        max-width: 100%;
+                        .movie-intro {
+                            width: 26rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #movie_schedule {
+        .small-container {
+            max-width: 95%;
+            > div {
+                justify-content: flex-start;
+                .cinema_icon {
+                    width: 10%;
+                }
+                .cinema_system {
+                    width: 84%;
+                    > ul {
+                        li {
+                            .show {
+                                .premiere {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("small") {
+    // <= 576px
+    .movie-detail {
+        div {
+            .container {
+                .movie-info-detail {
+                    max-width: 65%;
+                    display: block;
+                    .movie-img {
+                        max-width: 75%;
+                        margin: auto;
+                    }
+                    .movie-content {
+                        margin-top: 2rem;
+                        max-width: 100%;
+                        .movie-intro {
+                            width: 26rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #movie_schedule {
+        .small-container {
+            max-width: 95%;
+            > div {
+                justify-content: flex-start;
+                .cinema_icon {
+                    width: 16%;
+                }
+                .cinema_system {
+                    width: 84%;
+                }
+            }
+        }
+    }
+}
