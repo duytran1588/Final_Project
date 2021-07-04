@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCinemaList } from "../../../stores/actions/movie.action";
 import format from "date-format";
 import "./cinema-info.scss";
+import { useHistory } from "react-router";
 
 function CinemaInfo() {
   const dispatch = useDispatch();
@@ -70,6 +71,16 @@ function CinemaInfo() {
     document
       .querySelector(`.col-md-4 ul.active #${id}`)
       ?.classList.add("active");
+  };
+
+  const history = useHistory();
+  const movie_booking = (maLichChieu) => {
+    const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    if (userLogin) {
+      history.push(`/ticket-booking/${maLichChieu}`);
+    } else {
+      history.push("/sign-in");
+    }
   };
 
   return (
@@ -184,7 +195,7 @@ function CinemaInfo() {
             </div>
             {/* dữ liệu cột 3  */}
             <div id="sheduleInfo" className="col-md-7 tab-content">
-              {cinemaList.map((cinema, index) => {
+              {cinemaList.map((cinema) => {
                 return (
                   <>
                     {cinema.lstCumRap.map((cumRap, index) => {
@@ -199,10 +210,7 @@ function CinemaInfo() {
                         >
                           {cumRap.danhSachPhim.map((phim, index) => {
                             return (
-                              <li
-                              // data-toggle="collapse"
-                              // data-target="#film__time"
-                              >
+                              <li key={index}>
                                 {/*collapse in bootstrap 4*/}
                                 <div className="row">
                                   <div className="col-3">
@@ -229,7 +237,15 @@ function CinemaInfo() {
                                         (lichChieu, index) => {
                                           return (
                                             <div className="col-4 mb-4">
-                                              <a key={index}>
+                                              <a
+                                                style={{ cursor: "pointer" }}
+                                                key={index}
+                                                onClick={() => {
+                                                  movie_booking(
+                                                    lichChieu.maLichChieu
+                                                  );
+                                                }}
+                                              >
                                                 <span>
                                                   {format(
                                                     "dd/MM/yyyy",

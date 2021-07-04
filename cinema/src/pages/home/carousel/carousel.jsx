@@ -61,21 +61,23 @@ class Carousel extends Component {
 
         {this.state.map((item, index) => {
           return (
-            <div class="modal modal_carousel fade" key={index} id={item.ma}>
-              <div class="modal-dialog dialog_carousel">
-                <div class="modal-content content_carousel">
+            <div className="modal modal_carousel fade" key={index} id={item.ma}>
+              <div className="modal-dialog dialog_carousel">
+                <div className="modal-content content_carousel">
                   {/* <!-- Modal body --> */}
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <ReactPlayer
                       width="100%"
                       height="100%"
                       controls={true}
                       url={item.trailer}
+                      
+                      // origin={window.location.href}
                     />
                   </div>
 
                   {/* <!-- Modal footer --> */}
-                  <div class="modal-footer footer_carousel">
+                  <div className="modal-footer footer_carousel">
                     <a data-dismiss="modal">+</a>
                   </div>
                 </div>

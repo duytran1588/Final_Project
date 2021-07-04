@@ -92,13 +92,13 @@
 }
 
 //for responsive
-@include respond-to("large") {
+@media screen and (max-width: 1050px) {
     .login_location {
         display: none !important;
     }
 }
 
-@include respond-to("large") {
+@media screen and (max-width: 1050px) {
     .navbar {
         height: 4rem;
         .brand-title {

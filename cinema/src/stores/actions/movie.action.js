@@ -2,6 +2,8 @@ import { Collapse } from "@material-ui/core";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
+  BOOKING_TICKET,
+  CHAIR_CHOICE,
   GET_CINEMA_LIST,
   GET_MOVIE_LIST,
   GET_MOVIE_LIST_COMING,
@@ -263,6 +265,44 @@ export const getMovieCalendar = (maLichChieu) => {
       });
     } catch (err) {
       console.log(err);
+    }
+  };
+};
+
+export const chairChoiceAction = (chair) => {
+  return {
+    type: CHAIR_CHOICE,
+    payload: chair,
+  };
+};
+
+export const bookingTicketAction = (maLichChieu, danhSachVe) => {
+  return async (dispatch) => {
+    try {
+      const dataStorage = JSON.parse(localStorage.getItem("userLogin"));
+      const accessToken = dataStorage.accessToken;
+      const taiKhoan = dataStorage.taiKhoan;
+      const res = await axios({
+        method: "POST",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe",
+        data: {
+          maLichChieu,
+          danhSachVe,
+          taiKhoanNguoiDung: taiKhoan,
+        },
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      //thành công
+      //trả chairChoice về null
+      dispatch({
+        type: BOOKING_TICKET,
+        payload: danhSachVe,
+      })
+      Swal.fire("Đặt vé thành công !");
+    } catch (err) {
+      //không thành công
+      Swal.fire(err.response.data);
+   
     }
   };
 };

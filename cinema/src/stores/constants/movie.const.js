@@ -8,3 +8,5 @@ export const SIGN_OUT = "SIGN_OUT";
 export const UPDATE_USER = "UPDATE_USER";
 export const MOVIE_DETAIL = "MOVIE_DETAIL";
 export const MOVIE_CALENDAR = "MOVIE_CALENDAR"; 
+export const CHAIR_CHOICE = "CHAIR_CHOICE";
+export const BOOKING_TICKET = "BOOKING_TICKET";

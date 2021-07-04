@@ -1,9 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getMovieCalendar } from "../../stores/actions/movie.action";
+import {
+  bookingTicketAction,
+  chairChoiceAction,
+  getMovieCalendar,
+} from "../../stores/actions/movie.action";
+import Swal from "sweetalert2";
 
 class TicketBooking extends Component {
+
+  
+  handleBooking = () => {
+    const { choiceChairList } = this.props;
+    const maLichChieu = this.props.match.params.maLichChieu;
+    if (!choiceChairList) {
+      //sweet alert
+      Swal.fire({
+        title: "Bạn vui lòng chọn ghế",
+        icon: "error", //success, error, warning
+        confirmButtonText: "Chọn lại",
+      });
+      return;
+    }
+    Swal.fire({
+      title: "Bạn muốn đặt vé?",
+      showDenyButton: true,
+      confirmButtonText: `Có`,
+      denyButtonText: `Không`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //api
+        this.props.dispatch(bookingTicketAction(maLichChieu, choiceChairList));
+      } else if (result.isDenied) {
+        Swal.fire("Hủy đặt vé");
+      }
+    });
+  };
+
+  //viết hàm chọn ghế
+  handleChairChoice(chair) {
+    this.props.dispatch(chairChoiceAction(chair));
+  }
+
   renderAlphabet() {
     let items = [];
     const alphabet = [
@@ -41,21 +80,27 @@ class TicketBooking extends Component {
 
   renderAisle(begin, length, column) {
     const { chairList } = this.props;
+
     let items = [];
     if (chairList) {
       for (let i = begin; i < length; i++) {
         items.push(
           <div className={`${column} chair mb-2 ml-2`}>
             <button
-              disabled={chairList.danhSachGhe[i].daDat}
+              onClick={() => {
+                this.handleChairChoice(chairList[i]);
+              }}
+              disabled={chairList[i].daDat}
               style={{ width: "3rem" }}
               className={`btn ${
-                chairList.danhSachGhe[i].loaiGhe === "Vip"
+                chairList[i].dangChon
+                  ? "btn-success"
+                  : chairList[i].loaiGhe === "Vip"
                   ? "btn-danger"
                   : "btn-dark"
               }`}
             >
-              {chairList.danhSachGhe[i].tenGhe}
+              {chairList[i].tenGhe}
             </button>
           </div>
         );
@@ -66,21 +111,27 @@ class TicketBooking extends Component {
 
   renderLastAisle() {
     const { chairList } = this.props;
+
     let items = [];
     if (chairList) {
-      for (let i = 108; i < chairList.danhSachGhe.length; i++) {
+      for (let i = 108; i < chairList.length; i++) {
         items.push(
           <div className="col-3 chair mb-2 ml-2">
             <button
-              disabled={chairList.danhSachGhe[i].daDat}
+              onClick={() => {
+                this.handleChairChoice(chairList[i]);
+              }}
+              disabled={chairList[i].daDat}
               style={{ width: "3rem" }}
               className={`btn ${
-                chairList.danhSachGhe[i].loaiGhe === "Vip"
+                chairList[i].dangChon
+                  ? "btn-success"
+                  : chairList[i].loaiGhe === "Vip"
                   ? "btn-danger"
                   : "btn-dark"
               }`}
             >
-              {chairList.danhSachGhe[i].tenGhe}
+              {chairList[i].tenGhe}
             </button>
           </div>
         );
@@ -89,8 +140,8 @@ class TicketBooking extends Component {
     return items;
   }
   render() {
-    const { chairList } = this.props;
-    console.log(chairList);
+    const { calendarMovie, choiceChairList } = this.props;
+
     return (
       <section id="booking-ticket">
         <div className="small-container">
@@ -98,12 +149,12 @@ class TicketBooking extends Component {
             <div className="col-8">
               <div className="container">
                 <div className="cinema_intro_name">
-                  <p>{chairList?.thongTinPhim.tenCumRap}</p>
-                  <p>{chairList?.thongTinPhim.diaChi}</p>
+                  <p>{calendarMovie?.thongTinPhim.tenCumRap}</p>
+                  <p>{calendarMovie?.thongTinPhim.diaChi}</p>
                   <p>
-                    {chairList?.thongTinPhim.ngayChieu} -{" "}
-                    {chairList?.thongTinPhim.gioChieu} -{" "}
-                    {chairList?.thongTinPhim.tenRap}
+                    {calendarMovie?.thongTinPhim.ngayChieu} -{" "}
+                    {calendarMovie?.thongTinPhim.gioChieu} -{" "}
+                    {calendarMovie?.thongTinPhim.tenRap}
                   </p>
                 </div>
                 <div className="screen"></div>
@@ -144,7 +195,7 @@ class TicketBooking extends Component {
 
                 <div className="container chairList">
                   <div className="row">
-                    <div className="col-1">
+                    <div className="col-1 alphabet_chair">
                       <div className="container">
                         <div className="row">{this.renderAlphabet()}</div>
                       </div>
@@ -188,20 +239,21 @@ class TicketBooking extends Component {
               </div>
             </div>
             <div className="col-4">
-              <div className="container">
-                <div className="image_movie">
+              <div className="container ticket_info">
+                <div className="image_movie" style={{height: "fit-content", width: "12rem"}}>
                   <img
-                    height="100%"
-                    src={chairList?.thongTinPhim.hinhAnh}
+                    style={{maxWidth: "100%"}}
+                    src={calendarMovie?.thongTinPhim.hinhAnh}
                     alt=""
                   />
                 </div>
                 <div className="cinema_ticket_book">
                   <p className="text-danger mt-3" style={{ fontSize: "2rem" }}>
-                    {chairList?.thongTinPhim.tenPhim}
+                    {calendarMovie?.thongTinPhim.tenPhim}
                   </p>
-                  <p>{chairList?.thongTinPhim.tenCumRap}</p>
-                  <p>{chairList?.thongTinPhim.diaChi}</p>
+                  <p>{calendarMovie?.thongTinPhim.tenCumRap}</p>
+                  <p>{calendarMovie?.thongTinPhim.diaChi}</p>
+                  <h2 className="mt-5 mb-4">Thông tin vé</h2>
                 </div>
                 <div className="table table_ticket">
                   <table>
@@ -210,38 +262,51 @@ class TicketBooking extends Component {
                         <th>STT</th>
                         <th>Số ghế</th>
                         <th>Giá vé</th>
-                        <th>Giao dịch</th>
+                        {/* <th style={{ borderRight: "none" }}>Giao dịch</th> */}
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>134</td>
-                        <td>75000</td>
-                        <td>
-                          <button className="btn btn-success">Hủy</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>134</td>
-                        <td>75000</td>
-                        <td>
-                          <button className="btn btn-success">Hủy vé</button>
-                        </td>
-                      </tr>
+                      {choiceChairList?.map((chair, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{chair.tenGhe}</td>
+                            <td>{chair.giaVe.toLocaleString()}</td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <td colSpan="2">Tổng tiền</td>
-                        <td>150, 000</td>
+                      <tr style={{ borderBottom: "none" }}>
+                        <td colSpan="2" className="text-center">
+                          Tổng tiền
+                        </td>
                         <td>
-                          <button className="btn btn-danger">Đặt vé</button>
+                          {choiceChairList
+                            ?.reduce((tongTien, chair) => {
+                              return (tongTien += chair.giaVe);
+                            }, 0)
+                            .toLocaleString()}{" "}
+                          (VNĐ)
                         </td>
                       </tr>
                     </tfoot>
                   </table>
                 </div>
+                <button
+                  onClick={() => {
+                    this.handleBooking();
+                  }}
+                  style={{
+                    marginLeft: "100%",
+                    transform: "translateX(-100%)",
+                    display: "inline-block",
+                    width: "7rem",
+                  }}
+                  className="btn btn-danger"
+                >
+                  Đặt
+                </button>
               </div>
             </div>
           </div>
@@ -257,7 +322,9 @@ class TicketBooking extends Component {
 }
 const mapStateToProps = (state) => {
   return {
+    calendarMovie: state.cinemaReducer.calendarMovie,
     chairList: state.cinemaReducer.chairList,
+    choiceChairList: state.cinemaReducer.choiceChairList,
   };
 };
 
