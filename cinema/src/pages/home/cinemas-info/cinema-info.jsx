@@ -4,6 +4,7 @@ import { getCinemaList } from "../../../stores/actions/movie.action";
 import format from "date-format";
 import "./cinema-info.scss";
 import { useHistory } from "react-router";
+import Loading from "../../../components/loading/loading";
 
 function CinemaInfo() {
   const dispatch = useDispatch();
@@ -82,6 +83,14 @@ function CinemaInfo() {
       history.push("/sign-in");
     }
   };
+
+  const loading = useSelector((state) => {
+    return state.movieReducer.loading;
+  });
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>

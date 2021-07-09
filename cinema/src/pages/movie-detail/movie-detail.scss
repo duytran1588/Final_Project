@@ -1,6 +1,7 @@
 @import "../../scss/helper/variable";
 @import "../../scss/helper/mixin";
 .movie-detail {
+    margin-top: 4rem;
     > div {
         padding: 4rem 0;
         background-image: url("./movie-detail-background/night_star.jpg");

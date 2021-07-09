@@ -9,13 +9,16 @@ import {
   faMapMarkerAlt,
   faThumbsUp,
   faCommentAlt,
+  faSearch,
+  faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 import Home from "./pages/home/home";
 import Test from "./components/test";
 import SignUp from "./pages/sign-up/signUp";
 import SignIn from "./pages/sign-in/signIn";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Header from "./components/header/header";
+// import Header from "./components/header/test"
 import Footer from "./components/footer/footer";
 import { useDispatch } from "react-redux";
 import { SIGN_IN } from "./stores/constants/movie.const";
@@ -23,6 +26,9 @@ import { useEffect } from "react";
 import UserProfile from "./pages/user-profile/user_profile";
 import MovieDetail from "./pages/movie-detail/movie-detail";
 import TicketBooking from "./pages/ticket-booking/ticket-booking";
+import Guard from "./components/HOC/guard";
+import Admin from "./pages/admin/admin";
+import Admin_Home from "./components/HOC/admin_home";
 // import MultipleSelect from "./components/test";
 
 library.add(
@@ -31,7 +37,9 @@ library.add(
   faMapMarkerAlt,
   faPlay,
   faThumbsUp,
-  faCommentAlt
+  faCommentAlt,
+  faSearch,
+  faCogs
 );
 
 function App() {
@@ -71,10 +79,18 @@ function App() {
           <UserProfile />
         </Route>
         <Route path="/movie-detail/:maPhim" exact>
-          <MovieDetail/>
+          <MovieDetail />
         </Route>
         <Route path="/ticket-booking/:maLichChieu" exact>
-          <TicketBooking/>
+          <TicketBooking />
+        </Route>
+        <Route path="/admin" exact>
+          <Guard>
+            <Admin />
+          </Guard>
+        </Route>
+        <Route path="" exact>
+          <Admin_Home />
         </Route>
       </Switch>
       <Footer />

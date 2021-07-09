@@ -12,12 +12,15 @@ import {
   SEARCH_MOVIE,
   SIGN_IN,
   SIGN_OUT,
+  START_LOADING,
+  STOP_LOADING,
   UPDATE_USER,
   USER_PROFILE,
 } from "../constants/movie.const";
 
 export const getMovieList = () => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "GET",
@@ -27,6 +30,7 @@ export const getMovieList = () => {
         type: GET_MOVIE_LIST,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err);
     }
@@ -70,6 +74,7 @@ export const searchMovie = (movieName) => {
 
 export const getCinemaList = () => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "GET",
@@ -79,6 +84,7 @@ export const getCinemaList = () => {
         type: GET_CINEMA_LIST,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err);
     }
@@ -122,16 +128,6 @@ export const signInApi = (userSignIn, history) => {
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
         data: userSignIn,
       });
-      //báo đăng nhập thành công
-
-      Swal.fire({
-        title: "Xin chào",
-        // text: 'Do you want to continue',
-        //có thể thay text bằng html
-        //   html: profileContent,
-        icon: "success", //success, error, warning
-        confirmButtonText: "Đăng nhập thành công",
-      });
 
       //dispatch object lên Reducer
       dispatch({
@@ -140,16 +136,14 @@ export const signInApi = (userSignIn, history) => {
       });
 
       //lưu xuống LocalStorage (accessToken, taiKhoan, maLoaiNguoiDung)
-      // const { accessToken, maLoaiNguoiDung, ...userLogin } = res.data;
-      // localStorage.setItem("token", JSON.stringify(accessToken));
-      // // localStorage.setItem("taiKhoan", JSON.stringify(taiKhoan));
-      // localStorage.setItem("userLogin", JSON.stringify(userLogin));
-      // localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung));
+
       localStorage.setItem("userLogin", JSON.stringify(res.data));
+
+      //báo đăng nhập thành công
 
       //trở về trang home hoặc currentPage
       if (res.data.maLoaiNguoiDung === "QuanTri") {
-        // history.push("/admin")//chưa làm page admin
+        history.push("/admin");
       } else {
         history.push("/");
       }
@@ -237,6 +231,7 @@ export const updateUserApi = (user) => {
 
 export const getMovieDetail = (maPhim) => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "GET",
@@ -246,6 +241,7 @@ export const getMovieDetail = (maPhim) => {
         type: MOVIE_DETAIL,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err);
     }
@@ -254,6 +250,7 @@ export const getMovieDetail = (maPhim) => {
 
 export const getMovieCalendar = (maLichChieu) => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "GET",
@@ -263,6 +260,7 @@ export const getMovieCalendar = (maLichChieu) => {
         type: MOVIE_CALENDAR,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err);
     }
@@ -278,6 +276,7 @@ export const chairChoiceAction = (chair) => {
 
 export const bookingTicketAction = (maLichChieu, danhSachVe) => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const dataStorage = JSON.parse(localStorage.getItem("userLogin"));
       const accessToken = dataStorage.accessToken;
@@ -297,12 +296,24 @@ export const bookingTicketAction = (maLichChieu, danhSachVe) => {
       dispatch({
         type: BOOKING_TICKET,
         payload: danhSachVe,
-      })
+      });
+      dispatch(stopLoadingAction());
       Swal.fire("Đặt vé thành công !");
     } catch (err) {
       //không thành công
       Swal.fire(err.response.data);
-   
     }
+  };
+};
+
+export const startLoadingAction = () => {
+  return {
+    type: START_LOADING,
+  };
+};
+
+export const stopLoadingAction = () => {
+  return {
+    type: STOP_LOADING,
   };
 };

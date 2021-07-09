@@ -7,6 +7,7 @@ import {
   getMovieCalendar,
 } from "../../stores/actions/movie.action";
 import Swal from "sweetalert2";
+import Loading from "../../components/loading/loading";
 
 class TicketBooking extends Component {
 
@@ -140,7 +141,11 @@ class TicketBooking extends Component {
     return items;
   }
   render() {
-    const { calendarMovie, choiceChairList } = this.props;
+    const {loading, calendarMovie, choiceChairList } = this.props;
+    
+    if(loading){
+      return <Loading/>
+    }
 
     return (
       <section id="booking-ticket">
@@ -325,6 +330,7 @@ const mapStateToProps = (state) => {
     calendarMovie: state.cinemaReducer.calendarMovie,
     chairList: state.cinemaReducer.chairList,
     choiceChairList: state.cinemaReducer.choiceChairList,
+    loading: state.movieReducer.loading,
   };
 };
 

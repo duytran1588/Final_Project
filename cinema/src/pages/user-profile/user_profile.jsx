@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import Loading from "../../components/loading/loading";
 import { userProfileApi } from "../../stores/actions/movie.action";
 import ModalUpdate from "./modalUpdate";
 
@@ -25,6 +27,12 @@ function UserProfile() {
     return state.cinemaReducer.userProfile;
   });
 
+  const loading = useSelector((state) => {
+    return state.movieReducer.loading;
+  });
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="user-profile container">
       <section className="greeting">

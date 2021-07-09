@@ -1,0 +1,31 @@
+.sidebar_dashboard {
+    padding: 2rem 0;
+    background-color: #7386d5;
+    color: white;
+    padding-left: 2rem;
+}
+
+.dashboard {
+    .dashboard_list {
+        .dashboard_item {
+            padding: 0;
+            color: white;
+            font-size: 1.2rem;
+            list-style-type: none;
+            cursor: pointer;
+            .dashboard_link {
+                color: white;
+                padding: 1.5rem 2.5rem;
+            }
+            .dashboard_link.active {
+                background-color: rgba(0, 0, 0, 0.404) !important;
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.404);
+            }
+        }
+        // background-color: rgba(115, 134, 210, 0.8);
+        margin-bottom: 0;
+        height: 100vh;
+    }
+}

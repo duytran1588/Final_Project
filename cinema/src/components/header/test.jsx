@@ -9,48 +9,34 @@ import { style } from "./headerStyle";
 import { connect } from "react-redux";
 import { signOutApi } from "../../stores/actions/movie.action";
 import logo from "./logo/tix_logo.png";
-// import admin_logo from "./logo/Admin_logo.jpg/";
-import admin from "./logo/server_admin.png";
 
 class Header extends Component {
-  handleToggleHeader() {
-    const navbar_header = document.getElementsByClassName("navbar-header")[0];
-    navbar_header.style.height = "100%";
-    navbar_header.style.backgroundColor = "rgb(17 16 16 / 67%)";
-    //logo
-    const log_header = document.getElementsByClassName("brand-title")[0];
-    log_header.style.visibility = "collapse";
-  }
+  // state = {
+  //   userLogin: "",
+  // }
 
-  handleHideToggleHeader() {
-    const navbar_header = document.getElementsByClassName("navbar-header")[0];
-    navbar_header.style.backgroundColor = "rgba(255, 255, 255, 0.822)";
-    navbar_header.style.height = "4rem";
-    const log_header = document.getElementsByClassName("brand-title")[0];
-    log_header.style.visibility = "visible";
-  }
-
-  handleToggle = () => {
-    this.handleToggleHeader();
+  componentDidMount() {}
+  handleToggle() {
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
-
+    // navbarLinks.classList.toggle("active");//c1
+    // Remove a class: element.classList.toggle("classToRemove", false);
+    // Add a class: element.classList.toggle("classToAdd", true);
     navbarLinks.classList.add("active");
     const chevronRight =
       document.getElementsByClassName("hide-toggleButton")[0];
     chevronRight.style.visibility = "visible";
-  };
+  }
 
   //nhấn mũi tên để back lại toggle button
 
-  handleHideToggle = () => {
+  handleHideToggle() {
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
     // navbarLinks.classList.toggle("active"); c1
     navbarLinks.classList.remove("active");
     const chevronRight =
       document.getElementsByClassName("hide-toggleButton")[0];
     chevronRight.style.visibility = "collapse";
-    setTimeout(this.handleHideToggleHeader, 200);
-  };
+  }
 
   handleSignOut = () => {
     this.props.dispatch(signOutApi(this.props.history));
@@ -59,19 +45,6 @@ class Header extends Component {
   signOut_hideToggle = () => {
     this.handleSignOut();
     this.handleHideToggle();
-  };
-
-  renderAdminLogo = () => {
-    const userLogin = JSON.parse(localStorage.getItem("userLogin"));
-    const maLoaiNguoiDung = userLogin?.maLoaiNguoiDung;
-    return maLoaiNguoiDung === "QuanTri" ? (
-      <NavLink className="ml-3" to="/admin" exact>
-        <img style={{ width: "50px" }} src={admin} />
-        
-      </NavLink>
-    ) : (
-      ""
-    );
   };
 
   render() {
@@ -138,14 +111,33 @@ class Header extends Component {
             <NavLink to="/" exact>
               <img style={{ width: "50px" }} src={logo} />
             </NavLink>
-            {this.renderAdminLogo()}
           </div>
           <a className="toggle-button" onClick={this.handleToggle}>
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
           </a>
-          <div className="navbar-links">
+          <ul className="login_location">
+            <li className="login">
+              <FontAwesomeIcon
+                className={`${user ? "text-success" : ""}`}
+                style={{ marginRight: "10px" }}
+                icon="user-circle"
+              />
+              {renderUser}
+            </li>
+            <li className="location ">
+              <FontAwesomeIcon
+                style={{ margin: "14px 2px 0 0" }}
+                icon="map-marker-alt"
+              />
+
+              <SelectComponent />
+            </li>
+          </ul>
+        </nav>
+        {/* for headertoggle */}
+        <div style={{display: "block"}} className="navbar-links">
             <ul>
               {/* tạm thời dùng a => sau này chuyển thành navLink trong router-dom  */}
               {/* tạo thêm 1 button để trở về trạng thái ban đầu, nhưng button này sẽ được ẩn */}
@@ -184,25 +176,7 @@ class Header extends Component {
               )}
             </ul>
           </div>
-          <ul className="login_location">
-            <li className="login">
-              <FontAwesomeIcon
-                className={`${user ? "text-success" : ""}`}
-                style={{ marginRight: "10px" }}
-                icon="user-circle"
-              />
-              {renderUser}
-            </li>
-            <li className="location ">
-              <FontAwesomeIcon
-                style={{ margin: "14px 2px 0 0" }}
-                icon="map-marker-alt"
-              />
-
-              <SelectComponent />
-            </li>
-          </ul>
-        </nav>
+         
       </>
     );
   }

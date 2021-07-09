@@ -3,6 +3,8 @@ import {
   GET_MOVIE_LIST_COMING,
   MOVIE_DETAIL,
   SEARCH_MOVIE,
+  START_LOADING,
+  STOP_LOADING,
 } from "../constants/movie.const";
 
 const initialState = {
@@ -10,6 +12,7 @@ const initialState = {
   movieListComing: [],
   movieSearch: [],
   movie_detail: null,
+  loading: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -31,6 +34,12 @@ export default (state = initialState, { type, payload }) => {
       return { ...state };
     case MOVIE_DETAIL:
       state.movie_detail = payload;
+      return { ...state };
+    case STOP_LOADING:
+      state.loading = false;
+      return { ...state };
+    case START_LOADING:
+      state.loading = true;
       return { ...state };
     default:
       return state;

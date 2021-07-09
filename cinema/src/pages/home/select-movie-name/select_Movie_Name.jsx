@@ -6,6 +6,7 @@ import { searchMovie } from "../../../stores/actions/movie.action";
 import { useDispatch, useSelector } from "react-redux";
 import format from "date-format";
 import { useHistory } from "react-router";
+import Loading from "../../../components/loading/loading";
 
 function SelectMovieName() {
   const [movieName, setMovieName] = useState("");
@@ -118,6 +119,10 @@ function SelectMovieName() {
     }
   };
 
+  const loading = useSelector((state) => {
+    return state.movieReducer.loading;
+  });
+  
   return (
     <div>
       <form onSubmit={handleSearch} className="buyTicketForm mb-5">

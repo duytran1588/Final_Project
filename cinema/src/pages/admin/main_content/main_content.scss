@@ -1,0 +1,27 @@
+.main_content {
+    background-image: linear-gradient(to right, rgba(115, 134, 210, 0.8), rgba(104, 203, 139, 1));
+    padding: 2rem;
+    height: 100%;
+    .main_content_user {
+        background-color: white;
+        border-radius: 4px;
+        padding: .5rem 1rem;
+        margin-top: 6rem;
+        table {
+            thead {
+                tr {
+                    th {
+                        vertical-align: middle;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

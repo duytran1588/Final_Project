@@ -1,8 +1,8 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import ReactPlayer from "react-player";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +15,7 @@ import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsiv
 import ModalShowing from "./modal-showing";
 import ModalComing from "./modal-coming";
 import { useHistory } from "react-router";
+import Loading from "../../../components/loading/loading";
 
 function ComingMovie() {
   const settings = {
@@ -71,11 +72,18 @@ function ComingMovie() {
     const userLogin = JSON.parse(localStorage.getItem("userLogin"));
     if (userLogin) {
       history.push(`/movie-detail/${maPhim}`);
-    }
-    else{
+    } else {
       history.push("/sign-in");
     }
   };
+
+  const loading = useSelector((state) => {
+    return state.movieReducer.loading;
+  });
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="comingMovie">

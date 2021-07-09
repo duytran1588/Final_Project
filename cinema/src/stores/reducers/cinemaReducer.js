@@ -1,4 +1,3 @@
-import { chairChoiceAction } from "../actions/movie.action";
 import {
   BOOKING_TICKET,
   CHAIR_CHOICE,

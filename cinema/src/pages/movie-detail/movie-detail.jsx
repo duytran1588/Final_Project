@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { getMovieDetail } from "../../stores/actions/movie.action";
 import Cinema_Schedule from "./cinema_schedule";
 import format from "date-format";
+import Loading from "../../components/loading/loading";
 
 function MovieDetail() {
   const dispatch = useDispatch();
@@ -19,6 +20,12 @@ function MovieDetail() {
   //lay param tren url về
   const { maPhim } = useParams();
 
+  const loading = useSelector((state) => {
+    return state.movieReducer.loading;
+  });
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <section className="movie-detail">
@@ -56,14 +63,13 @@ function MovieDetail() {
                   >
                     XEM TRAILER
                   </button>
-                 
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <Cinema_Schedule movie_detail={movie_detail}/>
+      <Cinema_Schedule movie_detail={movie_detail} />
       <div className="modal fade" id="trailer-movie">
         <div className="modal-dialog">
           <div className="modal-content content-movie">

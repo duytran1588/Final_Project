@@ -9,6 +9,8 @@ import News from "./news/news";
 import MobileApp from "./mobile-app/mobile-app";
 
 import SelectMovieName from "./select-movie-name/select_Movie_Name";
+import Loading from "../../components/loading/loading";
+import { useSelector } from "react-redux";
 
 function Home() {
   return (
@@ -20,6 +22,7 @@ function Home() {
       <CinemaInfo />
       <News />
       <MobileApp />
+      {/* <Loading/> */}
     </div>
   );
 }
