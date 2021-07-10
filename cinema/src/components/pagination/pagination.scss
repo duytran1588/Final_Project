@@ -2,3 +2,7 @@
     background-color: red !important;
     color: white !important;
 }
+.disable_pagination{
+    pointer-events: none; 
+    cursor: default; 
+}

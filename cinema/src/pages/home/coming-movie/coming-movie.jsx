@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -12,10 +12,9 @@ import {
 
 import LinesEllipsis from "react-lines-ellipsis"; // to make ellipsis "..."
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsive of ellipsis
-import ModalShowing from "./modal-showing";
-import ModalComing from "./modal-coming";
 import { useHistory } from "react-router";
 import Loading from "../../../components/loading/loading";
+import ModalVideo from "react-modal-video";
 
 function ComingMovie() {
   const settings = {
@@ -46,6 +45,15 @@ function ComingMovie() {
         },
       },
     ],
+  };
+
+  //for  video-player
+  const [control, setControl] = useState(false);
+  const [video, setVideo] = useState("");
+
+  const handlePlay = (trailer) => {
+    setControl(true);
+    setVideo(trailer);
   };
 
   const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis); // dùng thẻ này de viet ngan tieu de phim
@@ -85,6 +93,13 @@ function ComingMovie() {
     return <Loading />;
   }
 
+  const getTrailerId = (url) => {
+    let regExp =
+      /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    let match = url.match(regExp);
+    return match && match[7].length == 11 ? match[7] : false;
+  };
+
   return (
     <div className="comingMovie">
       <ul className="nav nav-tabs">
@@ -103,6 +118,7 @@ function ComingMovie() {
         <div id="showing" className="tab-pane container active">
           <Slider {...settings}>
             {movieList?.map((movie, index) => {
+              const trailerId = getTrailerId(movie.trailer);
               return (
                 <div key={index} class="card text-left ">
                   <img
@@ -114,8 +130,9 @@ function ComingMovie() {
                   />
                   <button
                     className="btnPlay-small"
-                    data-toggle="modal"
-                    data-target={`#movie${movie.maPhim}`}
+                    onClick={() => {
+                      handlePlay(trailerId);
+                    }}
                   >
                     <FontAwesomeIcon icon="play" />
                   </button>
@@ -149,6 +166,7 @@ function ComingMovie() {
         <div id="coming" className="tab-pane container fade">
           <Slider {...settings}>
             {movieListComing?.map((movie, index) => {
+              const trailerId = getTrailerId(movie.trailer);
               return (
                 <div key={index} class="card text-left ">
                   <img
@@ -160,8 +178,9 @@ function ComingMovie() {
                   />
                   <button
                     className="btnPlay-small"
-                    data-toggle="modal"
-                    data-target={`#coming${movie.maPhim}`}
+                    onClick={() => {
+                      handlePlay(trailerId);
+                    }}
                   >
                     <FontAwesomeIcon icon="play" />
                   </button>
@@ -193,15 +212,12 @@ function ComingMovie() {
         </div>
       </div>
 
-      {/* showing modal  */}
-      {movieList?.map((movie, index) => {
-        return <ModalShowing key={index} movie={movie} />;
-      })}
-
-      {/*coming modal  */}
-      {movieListComing?.map((movie, index) => {
-        return <ModalComing key={index} movie={movie} />;
-      })}
+      <ModalVideo
+        channel="youtube"
+        isOpen={control}
+        videoId={video}
+        onClose={() => setControl(false)}
+      />
     </div>
   );
 }

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import format from "date-format";
-import LinesEllipsis from "react-lines-ellipsis"; // to make ellipsis "..."
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsive of ellipsis
 import Pagination from "../../../components/pagination/pagination";
 import {
   startLoadingAction,
@@ -12,7 +10,6 @@ import {
 import axios from "axios";
 
 function Movie_content() {
-  const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis); // dùng thẻ này de viet ngan tieu de phim
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

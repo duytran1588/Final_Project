@@ -1,14 +1,29 @@
-import React, { useEffect } from "react";
-import ReactPlayer from "react-player";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getMovieDetail } from "../../stores/actions/movie.action";
 import Cinema_Schedule from "./cinema_schedule";
 import format from "date-format";
 import Loading from "../../components/loading/loading";
+import ModalVideo from "react-modal-video";
 
 function MovieDetail() {
   const dispatch = useDispatch();
+
+  //for  video-player
+  const [control, setControl] = useState(false);
+  const [video, setVideo] = useState("");
+  const handlePlay = (trailer) => {
+    setControl(true);
+    setVideo(trailer);
+  };
+
+  const getTrailerId = (url) => {
+    let regExp =
+      /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    let match = url.match(regExp);
+    return match && match[7].length == 11 ? match[7] : false;
+  };
 
   useEffect(() => {
     dispatch(getMovieDetail(maPhim));
@@ -58,8 +73,10 @@ function MovieDetail() {
                 <div className="trailer_ticket">
                   <button
                     className="btn btn-success"
-                    data-toggle="modal"
-                    data-target="#trailer-movie"
+                    onClick={() => {
+                      let trailerId = getTrailerId(movie_detail.trailer);
+                      handlePlay(trailerId);
+                    }}
                   >
                     XEM TRAILER
                   </button>
@@ -70,38 +87,12 @@ function MovieDetail() {
         </div>
       </section>
       <Cinema_Schedule movie_detail={movie_detail} />
-      <div className="modal fade" id="trailer-movie">
-        <div className="modal-dialog">
-          <div className="modal-content content-movie">
-            {/* Modal Header */}
-            <div className="modal-header header-movie">
-              <h4 className="modal-title">Trailer</h4>
-              <button type="button" className="close" data-dismiss="modal">
-                +
-              </button>
-            </div>
-            {/* Modal body */}
-            <div className="modal-body body-movie">
-              <ReactPlayer
-                width="100%"
-                height="14rem"
-                controls={true}
-                url={movie_detail?.trailer}
-              />
-            </div>
-            {/* Modal footer */}
-            <div className="modal-footer footer-movie">
-              <button
-                type="button"
-                className="btn btn-danger"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ModalVideo
+        channel="youtube"
+        isOpen={control}
+        videoId={video}
+        onClose={() => setControl(false)}
+      />
     </div>
   );
 }

@@ -1,103 +1,163 @@
 import React from "react";
 import "./pagination.scss";
 
-function Pagination_User({ postsPerPage, totalPosts, paginate, paginateArrow }) {
+function Pagination_User({
+  postsPerPage,
+  totalPosts,
+  paginate,
+  paginateArrow,
+  maxPageNumberLimit,
+  minPageNumberLimit,
+  currentPage, //lưu props để chạy css cho ô chuyển trang có number trùng với currentPage
+  paginateTarget,
+}) {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
+    pageNumbers.push(i); //tất cả các ô chuyển trang
   }
-  pageNumbers.unshift("Prev");
-  pageNumbers.push("Next");
 
-  //viết hàm tách chuỗi
-  const split_string = (string) => {
-    const a_number = string.split("_");
-    return parseInt(a_number[1]);
+  //viết hàm dàn pagination
+  const render_User_Pagination = () => {
+    return pageNumbers.map((number, index) => {
+      if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+        //ví dụ trong lần đầu tiên number của ô chuyển trang nằm trong khoảng từ 1 đến 12 + 1
+        //lần thứ 2 number trong khoảng từ 10 đên 21 + 1
+        return (
+          <li
+            key={index}
+            id={`pageUser_${number}`}
+            style={{ cursor: "pointer" }}
+            key={number}
+            className="page-item"
+          >
+            <a
+              id={`aUser_${number}`}
+              onClick={() => paginate(number)}
+              className={`page-link ${
+                currentPage == number ? "pagination_active" : ""
+              } `}
+            >
+              {number}
+            </a>
+          </li>
+        );
+      } else {
+        //lần 1 nếu number là 13 (ô chuyển trang thứ 13) => không hiển thị ô này, mà hiển thị ô ...
+        //lần 2 number =13 thuộc (10 - 22) => hiển thị
+        return null;
+      }
+    });
   };
 
-  const changeStatusPage = (id) => {
-    /**
-     * Nếu click vào Pre / Next
-     *  -dom tới thẻ a đang active
-     *  -lấy id thẻ đó
-     *  -tách ra lấy số
-     *  -giảm / tăng số đó
-     *  -dom tới thẻ a với id mới và gán active vào đó
-     */
-    if (id === "pageUser_Prev") {
-      const a_active = document.querySelector(
-        ".user_pagination li a.pagination_active"
-      ).id;
-      //tách số id
-      const a_number_id = split_string(a_active);
-      if (a_number_id > 1) {
-        const a_prev_number = a_number_id - 1;
-        //remove active cho các thẻ đang active
-        document
-          .querySelector(".user_pagination li a.pagination_active")
-          ?.classList.remove("pagination_active");
-        //gán active cho thẻ a có id mới
-        document
-          .getElementById(`aUser_${a_prev_number}`)
-          .classList.add("pagination_active");
-      }
-    } else if (id === "pageUser_Next") {
-      const a_active = document.querySelector(
-        ".user_pagination li a.pagination_active"
-      ).id;
-      //tách số id
-      const a_number_id = split_string(a_active);
-      if (a_number_id < Math.ceil(totalPosts / postsPerPage)) {
-        const a_next_number = a_number_id + 1;
-        //remove active cho các thẻ đang active
-        document
-          .querySelector(".user_pagination li a.pagination_active")
-          ?.classList.remove("pagination_active");
-        //gán active cho thẻ a có id mới
-        document
-          .getElementById(`aUser_${a_next_number}`)
-          .classList.add("pagination_active");
-      }
-    } else {
-      document
-        .querySelector(".user_pagination li a.pagination_active")
-        ?.classList.remove("pagination_active");
+  let pageIncrementBtn = null;
+  if (pageNumbers.length > maxPageNumberLimit) {
+    //chừng nào số lượng tất cả các ô chuyển trang còn nhiều hơn max thì vẫn tạo ô ...
+    //mục đích xét if là để ô cuối cùng không xuất hiện ô ...
+    pageIncrementBtn = (
+      <li
+        style={{ cursor: "pointer" }}
+        className="page-item"
+        onClick={() => paginateArrow("next")}
+      >
+        <a className="page-link">&hellip;</a>
+      </li>
+    );
+  }
 
-      document.querySelector(`#${id} a`).classList.add("pagination_active");
-    }
-  };
+  let pageDecrementBtn = null;
+  if (minPageNumberLimit >= 1) {
+    //thực thế min mới = 10
+    pageDecrementBtn = (
+      <li
+        style={{ cursor: "pointer" }}
+        className="page-item"
+        onClick={() => paginateArrow("prev")}
+      >
+        <a className="page-link">&hellip;</a>
+      </li>
+    );
+  }
+
   return (
     <nav aria-label="Page user navigation example">
       <ul className="pagination user_pagination">
-        {pageNumbers.map((number) => {
-          return (
-            <li
-              id={`pageUser_${number}`}
-              onClick={() => {
-                changeStatusPage(`pageUser_${number}`);
-              }}
-              style={{ cursor: "pointer" }}
-              key={number}
-              className="page-item"
-            >
-              <a
-                id={`aUser_${number}`}
-                onClick={
-                  number === "Prev"
-                    ? () => paginateArrow(1)
-                    : number === "Next"
-                    ? () => paginateArrow(2)
-                    : () => paginate(number)
-                }
-                className={`page-link ${
-                  number == 1 ? "pagination_active" : ""
-                } `}
-              >
-                {number}
-              </a>
-            </li>
-          );
-        })}
+        {/* thêm firt pagination */}
+        <li
+          className="page-item"
+          style={{
+            cursor: `${currentPage === pageNumbers[0] ? "default" : "pointer"}`,
+          }}
+        >
+          <a
+            className={`page-link ${
+              currentPage === pageNumbers[0] ? "disable_pagination" : ""
+            }`}
+            onClick={() => paginateTarget("first")}
+          >
+            First
+          </a>
+        </li>
+        <li
+          id="pageUser_Prev"
+          style={{
+            cursor: `${currentPage === pageNumbers[0] ? "default" : "pointer"}`,
+          }}
+          className="page-item"
+        >
+          <a
+            id={`aUser_Prev`}
+            onClick={() => paginateArrow("prev")}
+            className={`page-link ${
+              currentPage === pageNumbers[0] ? "disable_pagination" : ""
+            }`}
+          >
+            Prev
+          </a>
+        </li>
+
+        {pageDecrementBtn}
+        {render_User_Pagination()}
+        {pageIncrementBtn}
+        <li
+          id="pageUser_Next"
+          style={{
+            cursor: `${
+              currentPage === pageNumbers[pageNumbers.length - 1]
+                ? "default"
+                : "pointer"
+            }`,
+          }}
+          className="page-item"
+        >
+          <a
+            id={"aUser_Next"}
+            onClick={() => paginateArrow("next")}
+            className={`page-link ${
+              currentPage === pageNumbers[pageNumbers.length - 1]
+                ? "disable_pagination"
+                : ""
+            }`}
+          >
+            Next
+          </a>
+        </li>
+
+        {/* Them last pagination */}
+        <li
+          className="page-item"
+          style={{
+            cursor: `${currentPage === pageNumbers[pageNumbers.length - 1] ? "default" : "pointer"}`,
+          }}
+        >
+          <a
+            className={`page-link ${
+              currentPage === pageNumbers[pageNumbers.length - 1] ? "disable_pagination" : ""
+            }`}
+            onClick={() => paginateTarget("last")}
+          >
+            Last
+          </a>
+        </li>
       </ul>
     </nav>
   );

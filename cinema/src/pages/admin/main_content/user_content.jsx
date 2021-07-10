@@ -11,8 +11,12 @@ import Pagination_User from "../../../components/pagination/pagination_user";
 class User_content extends Component {
   state = {
     posts: [],
-    currentPage: 1,
-    postsPerPage: 70,
+    currentPage: 1, //trang hiện hành
+    postsPerPage: 10, //12 user trên 1 trang
+    pageNumberLimit: 7, //mỗi lần mở ra thêm 7 ô chuyển trang
+    maxPageNumberLimit: 11, //số ô chuyển trang tối đa trong 1 lần mở
+    minPageNumberLimit: 0,
+    min_max_differ: 11,
   };
 
   getUserPageList = async () => {
@@ -33,6 +37,8 @@ class User_content extends Component {
       indexOfFirstPost,
       indexOfLastPost
     );
+    //current post lấy phần tử từ 0 đến 9 ở trang 1
+    //current post lấy phần tử từ 10 đến 19 ở trang 2
     return currentPosts?.map((user, index) => {
       return (
         <tr key={index}>
@@ -45,7 +51,7 @@ class User_content extends Component {
               defaultValue="checkedValue"
             />
           </td>
-          <td>{indexOfFirstPost + 1}</td>
+          <td>{index + 1}</td>
           <td>{`${
             user.taiKhoan.length > 10
               ? user.taiKhoan.substring(0, 9) + " ..."
@@ -79,22 +85,68 @@ class User_content extends Component {
   };
 
   //change page by arrow
-  paginateArrow = (number) => {
-    if (number === 1) {
-      if (this.state.currentPage > 1) {
+  paginateArrow = (btnArrow) => {
+    const {
+      currentPage,
+      maxPageNumberLimit,
+      minPageNumberLimit,
+      pageNumberLimit,
+    } = this.state;
+    if (btnArrow === "prev") {
+      this.setState({
+        currentPage: currentPage - 1,
+      });
+      if ((currentPage - 1) % pageNumberLimit == 0) {
         this.setState({
-          currentPage: this.state.currentPage - 1,
+          maxPageNumberLimit: maxPageNumberLimit - pageNumberLimit,
+          minPageNumberLimit: minPageNumberLimit - pageNumberLimit,
         });
       }
+      console.log(minPageNumberLimit);
+      console.log(maxPageNumberLimit);
     } else {
-      if (
-        this.state.currentPage <
-        Math.ceil(this.state.posts.length / this.state.postsPerPage)
-      ) {
+      this.setState({
+        currentPage: currentPage + 1,
+      });
+      if (currentPage + 1 > maxPageNumberLimit) {
         this.setState({
-          currentPage: this.state.currentPage + 1,
+          maxPageNumberLimit: maxPageNumberLimit + pageNumberLimit,
+          minPageNumberLimit: minPageNumberLimit + pageNumberLimit,
         });
       }
+    }
+  };
+
+  //change for first page
+  paginateTarget = (target) => {
+    const { posts, postsPerPage, pageNumberLimit, min_max_differ } = this.state;
+    if (target == "first") {
+      this.setState({
+        currentPage: 1,
+        maxPageNumberLimit: 11,
+        minPageNumberLimit: 0,
+      });
+    } else {
+      let maxPageSquareInt = Math.ceil(posts.length / postsPerPage); //tính số ô chuyển trang nguyên
+      console.log("maxPageSquareInt", maxPageSquareInt);
+      // /**
+      //  * mỗi lần mở => pageNumberLimit ô
+      //  * ta có tổng cộng maxPageSquareInt ô => maxPageSquareInt / pageNumberLimit => tổng số lần mở
+      //  * min khởi động = 0 => mỗi lần mở min + pageNumberLimit => vị trí của min
+      //  * sau khi có được tổng số lần mở: pageNumberLimit * tổng số lần
+      //  */
+      //tìm tổng số lần mở khi click ô 3 chấm
+      const n = Math.floor(maxPageSquareInt / pageNumberLimit);
+      const minPageSquareInt = n * pageNumberLimit;
+      console.log(minPageSquareInt);
+      //Nếu để maxPageSquareInt đúng vs thực tế thì khi nhấn nút 3 chấm sẽ không chuyển đúng tỉ lệ mặc định => gán lại
+      const maxPageSquareAdjust = minPageSquareInt + min_max_differ; //vì khoảng cách giữa min và max lúc nào cũng là 11 (do đã set từ đầu)
+      console.log(maxPageSquareAdjust);
+      this.setState({
+        maxPageNumberLimit: maxPageSquareAdjust,
+        minPageNumberLimit: minPageSquareInt, //tạm dùng 80 , cần tìm ra min
+        currentPage: maxPageSquareInt,
+      });
     }
   };
 
@@ -156,9 +208,13 @@ class User_content extends Component {
         </table>
         <Pagination_User
           postsPerPage={this.state.postsPerPage}
-          totalPosts={this.state.posts?.length}
+          totalPosts={this.state.posts?.length} //tất cả user thực tế
           paginate={this.paginate}
           paginateArrow={this.paginateArrow}
+          maxPageNumberLimit={this.state.maxPageNumberLimit}
+          minPageNumberLimit={this.state.minPageNumberLimit}
+          currentPage={this.state.currentPage}
+          paginateTarget={this.paginateTarget}
         />
       </div>
     );
