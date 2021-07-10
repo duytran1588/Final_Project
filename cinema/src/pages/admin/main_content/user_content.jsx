@@ -25,6 +25,7 @@ class User_content extends Component {
       "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01"
     );
     this.props.dispatch(stopLoadingAction());
+
     this.setState({
       posts: res.data,
     });
@@ -37,40 +38,49 @@ class User_content extends Component {
       indexOfFirstPost,
       indexOfLastPost
     );
-    //current post lấy phần tử từ 0 đến 9 ở trang 1
-    //current post lấy phần tử từ 10 đến 19 ở trang 2
-    return currentPosts?.map((user, index) => {
-      return (
-        <tr key={index}>
-          <td id="choose_checkbox" style={{ width: "6rem" }}>
+    console.log(indexOfFirstPost);
+    console.log(currentPosts.length);
+   
+    const { posts } = this.state;
+    let content = "";
+   
+      //để lấy được số thứ tự thì không dùng map dùng for
+    for (let i = indexOfFirstPost; i < indexOfLastPost; i++) {
+      if (posts[i]) {
+        content += `
+        <tr>
+          <td id="choose_checkbox" style="width: 6rem;">
             <input
-              style={{ width: "32px", height: "18px" }}
+              style="width: 32px; height: 18px;"
               type="checkbox"
-              name
-              id
               defaultValue="checkedValue"
             />
           </td>
-          <td>{index + 1}</td>
-          <td>{`${
-            user.taiKhoan.length > 10
-              ? user.taiKhoan.substring(0, 9) + " ..."
-              : user.taiKhoan
-          }`}</td>
-          <td>{user.hoTen}</td>
-          <td>{`${
-            user.email.length > 10
-              ? user.email.substring(0, 9) + " ..."
-              : user.email
-          }`}</td>
-          <td>{user.soDt}</td>
+          <td>${i + 1}</td>
+          <td>${
+            posts[i]?.taiKhoan.length > 10
+              ? posts[i].taiKhoan.substring(0, 9) + " ..."
+              : posts[i].taiKhoan
+          }</td>
+          <td>${posts[i].hoTen}</td>
+          <td>${
+            posts[i].email.length > 10
+              ? posts[i].email.substring(0, 9) + " ..."
+              : posts[i].email
+          }</td>
+          <td>${posts[i].soDt}</td>
           <td>
-            <button className="btn btn-success mr-2">Sửa</button>
-            <button className="btn btn-danger">Xóa</button>
+            <button class="btn btn-success mr-2">Sửa</button>
+            <button class="btn btn-danger">Xóa</button>
           </td>
-        </tr>
-      );
-    });
+        </tr>`;
+      }
+    }
+    const tableUserList = document.getElementById("tableUserList");
+    if (tableUserList) {
+      tableUserList.innerHTML = content;
+    }
+    console.log(content);
   };
 
   componentDidMount() {
@@ -204,7 +214,7 @@ class User_content extends Component {
               </th>
             </tr>
           </thead>
-          <tbody>{this.renderUserPageList()}</tbody>
+          <tbody id="tableUserList">{this.renderUserPageList()}</tbody>
         </table>
         <Pagination_User
           postsPerPage={this.state.postsPerPage}
