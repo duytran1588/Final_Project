@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./signUp.scss";
+// import "./signUp.scss";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { signUpAPI } from "../../stores/actions/movie.action";
 import { withRouter } from "react-router"; //để dùng history, location, match (để lấy params)
+import SignUpModal from "../../components/signUp/signUpModal";
 class SignUp extends Component {
   state = {
     values: {
@@ -135,115 +136,14 @@ class SignUp extends Component {
         <div className="signUp">
           <section>
             <div className="sign-up container">
-              <form onSubmit={this.handleSubmit} className="sign_up_form">
-                <h1 className="text-center mt-0 mb-5">Đăng ký</h1>
-                <div className="row">
-                  <div className="col-12">
-                    <div className="group">
-                      <input
-                        value={this.state.values.taiKhoan}
-                        onChange={this.handleChangeValue}
-                        name="taiKhoan"
-                        type="text"
-                        required
-                      />
-                      <span className="highlight" />
-                      <span className="bar" />
-                      <label>Tài khoản</label>
-                      <span className="text-danger">
-                        {this.state.errors.taiKhoan}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-12">
-                    <div className="group">
-                      <input
-                        value={this.state.values.hoTen}
-                        onChange={this.handleChangeValue}
-                        name="hoTen"
-                        type="text"
-                        required
-                      />
-                      <span className="highlight" />
-                      <span className="bar" />
-                      <label>Họ tên</label>
-                      <span className="text-danger">
-                        {this.state.errors.hoTen}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div class="group">
-                      <input
-                        value={this.state.values.soDt}
-                        onChange={this.handleChangeValue}
-                        name="soDt"
-                        type="text"
-                        required
-                      />
-                      <span className="highlight" />
-                      <span className="bar" />
-                      <label>Số điện thoại</label>
-                      <span className="text-danger">
-                        {this.state.errors.soDt}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div class="group">
-                      <input
-                        value={this.state.values.email}
-                        onChange={this.handleChangeValue}
-                        name="email"
-                        type="email"
-                        required
-                      />
-                      <span className="highlight" />
-                      <span className="bar" />
-                      <label>email</label>
-                      <span className="text-danger">
-                        {this.state.errors.email}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div class="group">
-                      <input
-                        value={this.state.values.matKhau}
-                        onChange={this.handleChangeValue}
-                        name="matKhau"
-                        type="password"
-                        required
-                      />
-                      <span className="highlight" />
-                      <span className="bar" />
-                      <label>mật khẩu</label>
-                      <span className="text-danger">
-                        {this.state.errors.matKhau}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <button
-                      className="btn text-light bg-success w-100"
-                      style={{ fontSize: 25 }}
-                    >
-                      Đăng ký
-                    </button>
-                  </div>
-                </div>
-              </form>
+              <SignUpModal
+                values={this.state.values}
+                errors={this.state.errors}
+                handleChangeValue={this.handleChangeValue}
+                handleSubmit={this.handleSubmit}
+                title={"Đăng ký"}
+                button={"Đăng ký"}
+              />
             </div>
           </section>
         </div>

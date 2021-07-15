@@ -4,9 +4,9 @@ import User_Movie_Content from "./main_content/user_movie_content";
 import Sidebar from "./sidebar/sidebar";
 
 class Admin extends Component {
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
   render() {
     console.log("admin");
     //ngăn ko cho admin chạy lại khi children thay đổi => componentShouldUpdate

@@ -11,25 +11,27 @@ import {
   faCommentAlt,
   faSearch,
   faCogs,
+  faEdit,
+  faTrashAlt,
+  faCalendarAlt,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Home from "./pages/home/home";
-import Test from "./components/test";
 import SignUp from "./pages/sign-up/signUp";
 import SignIn from "./pages/sign-in/signIn";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/header/header";
-// import Header from "./components/header/test"
 import Footer from "./components/footer/footer";
-import { useDispatch } from "react-redux";
-import { SIGN_IN } from "./stores/constants/movie.const";
-import { useEffect } from "react";
+
 import UserProfile from "./pages/user-profile/user_profile";
 import MovieDetail from "./pages/movie-detail/movie-detail";
 import TicketBooking from "./pages/ticket-booking/ticket-booking";
 import Guard from "./components/HOC/guard";
 import Admin from "./pages/admin/admin";
 import Admin_Home from "./components/HOC/admin_home";
-// import MultipleSelect from "./components/test";
+import { useEffect } from "react";
+import { SIGN_IN } from "./stores/constants/movie.const";
+import { useDispatch } from "react-redux";
 
 library.add(
   faChevronRight,
@@ -39,14 +41,15 @@ library.add(
   faThumbsUp,
   faCommentAlt,
   faSearch,
-  faCogs
+  faCogs,
+  faEdit,
+  faTrashAlt,
+  faCalendarAlt,
+  faPlus
 );
 
 function App() {
   const dispatch = useDispatch();
-
-  //tạo hàm dispatch dữ liệu từ local lên store cho header lấy xuống, để kiểm tra (luu ở local host nào thì phải
-  // mở đúng local host đó (vd http://localhost:3000/))
   const getUserFromLocal = () => {
     const user = localStorage.getItem("userLogin");
     if (user) {
@@ -60,7 +63,6 @@ function App() {
   useEffect(() => {
     getUserFromLocal();
   }, []);
-
   return (
     <BrowserRouter>
       <Header />

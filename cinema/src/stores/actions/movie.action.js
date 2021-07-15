@@ -163,6 +163,7 @@ export const signInApi = (userSignIn, history) => {
 
 export const userProfileApi = (user) => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "POST",
@@ -173,6 +174,7 @@ export const userProfileApi = (user) => {
         type: USER_PROFILE,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err.response.data);
     }
@@ -225,6 +227,11 @@ export const updateUserApi = (user) => {
       });
     } catch (err) {
       console.log(err.response.data);
+      Swal.fire({
+        title: err.response.data,
+        icon: "error", //success, error, warning
+        confirmButtonText: "Đóng",
+      });
     }
   };
 };

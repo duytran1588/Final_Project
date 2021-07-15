@@ -15,6 +15,7 @@ function SelectMovieName() {
   const handleChange = (event) => {
     const { value } = event.target;
     setMovieName(value);
+    console.log(movieName);
   };
 
   const movieSearch = useSelector((state) => {

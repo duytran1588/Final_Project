@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Form_group_input from "./form_group_input";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
-import { updateUserApi } from "../../stores/actions/movie.action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateUserApi,
+  userProfileApi,
+} from "../../stores/actions/movie.action";
 
 function ModalUpdate(props) {
   const { userProfile } = props;
   const dispatch = useDispatch();
+  const getDataFromUserLogin = () => {
+    console.log("getdata");
+    document.getElementById("userFullName").defaultValue = userProfile?.hoTen;
+    document.getElementById("user_Account").defaultValue =
+      userProfile?.taiKhoan;
+    document.getElementById("userPass").defaultValue = userProfile?.matKhau;
+    document.getElementById("userEmail").defaultValue = userProfile?.email;
+    document.getElementById("userPhone").defaultValue = userProfile?.soDT;
+  };
+  useEffect(() => {
+    getDataFromUserLogin();
+  });
+
   const [account, setAccount] = useState({
     //ban đầu userProfile null chưa được call API và truyền vào bởi user_profile.jsx => phải để values là ""
     values: {
@@ -100,7 +116,7 @@ function ModalUpdate(props) {
     //và vì ban đầu account.values được xét là "" nên phải getEle để gán tất cả input cho account
     account.values = {
       hoTen: getEle("userFullName"),
-      taiKhoan: getEle("userAccount"),
+      taiKhoan: getEle("user_Account"),
       matKhau: getEle("userPass"),
       email: getEle("userEmail"),
       soDT: getEle("userPhone"),
@@ -149,7 +165,7 @@ function ModalUpdate(props) {
               <div className="form-group">
                 <Form_group_input
                   // dung defaultValue de type trong input (TH da duoc binding)
-                  defaultValue={userProfile?.hoTen}
+                 
                   label={"Họ Tên"}
                   name={"hoTen"}
                   type={"text"}
@@ -159,17 +175,16 @@ function ModalUpdate(props) {
                 />
 
                 <Form_group_input
-                  defaultValue={userProfile?.taiKhoan}
                   label={"Tài Khoản"}
                   name={"taiKhoan"}
                   type={"text"}
                   handleChange={handleChange}
                   error={account.errors.taiKhoan}
-                  id="userAccount"
+                  id="user_Account"
+                  disabled="true"
                 />
 
                 <Form_group_input
-                  defaultValue={userProfile?.matKhau}
                   label={"Mật Khẩu"}
                   name={"matKhau"}
                   type={"password"}
@@ -179,7 +194,6 @@ function ModalUpdate(props) {
                 />
 
                 <Form_group_input
-                  defaultValue={userProfile?.email}
                   label={"Email"}
                   name={"email"}
                   type={"email"}
@@ -189,7 +203,6 @@ function ModalUpdate(props) {
                 />
 
                 <Form_group_input
-                  defaultValue={userProfile?.soDT}
                   label={"Số Điện Thoại"}
                   name={"soDT"}
                   type={"number"}
@@ -205,7 +218,6 @@ function ModalUpdate(props) {
             <button
               type="submit"
               className="btn btn-success"
-              // data-dismiss="modal"
               onClick={handleUpdate}
             >
               Xác nhận
@@ -215,6 +227,10 @@ function ModalUpdate(props) {
               className="btn btn-danger"
               data-dismiss="modal"
               id="btn_cancel"
+              onClick={() => {
+                getDataFromUserLogin();
+                console.log("hủy");
+              }}
             >
               Hủy
             </button>

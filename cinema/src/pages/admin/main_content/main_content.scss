@@ -5,7 +5,7 @@
     .main_content_user {
         background-color: white;
         border-radius: 4px;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         margin-top: 6rem;
         table {
             thead {
@@ -20,8 +20,107 @@
                     td {
                         vertical-align: middle;
                     }
+                    td:nth-child(7) {
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
                 }
             }
         }
     }
 }
+
+//for modal add user
+@import "../../../scss/helper/variable";
+@import "../../../scss/helper/mixin";
+/* form starting stylings ------------------------------- */
+.addUser {
+    .sign_up_form {
+        //dùng chung với sign-up
+        width: 100%;
+        margin: auto;
+        background-color: $color-white-0;
+        // border: solid $color-black-3 1px;
+        padding: 2rem;
+        .row {
+            .col-12 {
+                box-shadow: none;
+                .group {
+                    position: relative;
+                    margin-bottom: 40px;
+                    input {
+                        font-size: 20px;
+                        padding: 10px 10px 10px 5px;
+                        display: block;
+                        width: 100%;
+                        border: none;
+                        border-bottom: 1px solid #757575;
+                        &:focus {
+                            outline: none;
+                        }
+                        &:focus ~ label,
+                        &:valid ~ label {
+                            top: -20px;
+                            font-size: 13px;
+                            color: $color-red-3;
+                        }
+                        &:focus ~ .bar {
+                            &:before,
+                            &:after {
+                                width: 50%;
+                            }
+                        }
+                    }
+                    /* LABEL ======================================= */
+                    label {
+                        color: #999;
+                        font-size: 17px;
+                        font-weight: normal;
+                        position: absolute;
+                        pointer-events: none;
+                        left: 5px;
+                        top: 10px;
+                        transition: 0.2s ease all;
+                        -moz-transition: 0.2s ease all;
+                        -webkit-transition: 0.2s ease all;
+                    }
+                    /* BOTTOM BARS ================================= */
+                    .bar {
+                        position: relative;
+                        display: block;
+                        width: 100%;
+                        &:before,
+                        &:after {
+                            content: "";
+                            height: 1px;
+                            width: 0;
+                            bottom: 1px;
+                            position: absolute;
+                            background: #5264ae;
+                            transition: 0.2s ease all;
+                            -moz-transition: 0.2s ease all;
+                            -webkit-transition: 0.2s ease all;
+                        }
+                        &:before {
+                            left: 50%;
+                        }
+                        &:after {
+                            right: 50%;
+                        }
+                    }
+
+                    /* HIGHLIGHTER ================================== */
+                    .highlight {
+                        position: absolute;
+                        width: 100px;
+                        top: 25%;
+                        left: 0;
+                        pointer-events: none;
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}
+

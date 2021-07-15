@@ -6,12 +6,12 @@
 @import "../helper/mixin";
 @import "../helper/function";
 @import "../helper/extend";
-
+@import "../../components/sweet-alert/sweetAlert.scss";
 @import "../../components/selectComponent/select_component.scss";
-@import 'node_modules/react-modal-video/scss/modal-video.scss';
+@import "node_modules/react-modal-video/scss/modal-video.scss";
 @import "../../components/header/header.scss";
 @import "../../pages/home/carousel/carousel.scss";
-
+@import "../../pages/sign-up/signUp.scss";
 @import "../../pages/home/select-movie-name/selectMovieName.scss";
 @import "../../pages/home/coming-movie/coming-movie.scss";
 @import "../../pages/home/cinemas-info/cinema-info.scss";
@@ -23,4 +23,3 @@
 @import "../../pages/ticket-booking/ticket-booking.scss";
 @import "../../components/loading/loading.scss";
 @import "../../pages/admin/admin.scss";
-

@@ -11,8 +11,18 @@ import { signOutApi } from "../../stores/actions/movie.action";
 import logo from "./logo/tix_logo.png";
 // import admin_logo from "./logo/Admin_logo.jpg/";
 import admin from "./logo/server_admin.png";
+import { SIGN_IN } from "../../stores/constants/movie.const";
 
 class Header extends Component {
+  getUserFromLocal = () => {
+    const user = localStorage.getItem("userLogin");
+    if (user) {
+      this.props.dispatch({
+        type: SIGN_IN,
+        payload: JSON.parse(user),
+      });
+    }
+  };
   handleToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
     navbar_header.style.height = "100%";
@@ -67,7 +77,6 @@ class Header extends Component {
     return maLoaiNguoiDung === "QuanTri" ? (
       <NavLink className="ml-3" to="/admin" exact>
         <img style={{ width: "50px" }} src={admin} />
-        
       </NavLink>
     ) : (
       ""
@@ -205,6 +214,10 @@ class Header extends Component {
         </nav>
       </>
     );
+  }
+
+  componentDidMount() {
+    // this.getUserFromLocal();
   }
 }
 

@@ -19,7 +19,7 @@ function Pagination_User({
   //viết hàm dàn pagination
   const render_User_Pagination = () => {
     return pageNumbers.map((number, index) => {
-      if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) { //thử thêm dấu "="
         //ví dụ trong lần đầu tiên number của ô chuyển trang nằm trong khoảng từ 1 đến 12 + 1
         //lần thứ 2 number trong khoảng từ 10 đên 21 + 1
         return (
@@ -143,7 +143,7 @@ function Pagination_User({
         </li>
 
         {/* Them last pagination */}
-        <li
+        {/* <li
           className="page-item"
           style={{
             cursor: `${currentPage === pageNumbers[pageNumbers.length - 1] ? "default" : "pointer"}`,
@@ -157,7 +157,7 @@ function Pagination_User({
           >
             Last
           </a>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

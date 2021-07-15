@@ -35,6 +35,7 @@ class SignIn extends Component {
       values: newValues,
       errors: newErrors,
     });
+    console.log(this.state.values);
   };
 
   handleSignIn = (e) => {

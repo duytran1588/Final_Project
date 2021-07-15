@@ -67,22 +67,6 @@
                                     }
                                 }
                             }
-                            tbody {
-                                tr {
-                                    td {
-                                        button {
-                                            display: block;
-                                            font-size: 17px;
-                                            width: 8rem;
-                                            margin: 1rem auto !important;
-                                        }
-                                        button:nth-child(2) {
-                                            margin: 0.5rem 0;
-                                        }
-                                        font-size: 20px;
-                                    }
-                                }
-                            }
                         }
                         .row {
                             button {
@@ -151,18 +135,7 @@
                             }
                             tbody {
                                 tr {
-                                    td {
-                                        button {
-                                            display: block;
-                                            font-size: 17px;
-                                            width: 8rem;
-                                            margin-right: 0rem !important;
-                                        }
-                                        button:nth-child(2) {
-                                            margin: 0.5rem 0;
-                                        }
-                                        font-size: 20px;
-                                    }
+                                   
                                     #choose_checkbox {
                                         display: none;
                                     }
@@ -231,22 +204,22 @@
                                     }
                                 }
                             }
-                            tbody {
-                                tr {
-                                    td {
-                                        button {
-                                            display: block;
-                                            font-size: 12px;
-                                            width: 6rem;
-                                            margin-right: 0rem !important;
-                                        }
-                                        button:nth-child(2) {
-                                            margin: 0.5rem 0;
-                                        }
-                                        font-size: 15px;
-                                    }
-                                }
-                            }
+                            // tbody {
+                            //     tr {
+                            //         td {
+                            //             button {
+                            //                 display: block;
+                            //                 font-size: 12px;
+                            //                 width: 6rem;
+                            //                 margin-right: 0rem !important;
+                            //             }
+                            //             button:nth-child(2) {
+                            //                 margin: 0.5rem 0;
+                            //             }
+                            //             font-size: 15px;
+                            //         }
+                            //     }
+                            // }
                         }
                     }
                 }
@@ -304,22 +277,22 @@
                                     }
                                 }
                             }
-                            tbody {
-                                tr {
-                                    td {
-                                        button {
-                                            display: block;
-                                            font-size: 8px;
-                                            width: 5rem;
-                                            margin-right: 0rem !important;
-                                        }
-                                        button:nth-child(2) {
-                                            margin: 0.5rem 0;
-                                        }
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
+                            // tbody {
+                            //     tr {
+                            //         td {
+                            //             button {
+                            //                 display: block;
+                            //                 font-size: 8px;
+                            //                 width: 5rem;
+                            //                 margin-right: 0rem !important;
+                            //             }
+                            //             button:nth-child(2) {
+                            //                 margin: 0.5rem 0;
+                            //             }
+                            //             font-size: 14px;
+                            //         }
+                            //     }
+                            // }
                         }
                         .row {
                             button {

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Form_group_input(props) {
-  const { label, name, defaultValue, type, handleChange, id, error } = props;
+  const { label, name, defaultValue, type, handleChange, id, error, disabled } = props;
   return (
     <>
       <label>{label}</label>
@@ -15,6 +15,7 @@ function Form_group_input(props) {
         placeholder
         defaultValue={defaultValue}
         type={type}
+        disabled={disabled}
       />
       <small id="helpId" className="form-text text-danger mb-2">{error}</small>
     </>
