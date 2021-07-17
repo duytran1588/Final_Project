@@ -6,6 +6,7 @@ import Pagination from "../../../components/pagination/pagination";
 import axios from "axios";
 import Swal from "sweetalert2";
 import AddMovieModal from "./addMovieModal";
+import EditMovieModal from "./editMovieModal";
 
 function Movie_content() {
   const dispatch = useDispatch();
@@ -17,6 +18,269 @@ function Movie_content() {
 
   //data cho search movie
   const [movieSearch, setMovieSearch] = useState("");
+
+  //data for add movie
+  const [values, setValues] = useState({
+    maPhim: "",
+    tenPhim: "",
+    biDanh: "",
+    trailer: "",
+    hinhAnh: {},
+    moTa: "",
+    maNhom: "GP01",
+    ngayKhoiChieu: "",
+    danhGia: "",
+  });
+  const [errors, setErrors] = useState({
+    maPhim: "",
+    tenPhim: "",
+    biDanh: "",
+    trailer: "",
+    hinhAnh: "",
+    moTa: "",
+    ngayKhoiChieu: "",
+    danhGia: "",
+  });
+
+  //hàm kiểm tra điều kiện
+  const checkValid = () => {
+    let isValid = true;
+    for (let key in values) {
+      if (values[key] === "" || values[key] === {}) {
+        isValid = false;
+        break;
+      }
+    }
+
+    for (let key in errors) {
+      if (errors[key] !== "") {
+        isValid = false;
+        break;
+      }
+    }
+    return isValid;
+  };
+
+  const handleAddMovie = (e) => {
+    e.preventDefault();
+    const isValid = checkValid();
+    if (!isValid) {
+      Swal.fire({
+        title: "Thông tin của Bạn chưa đúng",
+        icon: "error",
+        confirmButtonText: "Vui lòng thử lại",
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Thêm phim mới?",
+      showDenyButton: true,
+      confirmButtonText: `Có`,
+      denyButtonText: `Không`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let form_data = new FormData();
+        for (let key in values) {
+          form_data.append(key, values[key]);
+          // console.log(key, form_data.get(key));
+        }
+        //call api
+        axios({
+          url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
+          method: "POST",
+          data: form_data,
+        })
+          .then((res) => {
+            console.log(res.data);
+            //tắt modal
+            const btn_close_movie_modal = document.getElementById(
+              "btn_close_add_modal"
+            );
+            if (btn_close_movie_modal) {
+              btn_close_movie_modal.click();
+            }
+            //render lại trang
+            getMoviePageList();
+            Swal.fire({
+              title: "Thêm thành công",
+              icon: "success", //success, error, warning
+              confirmButtonText: "Đóng",
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: err.response.data,
+              icon: "error", //success, error, warning
+              confirmButtonText: "Đóng",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Hủy");
+      }
+    });
+  };
+  const handleChangeMovieInput = (e) => {
+    const { name, type, value } = e.target; //boc tach bien <ES6>
+
+    let newValues = { ...values };
+    if (name === "hinhAnh") {
+      newValues[name] = e.target.files[0];
+    } else {
+      if (name === "tenPhim") {
+        newValues.biDanh = value;
+      }
+      newValues[name] = value;
+    }
+
+    let newErrors = { ...errors };
+
+    //xét lỗi rỗng
+    if (value.trim() === "") {
+      //loại bỏ các khoảng trắng bằng trim()
+      newErrors[name] = "Vui lòng không để trống !";
+    } else {
+      if (name == "hinhAnh") {
+        if (newValues.hinhAnh == {}) {
+          newErrors[name] = "Vui lòng chọn hình ảnh";
+        } else {
+          newErrors[name] = "";
+        }
+      } else if (name == "ngayKhoiChieu") {
+        const reg =
+          /^((0[1-9]|[12][0-9]|3[01])(\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\/)(02))|((0[1-9]|[12][0-9]|3[0])(\/)(0[469]|11))(\/)\d{4}$/;
+        console.log("date", reg.test(value));
+        if (!reg.test(value)) {
+          newErrors[name] = "Định dạng ngày chưa đúng";
+        } else {
+          newErrors[name] = "";
+        }
+      } else if (name == "danhGia") {
+        const reg = /^([1-9]|10)$/;
+        if (!reg.test(value)) {
+          newErrors[name] = "Điểm chưa đúng";
+        } else {
+          newErrors[name] = "";
+        }
+      } else {
+        newErrors[name] = "";
+      }
+    }
+
+    //note: setState là phương thức bất đồng bộ => hạn chế gọi trong code
+    // this.setState({
+    //   values: newValues,
+    //   errors: newErrors,
+    // });
+    setValues(newValues);
+    setErrors(newErrors);
+    // console.log(this.state.values);
+  };
+
+  const resetFormMovie = () => {
+    //set lại values và errors
+    let newValues = { ...values };
+    let newErrors = { ...errors };
+    for (let key in newValues) {
+      if (key === "hinhAnh") {
+        newValues[key] = {};
+      }
+      if (key !== "maNhom") {
+        newValues[key] = "";
+      }
+    }
+    for (let key in newErrors) {
+      newErrors[key] = "";
+    }
+    // this.setState({
+    //   values: newValues,
+    //   errors: newErrors,
+    // });
+    setValues(newValues);
+    setErrors(newErrors);
+    document.getElementById("movieForm").reset(); //mất hình ảnh đã chọn khi thêm movie lần trước
+  };
+
+  //for edit movie
+  const getDataFromMovie = (movie) => {
+    // console.log("getData");
+    console.log(movie.hinhAnh);
+    // console.log(user);
+    setValues({
+      maPhim: movie.maPhim,
+      tenPhim: movie.tenPhim,
+      biDanh: movie.biDanh,
+      trailer: movie.trailer,
+      hinhAnh: movie.hinhAnh,
+      moTa: movie.moTa,
+      maNhom: movie.maNhom,
+      ngayKhoiChieu: format("dd/MM/yyyy", new Date(movie.ngayKhoiChieu)),
+      danhGia: movie.danhGia,
+    });
+  };
+
+  const handleEditMovie = (e) => {
+    e.preventDefault();
+    const isValid = checkValid();
+    if (!isValid) {
+      Swal.fire({
+        title: "Thông tin của Bạn chưa đúng",
+        icon: "error",
+        confirmButtonText: "Vui lòng thử lại",
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Cập nhật phim?",
+      showDenyButton: true,
+      confirmButtonText: `Có`,
+      denyButtonText: `Không`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const dataStorage = JSON.parse(localStorage.getItem("userLogin"));
+        const accessToken = dataStorage.accessToken;
+        let form_data = new FormData();
+        for (let key in values) {
+          form_data.append(key, values[key]);
+        }
+        //call api
+        axios({
+          url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload",
+          method: "POST",
+          data: form_data,
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
+          .then((res) => {
+            console.log(res.data);
+            //tắt modal
+            const btn_close_movie_modal = document.getElementById(
+              "btn_close_edit_modal"
+            );
+            if (btn_close_movie_modal) {
+              btn_close_movie_modal.click();
+            }
+
+            Swal.fire({
+              title: "Cập nhật thành công",
+              icon: "success", //success, error, warning
+              confirmButtonText: "Đóng",
+            });
+            //render lại trang
+            getMoviePageList();
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: err.response.data,
+              icon: "error", //success, error, warning
+              confirmButtonText: "Đóng",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Hủy");
+      }
+    });
+  };
 
   // do dùng useSelector cần lk với redux sẽ render luôn thẻ cha => call API phải lưu state nội bộ để thẻ cha không render lại
   const getMoviePageList = async () => {
@@ -94,7 +358,14 @@ function Movie_content() {
             <button className="btn btn-primary mr-2">
               <FontAwesomeIcon icon="calendar-alt" />
             </button>
-            <button className="btn btn-success mr-2">
+            <button
+              data-toggle="modal"
+              data-target="#editMovieModal"
+              className="btn btn-success mr-2"
+              onClick={() => {
+                getDataFromMovie(movie);
+              }}
+            >
               <FontAwesomeIcon icon="edit" />
             </button>
             <button
@@ -178,7 +449,7 @@ function Movie_content() {
         promise.catch((err) => {
           console.log(err);
           Swal.fire({
-            title: err.response.data,
+            title: err.response?.data,
             icon: "error", //success, error, warning
             confirmButtonText: "Đóng",
           });
@@ -216,7 +487,14 @@ function Movie_content() {
             <button className="btn btn-primary mr-2">
               <FontAwesomeIcon icon="calendar-alt" />
             </button>
-            <button className="btn btn-success mr-2">
+            <button
+              data-toggle="modal"
+              data-target="#editMovieModal"
+              className="btn btn-success mr-2"
+              onClick={() => {
+                getDataFromMovie(movie);
+              }}
+            >
               <FontAwesomeIcon icon="edit" />
             </button>
             <button
@@ -340,7 +618,26 @@ function Movie_content() {
         )}
       </div>
 
-      <AddMovieModal getMoviePageList={getMoviePageList} />
+      <AddMovieModal
+        handleSubmit={handleAddMovie}
+        handleChangeMovieInput={handleChangeMovieInput}
+        resetFormMovie={resetFormMovie}
+        values={values}
+        errors={errors}
+        button={"Thêm"}
+        idClose={"btn_close_add_modal"}
+      />
+
+      <EditMovieModal
+        handleSubmit={handleEditMovie}
+        handleChangeMovieInput={handleChangeMovieInput}
+        resetFormMovie={resetFormMovie}
+        values={values}
+        errors={errors}
+        disabled={"true"}
+        button={"Cập nhật"}
+        idClose={"btn_close_edit_modal"}
+      />
     </>
   );
 }
