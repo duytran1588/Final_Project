@@ -1,0 +1,107 @@
+@import "../../../../scss/helper/mixin";
+@import "../../../../scss/helper/variable";
+
+@media screen and (max-width: "863px") {
+    .show-time {
+        max-width: 100%;
+        > h1 {
+            font-size: 2rem;
+            padding: 1rem !important;
+        }
+        .show-time-content {
+            display: block;
+            .show-time-detail {
+                max-width: 100%;
+                h1 {
+                    font-size: 2rem;
+                    margin-top: 2rem;
+                }
+                p {
+                    text-align: justify;
+                }
+                div {
+                    .container {
+                        .row {
+                            margin: 0;
+                            .comment-showTime-key {
+                                flex: 0 0 17% !important;
+                                max-width: 27%;
+                                padding-left: 0;
+                            }
+                            .comment-showTime-value {
+                                flex: 0 0 73% !important;
+                            }
+                        }
+                        .btn_add_showtime {
+                            margin-top: 1rem;
+                        }
+                    }
+                    div:nth-child(3) {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+        .myTable {
+            tr {
+                th,
+                td {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: "600px") {
+    .show-time {
+        > h1 {
+            font-size: 2rem;
+            padding: 1rem !important;
+        }
+        .show-time-content {
+            display: block;
+            .show-time-detail {
+                max-width: 100%;
+                h1 {
+                    font-size: 2rem;
+                    margin-top: 2rem;
+                }
+                p {
+                    text-align: justify;
+                }
+                div {
+                    .container {
+                        .row {
+                            .comment-showTime-key {
+                                flex: 0 0 27% !important;
+                                max-width: 27%;
+                            }
+                            .comment-showTime-value {
+                                flex: 0 0 73% !important;
+                            }
+                        }
+                        .btn_add_showtime {
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+        .myTable {
+            tr {
+                th,
+                td {
+                    font-size: 10px;
+                }
+            }
+        }
+        nav {
+            .pagination_movie {
+                li {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

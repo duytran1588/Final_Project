@@ -27,36 +27,40 @@ function Pagination({ postsPerPage, totalPosts, paginate, paginateArrow }) {
     if (id === "page_Prev") {
       const a_active = document.querySelector(
         ".pagination_movie li a.pagination_active"
-      ).id;
+      )?.id;
       //tách số id
-      const a_number_id = split_string(a_active);
-      if (a_number_id > 1) {
-        const a_prev_number = a_number_id - 1;
-        //remove active cho các thẻ đang active
-        document
-          .querySelector(".pagination_movie li a.pagination_active")
-          ?.classList.remove("pagination_active");
-        //gán active cho thẻ a có id mới
-        document
-          .getElementById(`a_${a_prev_number}`)
-          .classList.add("pagination_active");
+      if (a_active) {
+        const a_number_id = split_string(a_active);
+        if (a_number_id > 1) {
+          const a_prev_number = a_number_id - 1;
+          //remove active cho các thẻ đang active
+          document
+            .querySelector(".pagination_movie li a.pagination_active")
+            ?.classList.remove("pagination_active");
+          //gán active cho thẻ a có id mới
+          document
+            .getElementById(`a_${a_prev_number}`)
+            .classList.add("pagination_active");
+        }
       }
     } else if (id === "page_Next") {
       const a_active = document.querySelector(
         ".pagination_movie li a.pagination_active"
-      ).id;
+      )?.id;
       //tách số id
-      const a_number_id = split_string(a_active);
-      if (a_number_id < Math.ceil(totalPosts / postsPerPage)) {
-        const a_prev_number = a_number_id + 1;
-        //remove active cho các thẻ đang active
-        document
-          .querySelector(".pagination_movie li a.pagination_active")
-          ?.classList.remove("pagination_active");
-        //gán active cho thẻ a có id mới
-        document
-          .getElementById(`a_${a_prev_number}`)
-          .classList.add("pagination_active");
+      if (a_active) {
+        const a_number_id = split_string(a_active);
+        if (a_number_id < Math.ceil(totalPosts / postsPerPage)) {
+          const a_prev_number = a_number_id + 1;
+          //remove active cho các thẻ đang active
+          document
+            .querySelector(".pagination_movie li a.pagination_active")
+            ?.classList.remove("pagination_active");
+          //gán active cho thẻ a có id mới
+          document
+            .getElementById(`a_${a_prev_number}`)
+            .classList.add("pagination_active");
+        }
       }
     } else {
       document

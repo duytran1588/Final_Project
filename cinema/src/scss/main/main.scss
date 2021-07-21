@@ -1,8 +1,6 @@
 @import "../helper/variable";
-
 @import "../base/reset";
 @import "../components/button";
-
 @import "../helper/mixin";
 @import "../helper/function";
 @import "../helper/extend";
@@ -23,3 +21,4 @@
 @import "../../pages/ticket-booking/ticket-booking.scss";
 @import "../../components/loading/loading.scss";
 @import "../../pages/admin/admin.scss";
+@import "../../pages/admin/main_content/lich_chieu/show_time_list.scss";

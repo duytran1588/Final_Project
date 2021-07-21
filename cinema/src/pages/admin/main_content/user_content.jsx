@@ -681,6 +681,7 @@ class User_content extends Component {
             data-toggle="modal"
             data-target="#addUserModal"
             className="btn btn-primary"
+            style={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
           >
             <FontAwesomeIcon icon="plus" />
           </button>

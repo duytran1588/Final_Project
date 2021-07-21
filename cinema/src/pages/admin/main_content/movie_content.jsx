@@ -7,6 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import AddMovieModal from "./addMovieModal";
 import EditMovieModal from "./editMovieModal";
+import { useHistory } from "react-router";
 
 function Movie_content() {
   const dispatch = useDispatch();
@@ -304,6 +305,12 @@ function Movie_content() {
     indexOfLastPost
   );
 
+  //chuyển sang trang showtime detail
+  const history = useHistory();
+  const handleShowTimeDetail = (maPhim) => {
+    history.push(`/lich-chieu/${maPhim}`);
+  };
+
   //change page
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -355,7 +362,12 @@ function Movie_content() {
           <td>{movie.maNhom}</td>
           <td>{format("dd/MM/yyyy", new Date(movie.ngayKhoiChieu))}</td>
           <td>
-            <button className="btn btn-primary mr-2">
+            <button
+              className="btn btn-primary mr-2"
+              onClick={() => {
+                handleShowTimeDetail(movie.maPhim);
+              }}
+            >
               <FontAwesomeIcon icon="calendar-alt" />
             </button>
             <button
@@ -531,6 +543,7 @@ function Movie_content() {
             data-toggle="modal"
             data-target="#addMovieModal"
             className="btn btn-primary"
+            style={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
           >
             <FontAwesomeIcon icon="plus" />
           </button>

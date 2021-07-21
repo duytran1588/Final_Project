@@ -32,6 +32,7 @@ import Admin_Home from "./components/HOC/admin_home";
 import { useEffect } from "react";
 import { SIGN_IN } from "./stores/constants/movie.const";
 import { useDispatch } from "react-redux";
+import Show_Time from "./pages/admin/main_content/lich_chieu/show_time";
 
 library.add(
   faChevronRight,
@@ -89,6 +90,11 @@ function App() {
         <Route path="/admin" exact>
           <Guard>
             <Admin />
+          </Guard>
+        </Route>
+        <Route path="/lich-chieu/:maPhim" exact>
+          <Guard>
+            <Show_Time />
           </Guard>
         </Route>
         <Route path="" exact>
