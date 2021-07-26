@@ -3,39 +3,115 @@
 .movie-detail {
     margin-top: 4rem;
     > div {
-        padding: 4rem 0;
-        background-image: url("./movie-detail-background/night_star.jpg");
+        padding: 8rem 0;
+        background-image: url("./movie-detail-background/night_half_moon.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         .container {
-            .movie-info-detail {
-                justify-content: center;
-                align-items: center;
-                max-width: 68%;
-                margin: auto;
-                .movie-img {
-                    max-width: 30%;
-                    height: 18rem;
-                }
-                .movie-content {
-                    color: $color-white-0;
-                    p {
-                        text-align: justify;
-                    }
-                    .trailer_ticket {
-                        margin-top: 1.5rem;
-                        button {
-                            font-size: 12px;
-                            font-weight: bolder;
-                            padding: 10px 15px;
+            .row {
+                .movie-info-detail {
+                    max-width: 68%;
+                    margin: auto;
+                    .movie-img {
+                        position: relative;
+                        max-width: 50%;
+                        height: 18rem;
+                        padding: 0;
+                        box-shadow: 1px 1px 5px white;
+                        .trailer_ticket {
+                            height: 4rem;
+                            width: 4rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 50%;
+                            border: solid white;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            opacity: 0;
+                            transition: all 0.5s;
+                            cursor: pointer;
+                        }
+                        &:hover {
+                            .trailer_ticket {
+                                opacity: 1;
+                            }
                         }
                     }
-                    .movie-intro {
-                        padding-left: 0;
-                        .row {
-                            div:first-child {
-                                max-width: 32%;
+                    .movie-content {
+                        color: $color-white-0;
+                        > div {
+                            p {
+                                text-align: justify;
+                                // font-family: light;
+                            }
+                            p:nth-child(1),
+                            p:nth-child(3) {
+                                font-family: light;
+                            }
+                            p:nth-child(2) {
+                                font-family: semibold;
+                            }
+                        }
+
+                        .movie-intro {
+                            padding-left: 0;
+                            .row {
+                                div:first-child {
+                                    max-width: 32%;
+                                }
+                            }
+                        }
+                    }
+                }
+                .value_mark_text {
+                    div {
+                        div {
+                            div {
+                                div {
+                                    p {
+                                        font-family: semibold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            h3 {
+                font-family: semibold;
+            }
+            div {
+                .col-6 {
+                    .row {
+                        .col-5 {
+                            p {
+                                font-family: bold;
+                            }
+                        }
+                        .col-6 {
+                            p {
+                                font-family: light;
+                            }
+                        }
+                    }
+                }
+                .col-6:nth-child(2) {
+                    .row:first-child {
+                        .col-9 {
+                            p {
+                                font-family: bold;
+                            }
+                        }
+                    }
+                    .row:nth-child(2) {
+                        .col-9 {
+                            p {
+                                font-family: light;
                             }
                         }
                     }
@@ -146,25 +222,25 @@
                                 }
                             }
                             .col-9 {
-                                
                                 .film__title {
                                     width: 100%;
                                     margin-left: -20px;
                                     height: 46px;
 
                                     span {
-                                        font-weight: bolder;
                                         font-size: 1rem;
                                         color: black;
                                         display: -webkit-box;
                                         -webkit-line-clamp: 1;
                                         -webkit-box-orient: vertical;
                                         overflow: hidden;
+                                        font-family: bold;
                                     }
                                     p {
                                         color: #9b9b9b;
                                         font-size: 0.9rem;
                                         margin-top: 0.4rem;
+                                        font-family: light;
                                     }
                                 }
                             }
@@ -186,10 +262,12 @@
                                             span {
                                                 color: #108f3e;
                                                 font-size: 1rem;
-                                                font-weight: bolder;
                                                 margin-right: 4px;
                                                 &:hover {
                                                     color: red;
+                                                }
+                                                span {
+                                                    font-family: bold;
                                                 }
                                             }
                                         }
@@ -199,7 +277,7 @@
 
                             p {
                                 margin-top: 1rem;
-                                font-weight: bold;
+                                font-family: bold;
                             }
                         }
                     }
@@ -230,11 +308,11 @@
 
 //for responsive - cinema_schedule
 
-@include respond-to("extra-large"){
-    .movie-detail{
-        div{
-            .container{
-                .movie-info-detail{
+@include respond-to("extra-large") {
+    .movie-detail {
+        div {
+            .container {
+                .movie-info-detail {
                     max-width: 80%;
                 }
             }
@@ -294,19 +372,31 @@
     //<= 768px
     .movie-detail {
         div {
-            .container {
-                .movie-info-detail {
-                    max-width: 65%;
-                    display: block;
-                    .movie-img {
-                        max-width: 75%;
-                        margin: auto;
+            .movie_detail_container {
+                max-width: 95% !important;
+                .row {
+                    .movie-info-detail {
+                        max-width: 65%;
+                        display: block;
+                        .row {
+                            .movie-img {
+                                max-width: 75%;
+                                margin: auto;
+                            }
+                            .movie-content {
+                                margin-top: 2rem;
+                                max-width: 100%;
+                                .movie-intro {
+                                    width: 26rem;
+                                }
+                            }
+                        }
                     }
-                    .movie-content {
-                        margin-top: 2rem;
-                        max-width: 100%;
-                        .movie-intro {
-                            width: 26rem;
+                }
+                div:nth-child(3) {
+                    .col-6 {
+                        .row:nth-child(4) {
+                            word-break: break-all;
                         }
                     }
                 }
@@ -338,39 +428,144 @@
     }
 }
 
+@include respond-to("extend_3") {
+    //<= 700
+    .movie-detail {
+        margin-top: 2rem;
+        div {
+            padding: 2rem 0;
+            .movie_detail_container {
+                padding: 1rem 0 0 !important;
+                div:first-child {
+                    padding: 1rem 0 0 !important;
+                    display: block;
+                    .movie-info-detail {
+                        .row {
+                            .movie-img {
+                                padding: 0 !important;
+                                max-width: 90%;
+                                height: 31rem;
+                            }
+                            .movie-content {
+                                padding: 0 0 0 1rem;
+                            }
+                        }
+                    }
+                    .value_mark_text {
+                        div:first-child {
+                            display: none;
+                        }
+                        padding: 0;
+                    }
+                }
+                h3 {
+                    display: none;
+                }
+                div:nth-child(3) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
 @include respond-to("small") {
     // <= 576px
     .movie-detail {
+        margin-top: 2rem;
         div {
-            .container {
-                .movie-info-detail {
-                    max-width: 65%;
+            padding: 2rem 0;
+            .movie_detail_container {
+                padding: 1rem 0 0 !important;
+                div:first-child {
+                    padding: 1rem 0 0 !important;
                     display: block;
-                    .movie-img {
-                        max-width: 75%;
-                        margin: auto;
-                    }
-                    .movie-content {
-                        margin-top: 2rem;
-                        max-width: 100%;
-                        .movie-intro {
-                            width: 26rem;
+                    .movie-info-detail {
+                        .row {
+                            .movie-img {
+                                max-width: 90%;
+                                height: 27rem;
+                            }
+                            .movie-content {
+                                padding: 0 0 0 1rem;
+                            }
                         }
                     }
+                    .value_mark_text {
+                        div:first-child {
+                            display: none;
+                        }
+                        padding: 0;
+                    }
+                }
+                h3 {
+                    display: none;
+                }
+                div:nth-child(3) {
+                    display: none;
                 }
             }
         }
     }
     #movie_schedule {
         .small-container {
-            max-width: 95%;
-            > div {
-                justify-content: flex-start;
+            .row {
                 .cinema_icon {
-                    width: 16%;
+                    ul {
+                        li {
+                            padding: 7px;
+                        }
+                    }
                 }
                 .cinema_system {
-                    width: 84%;
+                    ul {
+                        li {
+                            .row {
+                                .col-3 {
+                                    max-width: 18%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: "380px") {
+    .movie-detail {
+        margin-top: 2rem;
+        div {
+            padding: 2rem 0;
+            .movie_detail_container {
+                padding: 1rem 0 0 !important;
+                div:first-child {
+                    padding: 1rem 0 0 !important;
+                    display: block;
+                    .movie-info-detail {
+                        .row {
+                            .movie-img {
+                                max-width: 90%;
+                                height: 20rem;
+                            }
+                            .movie-content {
+                                padding: 0 0 0 1rem;
+                            }
+                        }
+                    }
+                    .value_mark_text {
+                        div:first-child {
+                            display: none;
+                        }
+                        padding: 0;
+                    }
+                }
+                h3 {
+                    display: none;
+                }
+                div:nth-child(3) {
+                    display: none;
                 }
             }
         }

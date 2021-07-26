@@ -180,7 +180,7 @@ function CinemaInfo() {
                             </div>
                             <div className="col-md-9">
                               <div className="cinema__info">
-                                <p className="text-success">
+                                <p>
                                   <span className="text-dark">
                                     {cumRap.tenCumRap}
                                   </span>
@@ -245,7 +245,7 @@ function CinemaInfo() {
                                       {phim.lstLichChieuTheoPhim.map(
                                         (lichChieu, index) => {
                                           return (
-                                            <div className="col-4 mb-4">
+                                            <div style={{marginBottom: "2rem"}} className="col-4">
                                               <a
                                                 style={{ cursor: "pointer" }}
                                                 key={index}
@@ -259,10 +259,15 @@ function CinemaInfo() {
                                                   {format(
                                                     "dd/MM/yyyy",
                                                     new Date(
-                                                      lichChieu.ngayChieuGioChieu.slice(
-                                                        0,
-                                                        10
-                                                      )
+                                                      lichChieu.ngayChieuGioChieu
+                                                    )
+                                                  )}
+                                                </span>
+                                                <span className="text-danger">
+                                                  {format(
+                                                    "hh:mm:ss",
+                                                    new Date(
+                                                      lichChieu.ngayChieuGioChieu
                                                     )
                                                   )}
                                                 </span>

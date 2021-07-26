@@ -14,6 +14,7 @@ import {
   SIGN_OUT,
   START_LOADING,
   STOP_LOADING,
+  STOP_SEARCHING_MOVIE,
   UPDATE_USER,
   USER_PROFILE,
 } from "../constants/movie.const";
@@ -56,6 +57,7 @@ export const getMovieListComing = () => {
 
 export const searchMovie = (movieName) => {
   return async (dispatch) => {
+    dispatch(startLoadingAction());
     try {
       const res = await axios({
         method: "GET",
@@ -66,9 +68,18 @@ export const searchMovie = (movieName) => {
         type: SEARCH_MOVIE,
         payload: res.data,
       });
+      dispatch(stopLoadingAction());
     } catch (err) {
       console.log("err");
     }
+  };
+};
+
+export const stopSearchMovie = () => {
+  return (dispatch) => {
+    dispatch({
+      type: STOP_SEARCHING_MOVIE,
+    });
   };
 };
 

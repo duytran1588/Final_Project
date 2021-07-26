@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.822);
+    background-color: rgba(255, 255, 255, 1) !important;
     position: fixed;
     top: 0;
     width: 100%;
@@ -28,7 +28,7 @@
 
             li {
                 list-style: none;
-
+                cursor: pointer;
                 a {
                     text-decoration: none;
                     // font-size: $fs-0;
@@ -51,6 +51,7 @@
                 display: none;
             }
         }
+        font-family: semibold;
     }
 
     .toggle-button {
@@ -72,6 +73,7 @@
     }
 
     .login_location {
+        font-family: light;
         display: flex;
         justify-content: space-evenly;
         align-items: center;

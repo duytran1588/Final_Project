@@ -53,7 +53,7 @@ class Carousel extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: true,
-      // autoplay: true,
+      autoplay: true,
       accessibility: true,
     };
     return (

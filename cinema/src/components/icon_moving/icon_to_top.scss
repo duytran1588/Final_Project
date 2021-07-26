@@ -1,0 +1,16 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 12px;
+    right: 2rem;
+    z-index: 1;
+    animation: scrollTop 0.5s alternate ease infinite;
+}
+
+@keyframes scrollTop {
+    from {
+        transform: translateY(3px);
+    }
+    to {
+        transform: translateY(-1px);
+    }
+}

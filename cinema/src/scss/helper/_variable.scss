@@ -46,6 +46,40 @@ $mg-0: 2px;
 $mg-1: 10px;
 $mg-2: 25px;
 
+//font
+@font-face {
+    font-family: thin;
+    src: url("../font/sf-ui-display-thin-58646e9b26e8b.otf");
+}
+@font-face {
+    font-family: black;
+    src: url("../font/sf-ui-display-black-58646a6b80d5a.otf");
+}
+@font-face {
+    font-family: bold;
+    src: url("../font/sf-ui-display-bold-58646a511e3d9.otf");
+}
+@font-face {
+    font-family: heavy;
+    src: url("../font/sf-ui-display-heavy-586470160b9e5.otf");
+}
+@font-face {
+    font-family: light;
+    src: url("../font/sf-ui-display-light-58646b33e0551.otf");
+}
+@font-face {
+    font-family: medium;
+    src: url("../font/sf-ui-display-medium-58646be638f96.otf");
+}
+@font-face {
+    font-family: semibold;
+    src: url("../font/sf-ui-display-semibold-58646eddcae92.otf");
+}
+@font-face {
+    font-family: ultralight;
+    src: url("../font/sf-ui-display-ultralight-58646b19bf205.otf");
+}
+
 //variable breakpoints
 $breakpoints: (
     "extend_2": 1400px,

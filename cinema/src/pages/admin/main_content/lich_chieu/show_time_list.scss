@@ -1,6 +1,58 @@
 @import "../../../../scss/helper/mixin";
 @import "../../../../scss/helper/variable";
 
+.show-time {
+    > h1 {
+        font-family: light;
+    }
+    .show-time-content {
+        .show-time-detail {
+            div {
+                h1 {
+                    font-family: semibold;
+                }
+                p {
+                    font-family: light;
+                }
+            }
+        }
+    }
+    #addShowTime {
+        .modal-dialog {
+            .modal-content {
+                .modal-header {
+                    h4 {
+                        font-family: light;
+                    }
+                }
+            }
+        }
+    }
+    table {
+        thead {
+            tr {
+                th {
+                    font-family: semibold;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    font-family: semibold;
+                }
+            }
+        }
+    }
+    nav {
+        ul {
+            li {
+                font-family: semibold;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: "863px") {
     .show-time {
         max-width: 100%;

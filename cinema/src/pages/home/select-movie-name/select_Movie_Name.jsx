@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
 import "./selectMovieName.scss";
-import { searchMovie } from "../../../stores/actions/movie.action";
+import {
+  searchMovie,
+  stopSearchMovie,
+} from "../../../stores/actions/movie.action";
 import { useDispatch, useSelector } from "react-redux";
 import format from "date-format";
 import { useHistory } from "react-router";
-import Loading from "../../../components/loading/loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SelectMovieName() {
   const [movieName, setMovieName] = useState("");
@@ -18,7 +21,7 @@ function SelectMovieName() {
     console.log(movieName);
   };
 
-  const movieSearch = useSelector((state) => {
+  let movieSearch = useSelector((state) => {
     return state.movieReducer.movieSearch;
   });
 
@@ -43,12 +46,13 @@ function SelectMovieName() {
     if (control == 1) {
       const table_search = document.getElementById("modal_search");
       if (table_search) {
-        table_search.style.visibility = "visible";
+        table_search.style.display = "block";
       }
     } else {
       const table_search = document.getElementById("modal_search");
       if (table_search) {
-        table_search.style.visibility = "collapse";
+        dispatch(stopSearchMovie());
+        table_search.style.display = "none";
       }
     }
   };
@@ -59,13 +63,16 @@ function SelectMovieName() {
         <>
           <table
             id="modal_search"
-            className=" table table-dark search_movie table-hover container"
+            className=" table search_movie table-hover container table-bordered"
+            style={{ padding: 0 }}
           >
-            <thead>
+            <thead className="thead-dark">
               <tr>
                 <th style={{ width: "10rem" }}>Tên phim</th>
-                <th>Mô tả</th>
-                <th style={{ width: "6rem" }}>Đánh giá</th>
+                <th className="movie_search_content">Mô tả</th>
+                <th className="movie_search_mark" style={{ width: "6rem" }}>
+                  Đánh giá
+                </th>
                 <th style={{ width: "12rem" }}>Ngày chiếu</th>
                 <th style={{ width: "7rem" }}></th>
               </tr>
@@ -118,15 +125,41 @@ function SelectMovieName() {
         </>
       );
     }
+    return (
+      <div
+        id="modal_search"
+        style={{
+          border: "1px solid rgb(0 0 0 / 12%)",
+          boxShadow: "rgb(0 0 0 / 23%) 5px 3px 22px",
+          padding: "1rem",
+          display: "none",
+        }}
+        className="container"
+      >
+        <h2 className="text-center">Không tìm thấy</h2>
+        <div className="text-right">
+          <button
+            style={{ width: "6rem" }}
+            className="btn btn-danger"
+            id="btn_close_search"
+            onClick={() => {
+              handleTableSearch(2);
+            }}
+          >
+            Đóng
+          </button>
+        </div>
+      </div>
+    );
   };
 
   const loading = useSelector((state) => {
     return state.movieReducer.loading;
   });
-  
+
   return (
-    <div>
-      <form onSubmit={handleSearch} className="buyTicketForm mb-5">
+    <div id="search_movie_name_result">
+      <form onSubmit={handleSearch} className="searchForm mb-5">
         <Input
           onChange={handleChange}
           placeholder="Nhập tên phim"
@@ -134,16 +167,16 @@ function SelectMovieName() {
           aria-describedby="component-error-text"
         />
 
-        <Button
+        <button
           onClick={() => {
             handleTableSearch(1);
           }}
           type="submit"
-          variant="contained"
-          className="btnBuyTicket"
+          className="btn btnSearchFilm"
+          style={{ boxShadow: "none" }}
         >
-          Tìm kiếm
-        </Button>
+          <FontAwesomeIcon icon="search" />
+        </button>
       </form>
       {renderMovieSearch()}
     </div>

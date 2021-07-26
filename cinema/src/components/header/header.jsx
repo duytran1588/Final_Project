@@ -1,4 +1,4 @@
-import { Select, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 
 import "../header/header.scss";
@@ -12,6 +12,7 @@ import logo from "./logo/tix_logo.png";
 // import admin_logo from "./logo/Admin_logo.jpg/";
 import admin from "./logo/server_admin.png";
 import { SIGN_IN } from "../../stores/constants/movie.const";
+import { Link } from "react-scroll";
 
 class Header extends Component {
   getUserFromLocal = () => {
@@ -26,7 +27,6 @@ class Header extends Component {
   handleToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
     navbar_header.style.height = "100%";
-    navbar_header.style.backgroundColor = "rgb(17 16 16 / 67%)";
     //logo
     const log_header = document.getElementsByClassName("brand-title")[0];
     log_header.style.visibility = "collapse";
@@ -34,7 +34,6 @@ class Header extends Component {
 
   handleHideToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
-    navbar_header.style.backgroundColor = "rgba(255, 255, 255, 0.822)";
     navbar_header.style.height = "4rem";
     const log_header = document.getElementsByClassName("brand-title")[0];
     log_header.style.visibility = "visible";
@@ -171,16 +170,16 @@ class Header extends Component {
               {/* muốn lưu dữ liệu trên header mỗi khi refresh trang cần xử lý thêm ở app.js */}
 
               <li>
-                <a href="">Lịch Chiếu</a>
+                <Link to="schedule"> Lịch Chiếu </Link>
               </li>
               <li>
-                <a href="">Cụm Rạp</a>
+                <Link to="intro">Cụm Rạp</Link>
               </li>
               <li>
-                <a href="">Tin Tức</a>
+                <Link to="intro">Tin Tức</Link>
               </li>
               <li>
-                <a href="">Ứng Dụng</a>
+                <Link to="homeApp">Ứng Dụng</Link>
               </li>
               {user ? (
                 <li onClick={this.signOut_hideToggle}>

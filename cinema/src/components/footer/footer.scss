@@ -1,5 +1,3 @@
-
-
 @import "../../scss/helper/variable";
 @import "../../scss/helper/mixin";
 
@@ -55,9 +53,12 @@
             }
             li {
                 p {
+                    font-family: semibold;
+                    text-transform: uppercase;
                     color: $color-white-0;
                 }
                 a {
+                    font-family: light;
                     color: #949494;
                     text-decoration: none;
                     transition: all 0.5s;
@@ -93,8 +94,12 @@
             margin-top: 1.5rem;
             justify-content: space-between;
             .col-8 {
+                p:first-child {
+                    font-family: semibold;
+                }
                 p:nth-child(2),
                 p:last-child {
+                    font-family: light;
                     font-size: 0.8rem;
                     color: #949494 !important;
                     a {
@@ -123,18 +128,18 @@
     }
 }
 
-@include respond-to("extend_2"){
-    #footer{
-        .small-container{
+@include respond-to("extend_2") {
+    #footer {
+        .small-container {
             width: 95%;
-            ul{
-                li:nth-child(3){
+            ul {
+                li:nth-child(3) {
                     width: 18%;
                     overflow: visible;
                 }
             }
         }
-    } 
+    }
 }
 
 @include respond-to("large") {
@@ -177,36 +182,34 @@
                 display: block;
                 text-align: center;
                 padding-bottom: 2rem;
-                .col-2{
+                .col-2 {
                     max-width: 100%;
                     text-align: center !important;
                 }
-                .col-8{
+                .col-8 {
                     max-width: 100%;
                     margin: 2rem auto 0 !important;
                     padding: 0 !important;
-                    p:first-child{
+                    p:first-child {
                         font-size: 13px;
                         margin-bottom: 0.5rem !important;
                     }
-                    p:nth-child(2){
+                    p:nth-child(2) {
                         word-spacing: 2px;
                         line-height: 1.5rem;
                         width: 85%;
                         margin: auto;
                         text-align: justify;
                     }
-                    p:last-child{
+                    p:last-child {
                         color: #949494 !important;
                         font-size: 2rem;
-                        a{
+                        a {
                             color: $color-white-0 !important;
                         }
                     }
                 }
             }
-        
         }
     }
 }
-

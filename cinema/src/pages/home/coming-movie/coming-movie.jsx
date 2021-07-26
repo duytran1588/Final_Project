@@ -2,19 +2,15 @@ import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getMovieList,
   getMovieListComing,
 } from "../../../stores/actions/movie.action";
-
-import LinesEllipsis from "react-lines-ellipsis"; // to make ellipsis "..."
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsive of ellipsis
 import { useHistory } from "react-router";
 import Loading from "../../../components/loading/loading";
 import ModalVideo from "react-modal-video";
+import ShowingMovie from "../../../components/showing-movie/showing-movie";
 
 function ComingMovie() {
   const settings = {
@@ -44,6 +40,46 @@ function ComingMovie() {
           infinite: true,
         },
       },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          rows: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 678,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          rows: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          rows: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          rows: 1,
+          arrows: false,
+        },
+      },
     ],
   };
 
@@ -55,8 +91,6 @@ function ComingMovie() {
     setControl(true);
     setVideo(trailer);
   };
-
-  const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis); // dùng thẻ này de viet ngan tieu de phim
 
   //for tab showing
   const movieList = useSelector((state) => {
@@ -120,44 +154,13 @@ function ComingMovie() {
             {movieList?.map((movie, index) => {
               const trailerId = getTrailerId(movie.trailer);
               return (
-                <div key={index} class="card text-left ">
-                  <img
-                    class="card-img-top"
-                    width="100%"
-                    height="100%"
-                    src={movie.hinhAnh}
-                    alt=""
-                  />
-                  <button
-                    className="btnPlay-small"
-                    onClick={() => {
-                      handlePlay(trailerId);
-                    }}
-                  >
-                    <FontAwesomeIcon icon="play" />
-                  </button>
-
-                  <div class="card-body">
-                    <div class="card-title">
-                      <ResponsiveEllipsis
-                        text={movie.tenPhim}
-                        maxLine="1"
-                        ellipsis=" ..."
-                        trimRight
-                        basedOn="letters"
-                      />
-                    </div>
-                    <p class="card-text">100 phút</p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      handleDetail(movie.maPhim);
-                    }}
-                    className="btnTicket btn btn-success"
-                  >
-                    Đặt vé
-                  </button>
-                </div>
+                <ShowingMovie
+                  key={index}
+                  trailerId={trailerId}
+                  handleDetail={handleDetail}
+                  handlePlay={handlePlay}
+                  movie={movie}
+                />
               );
             })}
           </Slider>
@@ -168,44 +171,13 @@ function ComingMovie() {
             {movieListComing?.map((movie, index) => {
               const trailerId = getTrailerId(movie.trailer);
               return (
-                <div key={index} class="card text-left ">
-                  <img
-                    class="card-img-top"
-                    width="100%"
-                    height="100%"
-                    src={movie.hinhAnh}
-                    alt=""
-                  />
-                  <button
-                    className="btnPlay-small"
-                    onClick={() => {
-                      handlePlay(trailerId);
-                    }}
-                  >
-                    <FontAwesomeIcon icon="play" />
-                  </button>
-                  <div class="card-body">
-                    <div class="card-title">
-                      <ResponsiveEllipsis
-                        text={movie.tenPhim}
-                        maxLine="1"
-                        ellipsis=" ..."
-                        trimRight
-                        basedOn="letters"
-                      />
-                    </div>
-
-                    <p class="card-text">100 phút</p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      handleDetail(movie.maPhim);
-                    }}
-                    className="btnTicket btn btn-success"
-                  >
-                    Đặt vé
-                  </button>
-                </div>
+                <ShowingMovie
+                  key={index}
+                  trailerId={trailerId}
+                  handleDetail={handleDetail}
+                  handlePlay={handlePlay}
+                  movie={movie}
+                />
               );
             })}
           </Slider>

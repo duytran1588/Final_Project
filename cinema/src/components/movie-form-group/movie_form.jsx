@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { Component } from "react";
-import Swal from "sweetalert2";
 
 class Movie_Form extends Component {
   render() {
@@ -100,11 +98,7 @@ class Movie_Form extends Component {
                 <small className="text-danger">{errors.danhGia}</small>
               </div>
               <div className="mb-3">
-                <label>
-                  {values.hinhAnh?.length !== 0
-                    ? "Đổi hình ảnh"
-                    : "Chọn hình ảnh"}
-                </label>
+                <label>Chọn hình ảnh</label>
                 <input
                   type="file"
                   className="form-control-file"

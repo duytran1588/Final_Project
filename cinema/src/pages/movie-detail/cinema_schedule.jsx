@@ -79,42 +79,40 @@ function Cinema_Schedule(props) {
                             {/* map tới lịch chiếu để lấy data */}
                             <div className="container premiere">
                               <div className="row">
-                                {cumRap.lichChieuPhim.map(
-                                  (lichChieu, index) => {
-                                    return (
-                                      <div className="day_time_show">
-                                        <a
-                                          style={{ cursor: "pointer" }}
-                                          key={index}
-                                          onClick={() =>
-                                            handle_booking(
-                                              lichChieu.maLichChieu
-                                            )
-                                          }
-                                        >
+                              {cumRap.lichChieuPhim.map((lichChieu, index) => {
+                                return (
+                                  // <div className="row">
+                                    <div className="day_time_show">
+                                      <a
+                                        style={{ cursor: "pointer" }}
+                                        key={index}
+                                        onClick={() =>
+                                          handle_booking(lichChieu.maLichChieu)
+                                        }
+                                      >
+                                        <span>
                                           <span>
-                                            <span>
-                                              {format(
-                                                "dd/MM/yyyy",
-                                                new Date(
-                                                  lichChieu.ngayChieuGioChieu
-                                                )
-                                              )}
-                                            </span>
-                                            <span className="text-danger">
-                                              {format(
-                                                "hh:mm:ss",
-                                                new Date(
-                                                  lichChieu.ngayChieuGioChieu
-                                                )
-                                              )}
-                                            </span>
+                                            {format(
+                                              "dd/MM/yyyy",
+                                              new Date(
+                                                lichChieu.ngayChieuGioChieu
+                                              )
+                                            )}
                                           </span>
-                                        </a>
-                                      </div>
-                                    );
-                                  }
-                                )}
+                                          <span className="text-danger">
+                                            {format(
+                                              "hh:mm:ss",
+                                              new Date(
+                                                lichChieu.ngayChieuGioChieu
+                                              )
+                                            )}
+                                          </span>
+                                        </span>
+                                      </a>
+                                    </div>
+                                  // </div>
+                                );
+                              })}
                               </div>
                             </div>
                           </div>

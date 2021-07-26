@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import Loading from "../../components/loading/loading";
 import { userProfileApi } from "../../stores/actions/movie.action";
 import ModalUpdate from "./modalUpdate";
@@ -44,10 +43,18 @@ function UserProfile() {
         {/* hình ảnh user */}
       </section>
       <section className="profile_info mt-5">
-        <div>Tài khoản: {userProfile?.taiKhoan}</div>
-        <div>Họ tên: {userProfile?.hoTen}</div>
-        <div>Email: {userProfile?.email}</div>
-        <div>Số điện thoại: {userProfile?.soDT}</div>
+        <div>
+          Tài khoản: <span>{userProfile?.taiKhoan}</span>
+        </div>
+        <div>
+          Họ tên: <span>{userProfile?.hoTen}</span>
+        </div>
+        <div>
+          Email: <span>{userProfile?.email}</span>
+        </div>
+        <div>
+          Số điện thoại: <span>{userProfile?.soDT}</span>
+        </div>
         <div className="trade_modal">
           <div className="mb-5">
             <button
@@ -62,7 +69,6 @@ function UserProfile() {
               className="btn btn-danger ml-3"
               data-toggle="modal"
               data-target="#modal_Update"
-             
             >
               Cập nhật
             </button>

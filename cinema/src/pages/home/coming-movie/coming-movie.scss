@@ -4,6 +4,7 @@
 .comingMovie {
     padding: 40px 0;
     ul {
+        font-family: bold;
         border: none;
         margin: auto;
         display: flex;
@@ -84,6 +85,17 @@
                                         border-radius: 50%;
                                         transition: 0.5s;
                                     }
+                                    .card-body {
+                                        .movieName {
+                                            font-family: semibold;
+                                        }
+                                        > p {
+                                            font-family: light;
+                                        }
+                                    }
+                                    .btnTicket {
+                                        font-family: light;
+                                    }
                                     &:hover,
                                     &:focus {
                                         .btnPlay-small {
@@ -109,34 +121,6 @@
                     right: -3%;
                 }
             }
-            // .card {
-            //     position: relative;
-            //     .btnPlay-small {
-            //         cursor: pointer;
-            //         opacity: 0;
-            //         color: white;
-            //         width: 100px;
-            //         height: 100px;
-            //         z-index: 1;
-            //         left: 50%;
-            //         top: 50%;
-            //         transform: translate(-50%, -50%);
-            //         position: absolute;
-            //         background-color: rgba(0, 0, 0, 0.3);
-            //         border: solid;
-            //         border-radius: 50%;
-            //     }
-            //     &:hover {
-            //         .btnPlay-small {
-            //             opacity: 1;
-            //             transition: 0.5s;
-            //         }
-
-            //         button{
-            //             opacity: 0;
-            //         }
-            //     }
-            // }
         }
     }
 }
@@ -166,13 +150,7 @@
 }
 
 // for responsive
-@include respond-to("small") {
-    .comingMovie {
-        ul {
-            display: none !important;
-        }
-    }
-}
+
 @include respond-to("extra-large") {
     .tab-content {
         .tab-pane {
@@ -182,10 +160,5 @@
                 }
             }
         }
-    }
-}
-@include respond-to("large") {
-    .comingMovie {
-        display: none;
     }
 }

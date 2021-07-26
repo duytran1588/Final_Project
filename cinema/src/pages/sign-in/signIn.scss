@@ -13,6 +13,7 @@
         .sign_in_form {
             h1 {
                 font-size: 2rem;
+                font-family: light;
             }
             width: 22rem;
             margin: auto;
@@ -95,6 +96,20 @@
                             pointer-events: none;
                             opacity: 0.5;
                         }
+                    }
+                }
+            }
+            .row {
+                .col-12 {
+                    button {
+                        font-family: light;
+                    }
+                }
+            }
+            .row {
+                .guide {
+                    span {
+                        font-family: light;
                     }
                 }
             }

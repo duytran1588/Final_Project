@@ -9,7 +9,7 @@ function AddMovieModal(props) {
     values,
     errors,
     button,
-    idClose
+    idClose,
   } = props;
   return (
     <>
@@ -32,7 +32,12 @@ function AddMovieModal(props) {
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
-                  document.getElementById("btn_close_movie_modal").click();
+                  const btn_close_movie_modal = document.getElementById(
+                    "btn_close_movie_modal"
+                  );
+                  if (btn_close_movie_modal) {
+                    btn_close_movie_modal.click();
+                  }
                 }}
               >
                 <span aria-hidden="true">+</span>

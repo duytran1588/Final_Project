@@ -5,63 +5,82 @@
     .profile_info {
         > div {
             margin-top: 2rem;
-            div {
+            font-family: light;
+            span {
+                font-family: semibold;
+            }
+        }
+
+        .trade_modal {
+            > div {
                 button {
+                    font-family: semibold;
                     width: 10rem;
                     padding: 7px;
                 }
             }
-        }
-        .trade_1,
-        .trade_2 {
-            .payment_1,
-            .payment_2 {
-                width: 100%;
-                thead {
-                    border: solid $color-black-3 1px;
-                    tr {
-                        height: 5rem;
-                        th {
-                            padding: 10px;
+            div {
+                .trade_1,
+                .trade_2 {
+                    .payment_1,
+                    .payment_2 {
+                        width: 100%;
+                        thead {
                             border: solid $color-black-3 1px;
+                            tr {
+                                height: 5rem;
+                                th {
+                                    padding: 10px;
+                                    border: solid $color-black-3 1px;
+                                    font-family: bold;
+                                    color: red !important;
+                                }
+                            }
                         }
-                    }
-                }
-                tbody {
-                    border: solid $color-black-3 1px;
-                    > tr {
-                        border: solid $color-black-3 1px;
-                        height: 5rem;
-                        > td {
-                            padding: 10px;
+                        tbody {
                             border: solid $color-black-3 1px;
                             > tr {
-                                // border-bottom: solid 1px $color-black-3;
-                                display: block;
-                                height: 3rem;
-                                width: 100%;
-                                display: flex;
-                                align-items: center;
+                                border: solid $color-black-3 1px;
+                                height: 5rem;
+                                > td {
+                                    font-family: semibold;
+                                    padding: 10px;
+                                    border: solid $color-black-3 1px;
+                                    > tr {
+                                        // border-bottom: solid 1px $color-black-3;
+                                        display: block;
+                                        height: 3rem;
+                                        width: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        td {
+                                            padding: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        tfoot {
+                            tr {
+                                border: solid $color-black-3 1px;
                                 td {
                                     padding: 10px;
+                                    border: solid $color-black-3 1px;
+                                    font-family: semibold;
                                 }
                             }
                         }
                     }
                 }
-                tfoot {
-                    tr {
-                        border: solid $color-black-3 1px;
-                        td {
-                            padding: 10px;
-                            border: solid $color-black-3 1px;
-                        }
-                    }
+                .trade_2 {
+                    visibility: collapse;
                 }
             }
         }
-        .trade_2 {
-            visibility: collapse;
+    }
+    .greeting {
+        h1 {
+            font-family: semibold;
         }
     }
 }
@@ -72,18 +91,20 @@
     .user-profile {
         .profile_info {
             .trade_modal {
-                .trade_1 {
-                    display: none;
-                }
-                .trade_2 {
-                    visibility: visible;
-                    .payment_2 {
-                        tbody {
-                            tr {
-                                td {
-                                    tr {
-                                        td {
-                                            padding: 0;
+                div {
+                    .trade_1 {
+                        display: none;
+                    }
+                    .trade_2 {
+                        visibility: visible;
+                        .payment_2 {
+                            tbody {
+                                tr {
+                                    td {
+                                        tr {
+                                            td {
+                                                padding: 0;
+                                            }
                                         }
                                     }
                                 }
@@ -114,27 +135,29 @@
     .user-profile {
         .profile_info {
             .trade_modal {
-                .trade_2 {
-                    .payment_2 {
-                        thead {
-                            tr {
-                                th {
-                                    font-size: 12px;
+                div {
+                    .trade_2 {
+                        .payment_2 {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 12px;
+                                    }
                                 }
                             }
-                        }
-                        tbody {
-                            tr {
-                                td {
-                                    padding: 6px;
-                                    font-size: 12px;
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 6px;
+                                        font-size: 12px;
+                                    }
                                 }
                             }
-                        }
-                        tfoot {
-                            tr {
-                                td {
-                                    font-size: 15px;
+                            tfoot {
+                                tr {
+                                    td {
+                                        font-size: 15px;
+                                    }
                                 }
                             }
                         }

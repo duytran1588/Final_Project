@@ -169,10 +169,7 @@ function Movie_content() {
     }
 
     //note: setState là phương thức bất đồng bộ => hạn chế gọi trong code
-    // this.setState({
-    //   values: newValues,
-    //   errors: newErrors,
-    // });
+    
     setValues(newValues);
     setErrors(newErrors);
     // console.log(this.state.values);

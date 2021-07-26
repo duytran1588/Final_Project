@@ -1,8 +1,16 @@
+@import "../../../scss/helper/variable";
+@import "../../../scss/helper/mixin";
+
 .main_content {
     background-image: linear-gradient(to right, rgba(115, 134, 210, 0.8), rgba(104, 203, 139, 1));
     padding: 2rem;
     height: 100%;
     .main_content_user {
+        div {
+            h2 {
+                font-family: semibold;
+            }
+        }
         background-color: white;
         border-radius: 4px;
         padding: 0.5rem 1rem;
@@ -12,6 +20,7 @@
                 tr {
                     th {
                         vertical-align: middle;
+                        font-family: semibold;
                     }
                 }
             }
@@ -19,6 +28,7 @@
                 tr {
                     td {
                         vertical-align: middle;
+                        font-family: medium;
                     }
                     td:nth-child(7) {
                         display: flex;
@@ -27,12 +37,78 @@
                 }
             }
         }
+        div {
+            button {
+                font-family: light;
+            }
+        }
+        nav {
+            ul {
+                li {
+                    font-family: semibold;
+                }
+            }
+        }
+        #addUserModal {
+            .modal-dialog {
+                .modal-content {
+                    .modal-header {
+                        h4 {
+                            font-family: light;
+                        }
+                    }
+                    .addUser {
+                        .sign_up_form {
+                            .row {
+                                .col-12 {
+                                    button {
+                                        font-family: semibold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #editUserModal {
+            .modal-dialog {
+                .modal-content {
+                    .modal-header {
+                        font-family: light;
+                    }
+                }
+            }
+        }
     }
+    #addMovieModal,
+    #editMovieModal {
+        .modal-dialog {
+            .modal-content {
+                .modal-header {
+                    h5 {
+                        font-family: light;
+                    }
+                }
+                .modal-body {
+                    #movieForm {
+                        .container {
+                            div {
+                                button {
+                                    font-family: semibold;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  
 }
 
 //for modal add user
-@import "../../../scss/helper/variable";
-@import "../../../scss/helper/mixin";
+
 /* form starting stylings ------------------------------- */
 .addUser {
     .sign_up_form {
@@ -123,4 +199,3 @@
         }
     }
 }
-

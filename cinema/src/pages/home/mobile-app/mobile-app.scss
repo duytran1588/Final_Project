@@ -17,11 +17,13 @@
                 color: $color-white-0;
                 padding-right: 12rem;
                 h1 {
+                    font-family: bold;
                     line-height: 3rem;
                     font-size: xx-large;
                     font-weight: $fw-bold-1;
                 }
                 p {
+                    font-family: light;
                     font-size: 1.1rem;
                 }
                 a:nth-child(3) {
@@ -29,7 +31,8 @@
                     font-size: 1.2rem;
                     background-color: $color-red-1;
                     padding: 10px 20px;
-                    font-weight: $fw-bold-1;
+                    // font-weight: $fw-bold-1;
+                    font-family: light;
                     color: $color-white-0;
                     margin-bottom: 0.5rem;
                     text-decoration: none;
@@ -104,7 +107,7 @@
 }
 
 // responsive
-@include respond-to("extend_2"){
+@include respond-to("extend_2") {
     #homeApp {
         .small-container {
             width: 82%;
@@ -117,7 +120,7 @@
                 .phone__slider {
                     padding-right: 0 !important;
                     max-width: 23.33% !important;
-                    .slide__item{
+                    .slide__item {
                         max-width: 100%;
                     }
                     padding: 0;
@@ -297,7 +300,21 @@
                 }
                 .col-6 {
                     h1 {
-                        width: 100%;
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("very-small") {
+    #homeApp {
+        .small-container {
+            .row {
+                .col-6 {
+                    h1 {
+                        width: 90%;
                     }
                 }
             }

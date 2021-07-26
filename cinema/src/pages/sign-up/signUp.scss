@@ -11,6 +11,9 @@
     height: 56rem;
     .sign-up {
         .sign_up_form {
+            h1{
+                font-family: light;
+            }
             width: 37%;
             margin: auto;
             background-color: $color-white-0;
@@ -91,6 +94,13 @@
                             pointer-events: none;
                             opacity: 0.5;
                         }
+                    }
+                }
+            }
+            .row{
+                .col-12{
+                    button{
+                        font-family: light;
                     }
                 }
             }

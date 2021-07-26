@@ -39,6 +39,9 @@
                                                 .chair {
                                                     max-width: max-content;
                                                     padding: 0;
+                                                    button {
+                                                        font-family: light;
+                                                    }
                                                 }
                                             }
                                         }
@@ -48,6 +51,9 @@
                                                 .chair {
                                                     max-width: max-content;
                                                     padding: 0;
+                                                    button {
+                                                        font-family: light;
+                                                    }
                                                 }
                                             }
                                         }
@@ -57,6 +63,9 @@
                                                 .chair {
                                                     max-width: max-content;
                                                     padding: 0;
+                                                    button {
+                                                        font-family: light;
+                                                    }
                                                 }
                                             }
                                         }
@@ -65,12 +74,32 @@
                             }
 
                             .col-1 {
-                                .alphabet {
-                                    button {
-                                        &:focus {
-                                            box-shadow: none !important;
+                                .container {
+                                    .row {
+                                        .alphabet {
+                                            button {
+                                                &:focus {
+                                                    box-shadow: none !important;
+                                                }
+                                                font-family: light;
+                                            }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                    .cinema_intro_name {
+                        font-family: semibold;
+                    }
+                    > p:nth-child(3) {
+                        font-family: light;
+                    }
+                    .container {
+                        .explain {
+                            div {
+                                span {
+                                    font-family: light;
                                 }
                             }
                         }
@@ -105,6 +134,44 @@
                 }
                 .ticket_info {
                     max-width: 90%;
+                    .cinema_ticket_book {
+                        p:first-child {
+                            font-family: semibold;
+                        }
+                        p:nth-child(2),
+                        p:nth-child(3),
+                        h2 {
+                            font-family: light;
+                        }
+                    }
+                    .table_ticket {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        font-family: semibold;
+                                    }
+                                }
+                            }
+                            tbody {
+                                tr {
+                                    td {
+                                        font-family: light;
+                                    }
+                                }
+                            }
+                            tfoot {
+                                tr {
+                                    td {
+                                        font-family: semibold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    > button {
+                        font-family: semibold;
+                    }
                 }
             }
         }
@@ -273,16 +340,13 @@
                                 }
                                 .first-aisle {
                                     max-width: 18% !important;
-                                    
                                 }
                                 .last-aisle {
                                     padding: 0;
                                     max-width: 32% !important;
-                                   
                                 }
                                 .second-aisle {
                                     padding: 0;
-                                    
                                 }
                                 justify-content: space-between !important;
                             }
@@ -614,9 +678,9 @@
                             .row {
                                 .alphabet {
                                     button {
-                                        width: 0.5rem !important;
                                         display: flex;
                                         justify-content: center;
+                                        width: 1.5rem !important;
                                         font-size: 10px;
                                     }
                                 }
@@ -642,11 +706,14 @@
                                         }
                                     }
                                 }
-                                .last-aisle {
-                                    padding: 0;
-                                }
+
                                 .second-aisle {
                                     padding: 0;
+                                    max-width: 35% !important;
+                                }
+                                .last-aisle {
+                                    padding: 0;
+                                    max-width: 25% !important;
                                 }
                             }
                         }
@@ -664,6 +731,456 @@
         }
         > div:last-child {
             max-width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: "767px") {
+    // < 768px
+    .cinema_form {
+        display: block;
+        > div:first-child {
+            max-width: 100%;
+            .container {
+                > .container {
+                    padding-left: 0;
+                    .explain {
+                        display: flex;
+                        div {
+                            button {
+                                margin-right: 0.5rem !important;
+                                width: 0.5rem !important;
+                                height: 2rem;
+                            }
+                            span {
+                                font-size: 11px;
+                                margin-right: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+            .chairList {
+                .row {
+                    .col-1 {
+                        // display: none;
+                        .container {
+                            .row {
+                                .alphabet {
+                                    button {
+                                        display: flex;
+                                        justify-content: center;
+                                        width: 1.5rem !important;
+                                        font-size: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .col-11 {
+                        .container {
+                            .row {
+                                .first-aisle,
+                                .second-aisle,
+                                .last-aisle {
+                                    .container {
+                                        .row {
+                                            .chair {
+                                                button {
+                                                    width: 1.5rem !important;
+                                                    font-size: 10px;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .second-aisle {
+                                    padding: 0;
+                                    max-width: 42% !important;
+                                }
+                                .last-aisle {
+                                    padding: 0;
+                                    max-width: 28% !important;
+                                }
+                            }
+                        }
+                    }
+                    .alphabet_chair {
+                        padding: 0;
+                    }
+                    > div:nth-child(2) {
+                        // flex-basis: 108% !important;
+                        flex: 0 0 108% !important;
+                    }
+                }
+                padding: 0;
+            }
+        }
+        > div:last-child {
+            max-width: 100%;
+        }
+    }
+}
+
+@media screen and(max-width: "576px") {
+    .cinema_form {
+        .col-8 {
+            .container {
+                .chairList {
+                    .row {
+                        .alphabet_chair {
+                            .container {
+                                .row {
+                                    .alphabet {
+                                        padding: 0;
+                                        margin: 0 0 0.5rem 0.5rem !important;
+                                    }
+                                }
+                            }
+                        }
+                        .col-11 {
+                            .container {
+                                .row {
+                                    .second-aisle {
+                                        max-width: 44% !important;
+                                    }
+                                    .last-aisle {
+                                        max-width: 30% !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "575px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                padding: 3rem 0 !important;
+                .container {
+                    .container {
+                        .explain {
+                            div {
+                                button {
+                                    padding: 0 !important;
+                                    height: 2rem !important;
+                                    width: 2rem !important;
+                                    border-radius: 50%;
+                                }
+                                span {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                    .chairList {
+                        .row {
+                            justify-content: center;
+                            .col-1 {
+                                display: none;
+                            }
+                            .col-11 {
+                                max-width: 100%;
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        justify-content: space-evenly !important;
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 25px !important;
+                                                            height: 25px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 12px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 31% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    padding-right: 10px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "547px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            width: 20px !important;
+                                                            height: 20px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 9px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 29% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 19% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "456px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 17px !important;
+                                                            height: 17px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 8px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 30% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "436px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 17px !important;
+                                                            height: 17px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 8px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 30% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "440px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 17px !important;
+                                                            height: 17px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 8px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 31% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "369px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 16px !important;
+                                                            height: 16px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 7px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 31% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
