@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import SignUpModal from "../../../components/signUp/signUpModal";
+// import SignUpModal from "../../../components/signUp/signUpModal";
+import SignUpModal from "../../../../components/signUp/signUpModal";
 
 class EditUserModal extends Component {
   render() {

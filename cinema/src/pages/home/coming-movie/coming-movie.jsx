@@ -101,7 +101,7 @@ function ComingMovie() {
   const movieListComing = useSelector((state) => {
     return state.movieReducer.movieListComing;
   });
-  console.log(movieListComing);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {

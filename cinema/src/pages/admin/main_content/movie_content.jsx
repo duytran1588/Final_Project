@@ -5,8 +5,8 @@ import format from "date-format";
 import Pagination from "../../../components/pagination/pagination";
 import axios from "axios";
 import Swal from "sweetalert2";
-import AddMovieModal from "./addMovieModal";
-import EditMovieModal from "./editMovieModal";
+import AddMovieModal from "./movie-modal/addMovieModal";
+import EditMovieModal from "./movie-modal/editMovieModal";
 import { useHistory } from "react-router";
 
 function Movie_content() {

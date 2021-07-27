@@ -1,22 +1,21 @@
 import React from "react";
-import Movie_Form from "../../../components/movie-form-group/movie_form";
+import Movie_Form from "../../../../components/movie-form-group/movie_form";
 
-function EditMovieModal(props) {
+function AddMovieModal(props) {
   const {
     handleSubmit,
     handleChangeMovieInput,
     resetFormMovie,
     values,
     errors,
-    disabled,
     button,
-    idClose
+    idClose,
   } = props;
   return (
     <>
       <div
         class="modal fade"
-        id="editMovieModal"
+        id="addMovieModal"
         tabindex="-1"
         role="dialog"
         aria-labelledby="modelTitleId"
@@ -26,14 +25,19 @@ function EditMovieModal(props) {
         <div class="modal-dialog" style={{ maxWidth: "600px" }} role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Cập nhật</h5>
+              <h5 class="modal-title">Thêm phim</h5>
               <button
                 type="button"
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
-                  resetFormMovie();
+                  const btn_close_movie_modal = document.getElementById(
+                    "btn_close_movie_modal"
+                  );
+                  if (btn_close_movie_modal) {
+                    btn_close_movie_modal.click();
+                  }
                 }}
               >
                 <span aria-hidden="true">+</span>
@@ -47,7 +51,6 @@ function EditMovieModal(props) {
                 resetFormMovie={resetFormMovie}
                 values={values}
                 errors={errors}
-                disabled={disabled}
                 button={button}
                 idClose={idClose}
               />
@@ -59,4 +62,4 @@ function EditMovieModal(props) {
   );
 }
 
-export default EditMovieModal;
+export default AddMovieModal;

@@ -8,10 +8,10 @@ import {
 import axios from "axios";
 import Pagination_User from "../../../components/pagination/pagination_user";
 import Swal from "sweetalert2";
-import AddUserModal from "./addUserModal";
 import "../../../components/sweet-alert/sweetAlert.scss";
-import EditUserModal from "./editUserModal";
 import Loading from "../../../components/loading/loading";
+import AddUserModal from "./user-modal/addUserModal";
+import EditUserModal from "./user-modal/editUserModal";
 
 class User_content extends Component {
   state = {

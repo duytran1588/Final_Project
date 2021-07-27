@@ -106,7 +106,6 @@ function CinemaInfo() {
             {/* dữ liệu cho cột thứ 1  */}
             <div className="col-md-1 ">
               <ul className="nav nav-tabs">
-                {console.log("testrenderlai", 10)}
                 {/* 6 li lặp lại => dùng map để render ra các rạp (truyền tham số cho href ở thẻ a),
                 mỗi li sẽ có thêm function chooseCinema */}
                 {cinemaList?.map((cinema, index) => {
@@ -245,7 +244,10 @@ function CinemaInfo() {
                                       {phim.lstLichChieuTheoPhim.map(
                                         (lichChieu, index) => {
                                           return (
-                                            <div style={{marginBottom: "2rem"}} className="col-4">
+                                            <div
+                                              style={{ marginBottom: "2rem" }}
+                                              className="col-4"
+                                            >
                                               <a
                                                 style={{ cursor: "pointer" }}
                                                 key={index}

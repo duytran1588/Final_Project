@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cgv from "./contacts/cgv.png";
-import bhd from "./contacts/f32670fd0eb083c9c4c804f0f3a252ed.png"
+import bhd from "./contacts/f32670fd0eb083c9c4c804f0f3a252ed.png";
 import laban from "./contacts/laban.png";
 import go123 from "./contacts/123go.png";
 import IVB from "./contacts/IVB.png";
@@ -9,7 +9,7 @@ import agribank from "./contacts/AGRIBANK.png";
 import dcine from "./contacts/dcine-ben-thanh-15738149453578.png";
 import star from "./contacts/star.png";
 import payoo from "./contacts/payoo.jpg";
-import zaloPay from "./contacts/zalopay_icon.png"
+import zaloPay from "./contacts/zalopay_icon.png";
 import starlight from "./contacts/STARLIGHT.png";
 import touch from "./contacts/TOUCH.png";
 import ddc from "./contacts/ddc.png";
@@ -26,10 +26,12 @@ import zion from "./contacts/zion-logo.jpg";
 import unknown from "./contacts/d1e6bd560daa9e20131ea8a0f62e87f8.png";
 const handleOver = (choose, id) => {
   let icon = document.getElementById(id);
-  if (choose == 1) {
-    icon.style.visibility = "visible";
-  } else {
-    icon.style.visibility = "hidden";
+  if (icon) {
+    if (choose == 1) {
+      icon.style.visibility = "visible";
+    } else {
+      icon.style.visibility = "hidden";
+    }
   }
 };
 

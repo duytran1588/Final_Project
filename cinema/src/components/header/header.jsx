@@ -26,38 +26,56 @@ class Header extends Component {
   };
   handleToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
-    navbar_header.style.height = "100%";
+    if (navbar_header) {
+      navbar_header.style.height = "100%";
+    }
+
     //logo
     const log_header = document.getElementsByClassName("brand-title")[0];
-    log_header.style.visibility = "collapse";
+    if (log_header) {
+      log_header.style.visibility = "collapse";
+    }
   }
 
   handleHideToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
-    navbar_header.style.height = "4rem";
+    if (navbar_header) {
+      navbar_header.style.height = "4rem";
+    }
+
     const log_header = document.getElementsByClassName("brand-title")[0];
-    log_header.style.visibility = "visible";
+    if (log_header) {
+      log_header.style.visibility = "visible";
+    }
   }
 
   handleToggle = () => {
     this.handleToggleHeader();
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
-
-    navbarLinks.classList.add("active");
+    if (navbarLinks) {
+      navbarLinks.classList.add("active");
+    }
     const chevronRight =
       document.getElementsByClassName("hide-toggleButton")[0];
-    chevronRight.style.visibility = "visible";
+    if (chevronRight) {
+      chevronRight.style.visibility = "visible";
+    }
   };
 
   //nhấn mũi tên để back lại toggle button
 
   handleHideToggle = () => {
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
-    // navbarLinks.classList.toggle("active"); c1
-    navbarLinks.classList.remove("active");
+    if (navbarLinks) {
+      navbarLinks.classList.remove("active");
+    }
+
     const chevronRight =
       document.getElementsByClassName("hide-toggleButton")[0];
-    chevronRight.style.visibility = "collapse";
+    if (chevronRight) {
+      chevronRight.style.visibility = "collapse";
+    }
+
     setTimeout(this.handleHideToggleHeader, 200);
   };
 
@@ -170,16 +188,24 @@ class Header extends Component {
               {/* muốn lưu dữ liệu trên header mỗi khi refresh trang cần xử lý thêm ở app.js */}
 
               <li>
-                <Link to="schedule"> Lịch Chiếu </Link>
+                <Link onClick={this.handleHideToggle} to="schedule">
+                  Lịch Chiếu
+                </Link>
               </li>
               <li>
-                <Link to="intro">Cụm Rạp</Link>
+                <Link onClick={this.handleHideToggle} to="intro">
+                  Cụm Rạp
+                </Link>
               </li>
               <li>
-                <Link to="intro">Tin Tức</Link>
+                <Link onClick={this.handleHideToggle} to="intro">
+                  Tin Tức
+                </Link>
               </li>
               <li>
-                <Link to="homeApp">Ứng Dụng</Link>
+                <Link onClick={this.handleHideToggle} to="homeApp">
+                  Ứng Dụng
+                </Link>
               </li>
               {user ? (
                 <li onClick={this.signOut_hideToggle}>
@@ -213,10 +239,6 @@ class Header extends Component {
         </nav>
       </>
     );
-  }
-
-  componentDidMount() {
-    // this.getUserFromLocal();
   }
 }
 
