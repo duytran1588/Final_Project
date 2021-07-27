@@ -24,6 +24,14 @@ function MovieDetail() {
     setVideo(trailer);
   };
 
+  const changeHTTP = (hinhAnh) => {
+    //tách hinhAnh url thành http
+    const src_img_http = hinhAnh.split(":");
+    let src_img_https = src_img_http[0] + "s";
+    const src_img = src_img_https + ":" + src_img_http[1];
+    return src_img;
+  };
+
   const getTrailerId = (url) => {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -68,7 +76,7 @@ function MovieDetail() {
                     <img
                       width="100%"
                       height="100%"
-                      src={movie_detail?.hinhAnh}
+                      src={changeHTTP(movie_detail?.hinhAnh)}
                     />
                     <div className="trailer_ticket mt-0">
                       <FontAwesomeIcon

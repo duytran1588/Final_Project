@@ -51,6 +51,15 @@ function CinemaInfo() {
     document.querySelector(`.col-md-7 #${id_cot3}`).classList.add("active");
   };
 
+  //đổi từ http sang https để dành cho iphone
+  const changeHTTP = (hinhAnh) => {
+    //tách hinhAnh url thành http
+    const src_img_http = hinhAnh.split(":");
+    let src_img_https = src_img_http[0] + "s";
+    const src_img = src_img_https + ":" + src_img_http[1];
+    return src_img;
+  };
+
   //thay đổi opacity cho thẻ li ở cột 2 khi có onClick vào 1 thẻ bất kì
   const changeOpacity = (id, id2) => {
     //gỡ active của các thẻ li (nếu có) trong cùng ul
@@ -123,7 +132,10 @@ function CinemaInfo() {
                         data-toggle="tab"
                         href={`#${cinema.maHeThongRap}`}
                       >
-                        <img className="img-fluid" src={cinema.logo} />
+                        <img
+                          className="img-fluid"
+                          src={changeHTTP(cinema.logo)}
+                        />
                       </a>
                     </li>
                   );
@@ -224,7 +236,7 @@ function CinemaInfo() {
                                   <div className="col-3">
                                     <img
                                       className="img-fluid"
-                                      src={phim.hinhAnh}
+                                      src={changeHTTP(phim.hinhAnh)}
                                       width="100%"
                                     />
                                   </div>

@@ -6,14 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function ShowingMovie(props) {
   const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis); // dùng thẻ này de viet ngan tieu de phim
   const { trailerId, handleDetail, movie, handlePlay } = props;
-  // console.log(movie.hinhAnh);
+
   //tách hinhAnh url thành http
   const src_img_http = movie.hinhAnh.split(":");
-  // console.log(src_img_http);
   let src_img_https = src_img_http[0] + "s";
-  // console.log(src_img_https);
   const src_img = src_img_https + ":" + src_img_http[1];
-  // console.log(src_img);
+
   return (
     <>
       <div className="card text-left ">

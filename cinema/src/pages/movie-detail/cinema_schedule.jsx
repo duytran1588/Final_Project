@@ -10,6 +10,14 @@ function Cinema_Schedule(props) {
   const handle_booking = (maLichChieu) => {
     history.push(`/ticket-booking/${maLichChieu}`);
   };
+  const changeHTTP = (hinhAnh) => {
+    //tách hinhAnh url thành http
+    const src_img_http = hinhAnh.split(":");
+    let src_img_https = src_img_http[0] + "s";
+    const src_img = src_img_https + ":" + src_img_http[1];
+    return src_img;
+  };
+
   return (
     <>
       <section id="movie_schedule">
@@ -29,7 +37,10 @@ function Cinema_Schedule(props) {
                         data-toggle="tab"
                         href={`#${cinema.maHeThongRap}`}
                       >
-                        <img className="img-fluid" src={cinema.logo} />
+                        <img
+                          className="img-fluid"
+                          src={changeHTTP(cinema.logo)}
+                        />
                       </a>
                     </li>
                   );
@@ -79,40 +90,44 @@ function Cinema_Schedule(props) {
                             {/* map tới lịch chiếu để lấy data */}
                             <div className="container premiere">
                               <div className="row">
-                              {cumRap.lichChieuPhim.map((lichChieu, index) => {
-                                return (
-                                  // <div className="row">
-                                    <div className="day_time_show">
-                                      <a
-                                        style={{ cursor: "pointer" }}
-                                        key={index}
-                                        onClick={() =>
-                                          handle_booking(lichChieu.maLichChieu)
-                                        }
-                                      >
-                                        <span>
+                                {cumRap.lichChieuPhim.map(
+                                  (lichChieu, index) => {
+                                    return (
+                                      // <div className="row">
+                                      <div className="day_time_show">
+                                        <a
+                                          style={{ cursor: "pointer" }}
+                                          key={index}
+                                          onClick={() =>
+                                            handle_booking(
+                                              lichChieu.maLichChieu
+                                            )
+                                          }
+                                        >
                                           <span>
-                                            {format(
-                                              "dd/MM/yyyy",
-                                              new Date(
-                                                lichChieu.ngayChieuGioChieu
-                                              )
-                                            )}
+                                            <span>
+                                              {format(
+                                                "dd/MM/yyyy",
+                                                new Date(
+                                                  lichChieu.ngayChieuGioChieu
+                                                )
+                                              )}
+                                            </span>
+                                            <span className="text-danger">
+                                              {format(
+                                                "hh:mm:ss",
+                                                new Date(
+                                                  lichChieu.ngayChieuGioChieu
+                                                )
+                                              )}
+                                            </span>
                                           </span>
-                                          <span className="text-danger">
-                                            {format(
-                                              "hh:mm:ss",
-                                              new Date(
-                                                lichChieu.ngayChieuGioChieu
-                                              )
-                                            )}
-                                          </span>
-                                        </span>
-                                      </a>
-                                    </div>
-                                  // </div>
-                                );
-                              })}
+                                        </a>
+                                      </div>
+                                      // </div>
+                                    );
+                                  }
+                                )}
                               </div>
                             </div>
                           </div>

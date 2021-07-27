@@ -15,6 +15,16 @@ class Show_Time extends Component {
     reRender: true, //hàm này để render lại sau khi thêm mã lịch chiếu bên modal
   };
 
+  changeHTTP = (hinhAnh) => {
+    //tách hinhAnh url thành http
+    let src_img;
+    if (hinhAnh) {
+      const src_img_http = hinhAnh.split(":");
+      let src_img_https = src_img_http[0] + "s";
+      src_img = src_img_https + ":" + src_img_http[1];
+    }
+    return src_img;
+  };
   //change page
   paginate = (pageNumber) => {
     this.setState({
@@ -94,13 +104,17 @@ class Show_Time extends Component {
             style={{ maxWidth: "15rem", height: "18rem" }}
             className="col-5 text-right movie-poster"
           >
-            <img height="100%" width="100%" src={showTimeList?.hinhAnh} />
+            <img
+              height="100%"
+              width="100%"
+              src={this.changeHTTP(showTimeList?.hinhAnh)}
+            />
           </div>
           <div
             className="col-7 show-time-detail d-flex"
             style={{ alignItems: "center" }}
           >
-            <div style={{width: "100%"}}>
+            <div style={{ width: "100%" }}>
               <h1>{showTimeList?.tenPhim}</h1>
               <p>{showTimeList?.moTa}</p>
               <div style={{ paddingLeft: 0 }} className="container">

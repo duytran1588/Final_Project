@@ -10,8 +10,14 @@ import Swal from "sweetalert2";
 import Loading from "../../components/loading/loading";
 
 class TicketBooking extends Component {
+  changeHTTP = (hinhAnh) => {
+    //tách hinhAnh url thành http
+    const src_img_http = hinhAnh.split(":");
+    let src_img_https = src_img_http[0] + "s";
+    const src_img = src_img_https + ":" + src_img_http[1];
+    return src_img;
+  };
 
-  
   handleBooking = () => {
     const { choiceChairList } = this.props;
     const maLichChieu = this.props.match.params.maLichChieu;
@@ -141,10 +147,10 @@ class TicketBooking extends Component {
     return items;
   }
   render() {
-    const {loading, calendarMovie, choiceChairList } = this.props;
-    
-    if(loading){
-      return <Loading/>
+    const { loading, calendarMovie, choiceChairList } = this.props;
+
+    if (loading) {
+      return <Loading />;
     }
 
     return (
@@ -245,10 +251,13 @@ class TicketBooking extends Component {
             </div>
             <div className="col-4">
               <div className="container ticket_info">
-                <div className="image_movie" style={{height: "fit-content", width: "12rem"}}>
+                <div
+                  className="image_movie"
+                  style={{ height: "fit-content", width: "12rem" }}
+                >
                   <img
-                    style={{maxWidth: "100%"}}
-                    src={calendarMovie?.thongTinPhim.hinhAnh}
+                    style={{ maxWidth: "100%" }}
+                    src={this.changeHTTP(calendarMovie?.thongTinPhim.hinhAnh)}
                     alt=""
                   />
                 </div>
