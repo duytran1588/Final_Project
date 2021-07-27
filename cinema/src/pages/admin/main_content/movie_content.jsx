@@ -493,7 +493,12 @@ function Movie_content() {
           <td>{movie.maNhom}</td>
           <td>{format("dd/MM/yyyy", new Date(movie.ngayKhoiChieu))}</td>
           <td>
-            <button className="btn btn-primary mr-2">
+            <button
+              onClick={() => {
+                handleShowTimeDetail(movie.maPhim);
+              }}
+              className="btn btn-primary mr-2"
+            >
               <FontAwesomeIcon icon="calendar-alt" />
             </button>
             <button
@@ -609,7 +614,7 @@ function Movie_content() {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "flex-start",
+              alignItems: "center",
             }}
           >
             <Pagination
@@ -620,6 +625,11 @@ function Movie_content() {
             />
 
             <button
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               id="finish_searching_movie"
               className="btn btn-danger"
               onClick={() => {

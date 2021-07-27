@@ -757,7 +757,7 @@ class User_content extends Component {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "flex-start",
+              alignItems: "center",
             }}
           >
             <Pagination_User
@@ -771,6 +771,11 @@ class User_content extends Component {
               paginateTarget={this.paginateTarget_Searching}
             />
             <button
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               id="stop_searching"
               className="btn btn-danger"
               onClick={() => {
