@@ -26,9 +26,12 @@ function MovieDetail() {
 
   const changeHTTP = (hinhAnh) => {
     //tách hinhAnh url thành http
-    const src_img_http = hinhAnh.split(":");
-    let src_img_https = src_img_http[0] + "s";
-    const src_img = src_img_https + ":" + src_img_http[1];
+    let src_img = "";
+    if (hinhAnh) {
+      const src_img_http = hinhAnh.split(":");
+      let src_img_https = src_img_http[0] + "s";
+      src_img = src_img_https + ":" + src_img_http[1];
+    }
     return src_img;
   };
 

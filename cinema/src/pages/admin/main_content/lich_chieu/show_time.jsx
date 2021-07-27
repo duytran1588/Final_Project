@@ -17,7 +17,7 @@ class Show_Time extends Component {
 
   changeHTTP = (hinhAnh) => {
     //tách hinhAnh url thành http
-    let src_img;
+    let src_img = "";
     if (hinhAnh) {
       const src_img_http = hinhAnh.split(":");
       let src_img_https = src_img_http[0] + "s";
