@@ -373,7 +373,7 @@ class User_content extends Component {
     return currentPosts?.map((user, index) => {
       return (
         <tr key={index}>
-          <td id="choose_checkbox" style={{ width: "6rem" }}>
+          <td id="choose_checkbox" style={{ display: "none", width: "6rem" }}>
             <input
               style={{ width: "32px", height: "18px" }}
               type="checkbox"
@@ -614,7 +614,7 @@ class User_content extends Component {
     return currentPosts?.map((user, index) => {
       return (
         <tr key={index}>
-          <td id="choose_checkbox" style={{ width: "6rem" }}>
+          <td id="choose_checkbox" style={{ display: "none", width: "6rem" }}>
             <input
               style={{ width: "32px", height: "18px" }}
               type="checkbox"
@@ -672,7 +672,11 @@ class User_content extends Component {
       >
         <div
           className="text-right row border-bottom mb-3"
-          style={{ padding: "1rem", justifyContent: "space-between" }}
+          style={{
+            padding: "1rem",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
           {" "}
           <h2 className="text-center text-primary">Danh sách người dùng</h2>
@@ -720,7 +724,7 @@ class User_content extends Component {
         >
           <thead className="text-primary">
             <tr>
-              <th id="choose_item"></th>
+              <th style={{ display: "none" }} id="choose_item"></th>
               <th>STT</th>
               <th>Tài khoản</th>
               <th>Họ tên</th>

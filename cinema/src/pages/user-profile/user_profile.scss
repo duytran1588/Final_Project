@@ -87,6 +87,33 @@
 
 // for responsvie
 
+@media screen and(max-width: "1200px") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    .trade_1 {
+                        .payment_1 {
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 12px;
+                                        tr {
+                                            td {
+                                                padding: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @include respond-to("large") {
     .user-profile {
         .profile_info {
@@ -117,21 +144,7 @@
     }
 }
 
-@include respond-to("super-small") {
-    .user-profile {
-        .profile_info {
-            .trade_modal {
-                div {
-                    button {
-                        width: 8rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@include respond-to("very-small") {
+@include respond-to("medium") {
     .user-profile {
         .profile_info {
             .trade_modal {
@@ -148,15 +161,126 @@
                             tbody {
                                 tr {
                                     td {
-                                        padding: 6px;
-                                        font-size: 12px;
+                                        // tr {
+                                        //     td {
+                                        //         padding: 0;
+                                        //     }
+                                        // }
+                                        font-size: 11px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "510px") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    .trade_2 {
+                        .payment_2 {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 11px;
+                                    }
+                                }
+                            }
+                            tbody {
+                                tr {
+                                    td {
+                                        // tr {
+                                        //     td {
+                                        //         padding: 0;
+                                        //     }
+                                        // }
+                                        font-size: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-to("super-small") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    button {
+                        width: 8rem;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "475px") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    .trade_2 {
+                        .payment_2 {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 10px;
+                                    }
+                                }
+                            }
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "380px") {
+    .user-profile {
+        .profile_info {
+            .trade_modal {
+                div {
+                    .trade_2 {
+                        .payment_2 {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 8px;
+                                    }
+                                }
+                            }
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 7px;
                                     }
                                 }
                             }
                             tfoot {
                                 tr {
                                     td {
-                                        font-size: 15px;
+                                        font-size: 10px;
                                     }
                                 }
                             }

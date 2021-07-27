@@ -10,8 +10,8 @@ function Trade_1(props) {
             <tr>
               <th>Hệ thống rạp</th>
               <th>Tên rạp</th>
-              <th>Số ghế</th>
-              <th>Ngày dặt</th>
+              <th>Ghế</th>
+              <th>Ngày đặt</th>
               <th>Phim</th>
               <th>Giá vé</th>
             </tr>

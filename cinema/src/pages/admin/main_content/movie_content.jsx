@@ -169,7 +169,7 @@ function Movie_content() {
     }
 
     //note: setState là phương thức bất đồng bộ => hạn chế gọi trong code
-    
+
     setValues(newValues);
     setErrors(newErrors);
     // console.log(this.state.values);
@@ -532,7 +532,11 @@ function Movie_content() {
       >
         <div
           className="text-right row border-bottom mb-3"
-          style={{ padding: "1rem", justifyContent: "space-between" }}
+          style={{
+            padding: "1rem",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
           {" "}
           <h2 className="text-center text-primary">Danh sách phim</h2>

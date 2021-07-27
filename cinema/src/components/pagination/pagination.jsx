@@ -72,7 +72,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, paginateArrow }) {
   };
   return (
     <nav aria-label="Page navigation example">
-      <ul className="pagination pagination_movie">
+      <ul className="pagination pagination_movie pagination-sm">
         {pageNumbers.map((number) => {
           return (
             <li

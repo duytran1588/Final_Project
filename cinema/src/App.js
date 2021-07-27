@@ -16,7 +16,8 @@ import {
   faCalendarAlt,
   faPlus,
   faFilm,
-  faVideo
+  faVideo,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import Home from "./pages/home/home";
 import SignUp from "./pages/sign-up/signUp";
@@ -51,6 +52,7 @@ library.add(
   faPlus,
   faFilm,
   faVideo,
+  faHome
 );
 
 function App() {

@@ -110,7 +110,7 @@ class Show_Time extends Component {
                     className="col-3 comment-showTime-key"
                   >
                     <p>Đánh giá</p>
-                    <p>Ngày khởi chiếu</p>
+                    <p>Ngày công chiếu</p>
                   </div>
                   <div className="col-9 comment-showTime-value">
                     <p>{showTimeList?.danhGia}</p>
@@ -144,13 +144,13 @@ class Show_Time extends Component {
         <table className="text-center table table-bordered table-hover mt-5 myTable">
           <thead className="text-primary">
             <tr>
-              <th>Mã lịch chiếu</th>
-              <th>Hệ thống rạp</th>
+              <th>Mã lịch</th>
+              <th>Hệ thống</th>
               <th>Cụm rạp</th>
               <th>Ngày chiếu</th>
               <th>Giờ chiếu</th>
               <th>Giá vé</th>
-              <th>Thời lượng phim</th>
+              <th>Thời gian</th>
             </tr>
           </thead>
           <tbody>{this.renderShowTimeList()}</tbody>

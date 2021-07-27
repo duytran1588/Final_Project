@@ -53,6 +53,13 @@
     }
 }
 
+@include respond-to("large") {
+    //<992px
+    .show-time{
+        max-width: 100%;
+    }
+}
+
 @media screen and (max-width: "863px") {
     .show-time {
         max-width: 100%;
@@ -108,7 +115,7 @@
 @media screen and (max-width: "600px") {
     .show-time {
         > h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             padding: 1rem !important;
         }
         .show-time-content {
@@ -135,23 +142,128 @@
                         }
                         .btn_add_showtime {
                             margin-top: 1rem;
+                            width: 100% !important;
+                            display: flex;
+                            justify-content: flex-start;
+                            button {
+                                width: 2.5rem !important;
+                                height: 2.5rem !important;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
                         }
                     }
                 }
             }
         }
         .myTable {
-            tr {
-                th,
-                td {
-                    font-size: 10px;
+            thead {
+                tr {
+                    th:first-child,
+                    th:last-child {
+                        display: none;
+                    }
+                    th {
+                        font-size: 10px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td:first-child,
+                    td:last-child {
+                        display: none;
+                    }
+                    td {
+                        font-size: 10px;
+                    }
                 }
             }
         }
         nav {
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                // width: 0;
+                height: 4px;
+                background-color: #e8e3e3cd;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, 0.3);
+                // width: 0;
+                height: 4px;
+            }
             .pagination_movie {
                 li {
-                    font-size: 10px;
+                    font-size: 8px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: "500px") {
+    .show-time {
+        > h1 {
+            font-size: 1.3rem;
+        }
+        .show-time-content {
+            .show-time-detail {
+                div {
+                    h1 {
+                        font-size: 1.5rem;
+                        margin-top: 2rem;
+                    }
+                    p {
+                        text-align: justify;
+                        font-size: 12px;
+                    }
+                    .container {
+                        .row {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .myTable {
+            thead {
+                tr {
+                    th:nth-child(6) {
+                        display: none;
+                    }
+                    th {
+                        font-size: 10px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td:nth-child(6) {
+                        display: none;
+                    }
+                    td {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "400px") {
+    .show-time {
+        .show-time-content {
+            .show-time-detail {
+                div {
+                    .container {
+                        .row {
+                            p {
+                                font-size: 9px;
+                                font-family: semibold;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -12,7 +12,7 @@ function Trade_2(props) {
               <th>Hệ thống rạp</th>
               {/* <th>Tên rạp</th> */}
               {/* <th>Số ghế</th> */}
-              <th>Ngày dặt</th>
+              <th>Ngày đặt</th>
               <th>Phim</th>
               <th>Giá vé</th>
             </tr>

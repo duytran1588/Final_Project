@@ -1,10 +1,10 @@
 import React from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Sidebar() {
   return (
     <>
       <div className="sidebar_dashboard">
-        <h1>Danh mục</h1>
+        <h1>Dash board</h1>
       </div>
       <div className="dashboard">
         <ul
@@ -18,7 +18,7 @@ function Sidebar() {
               data-toggle="pill"
               href="#user_management"
             >
-              Quản lý người dùng
+              <FontAwesomeIcon icon="user-circle" className="mr-2" /> Người dùng
             </a>
           </li>
           <li className="dashboard_item nav-item">
@@ -28,7 +28,8 @@ function Sidebar() {
               data-toggle="pill"
               href="#film_management"
             >
-              Quản lý phim
+              <FontAwesomeIcon icon="film" className="mr-2" />
+              Phim
             </a>
           </li>
         </ul>
