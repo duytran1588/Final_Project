@@ -75,7 +75,7 @@
                                     margin-right: 20px;
                                 }
                             }
-                            p{
+                            p {
                                 font-family: light;
                             }
                         }
@@ -131,7 +131,7 @@
                                     margin-right: 20px;
                                 }
                             }
-                            p{
+                            p {
                                 font-family: light;
                             }
                         }
@@ -237,7 +237,6 @@
 
 //for responsive
 
-
 @include respond-to("large") {
     // <=992px
     #intro {
@@ -252,7 +251,6 @@
                                         padding-left: 18px;
                                         max-width: 25% !important;
                                     }
-                                    
                                 }
                             }
                         }
@@ -261,7 +259,6 @@
             }
         }
     }
-   
 }
 
 @include respond-to("medium") {
@@ -340,6 +337,31 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "615px") {
+    #intro {
+        margin-top: 2rem;
+        .small-container {
+            max-width: 100%;
+            ul {
+                li {
+                    a.active,
+                    a {
+                        font-size: 16px;
+                    }
+                    &:hover {
+                        font-size: 16px;
+                    }
+                    &:focus {
+                        font-size: 16px;
+                    }
+                    margin-right: 4px;
+                }
+                justify-content: space-evenly;
             }
         }
     }
