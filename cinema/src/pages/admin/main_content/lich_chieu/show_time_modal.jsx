@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import format from "date-format";
 import { useDispatch } from "react-redux";
 import { getShowTimeList } from "../../../../stores/actions/admin.action";
 
@@ -29,6 +28,13 @@ function Show_Time_Modal(props) {
     price: "", //giá vé
     date: "", //ngày chiếu
     time: "", //giờ chiếu
+  });
+
+  const [guideShowTime, setGuideShowTime] = useState({
+    duration: "(*) Bắt buộc",
+    price: "(*) Bắt buộc",
+    date: "(*) Bắt buộc",
+    time: "(*) Bắt buộc",
   });
 
   //call api lấy danh sách hệ thống rạp
@@ -241,9 +247,16 @@ function Show_Time_Modal(props) {
 
   const handleChangeShowTime = (e) => {
     const { value, name } = e.target;
+    let newGuideShowTime = { ...guideShowTime };
     let newValues = { ...showTimeData };
     let newErrors = { ...showTimeErrors };
     newValues[name] = value;
+
+    if (value.trim() !== "") {
+      newGuideShowTime[name] = "";
+    } else {
+      newGuideShowTime[name] = "(*) Bắt buộc";
+    }
     if (value.trim() === "") {
       newErrors[name] = "Vui lòng không để trống";
     } else {
@@ -273,6 +286,7 @@ function Show_Time_Modal(props) {
         newErrors[name] = "";
       }
     }
+    setGuideShowTime(newGuideShowTime);
     setShowTimeData(newValues);
     setShowTimeErrors(newErrors);
   };
@@ -337,7 +351,7 @@ function Show_Time_Modal(props) {
                         onChange={handleChangeCinemaSystem}
                         //onchange vừa đổi data trên state vừa gọi api với mã tương ứng lấy cụm rạp
                         style={{ fontSize: "20px", color: "black" }}
-                        class="custom-select"
+                        className="custom-select"
                         name
 
                         // value={values.maLoaiNguoiDung}
@@ -382,6 +396,7 @@ function Show_Time_Modal(props) {
                       </select>
                     </div>
                     <div className="mb-3">
+                      <div className="text-danger">{guideShowTime?.date}</div>
                       <label>Ngày chiếu</label>
                       <input
                         style={{ height: "43px" }}
@@ -398,6 +413,7 @@ function Show_Time_Modal(props) {
                       </small>
                     </div>
                     <div className="mb-3">
+                      <div className="text-danger">{guideShowTime?.price}</div>
                       <label>Giá vé</label>
                       <input
                         style={{ height: "43px" }}
@@ -444,6 +460,9 @@ function Show_Time_Modal(props) {
                       </div>
                     </div>
                     <div className="mb-3">
+                      <div className="text-danger">
+                        {guideShowTime?.duration}
+                      </div>
                       <label>Thời lượng phim</label>
                       <input
                         style={{ height: "43px" }}
@@ -460,6 +479,7 @@ function Show_Time_Modal(props) {
                       </small>
                     </div>
                     <div className="mb-3">
+                      <div className="text-danger">{guideShowTime?.time}</div>
                       <label>Giờ chiếu</label>
                       <input
                         style={{ height: "43px" }}

@@ -1,7 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-
+import { withRouter } from "react-router-dom";
 class News extends Component {
+  state = {
+    tab_dienAnh: {
+      like_1: 0,
+      like_2: 0,
+      like_3: 0,
+      like_4: 0,
+    },
+    tab_review: {
+      like_1: 0,
+      like_2: 0,
+      like_3: 0,
+      like_4: 0,
+    },
+    tab_khuyenMai: {
+      like_1: 0,
+      like_2: 0,
+      like_3: 0,
+      like_4: 0,
+    },
+  };
+
+  checkLike = (tabName, number, like) => {
+    const user = localStorage.getItem("userLogin");
+    if (!user) {
+      this.props.history.push("/sign-in");
+    } else {
+      console.log(`tab_${tabName}`);
+      let newTabName = { ...this.state[`tab_${tabName}`] };
+      console.log(newTabName.like_1);
+      newTabName[`${like}_${number}`] += 1;
+      this.setState({
+        [`tab_${tabName}`]: { ...newTabName },
+      });
+      console.log(this.state.tab_dienAnh);
+    }
+  };
+
   render() {
     return (
       <section id="intro">
@@ -53,13 +90,30 @@ class News extends Component {
                       phim mang phong cách Artistic Urban Lifestyle đầu tiên tại
                       Việt Nam!
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("dienAnh", 1, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_dienAnh.like_1 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_dienAnh.like_1}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-6">
@@ -79,13 +133,30 @@ class News extends Component {
                       ảo độc-lạ-chill nhất từ trước đến giờ sẽ chính thức khai
                       trương tại 360 Giải Phóng!
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("dienAnh", 2, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_dienAnh.like_2 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_dienAnh.like_2}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                 </div>
@@ -109,13 +180,31 @@ class News extends Component {
                       lạc bộ phim điện ảnh đạt 100 tỷ đồng doanh thu phòng vé.
                       Dàn ngôi
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("dienAnh", 3, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_dienAnh.like_3 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_dienAnh.like_3}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 movie__item">
@@ -131,13 +220,31 @@ class News extends Component {
                       chính thức phát động cuộc thi thiết kế trang phục cho siêu
                       anh hùng
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("dienAnh", 4, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_dienAnh.like_4 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_dienAnh.like_4}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 cot__3">
@@ -237,13 +344,31 @@ class News extends Component {
                       phim mang phong cách Artistic Urban Lifestyle đầu tiên tại
                       Việt Nam!
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("review", 1, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_review.like_1 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_review.like_1}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-6">
@@ -263,13 +388,31 @@ class News extends Component {
                       ảo độc-lạ-chill nhất từ trước đến giờ sẽ chính thức khai
                       trương tại 360 Giải Phóng!
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("review", 2, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_review.like_2 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_review.like_2}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                 </div>
@@ -293,13 +436,31 @@ class News extends Component {
                       lạc bộ phim điện ảnh đạt 100 tỷ đồng doanh thu phòng vé.
                       Dàn ngôi
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("review", 3, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_review.like_3 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_review.like_3}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 movie__item">
@@ -319,13 +480,31 @@ class News extends Component {
                       chính thức phát động cuộc thi thiết kế trang phục cho siêu
                       anh hùng
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("review", 4, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_review.like_4 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_review.like_4}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 cot__3">
@@ -410,7 +589,7 @@ class News extends Component {
               </div>
             </div>
             {/* end review section  */}
-          
+
             {/* khuyenMai section  */}
             <div
               className="tab-pane container overall__info fade"
@@ -437,16 +616,30 @@ class News extends Component {
                       Việt Nam!
                     </p>
                     <a
-                      className="test"
-                      data-toggle="modal"
-                      data-target="#modal_news"
+                      onClick={() => {
+                        this.checkLike("khuyenMai", 1, "like");
+                      }}
                     >
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_khuyenMai.like_1 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_khuyenMai.like_1}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-6">
@@ -466,13 +659,31 @@ class News extends Component {
                       ảo độc-lạ-chill nhất từ trước đến giờ sẽ chính thức khai
                       trương tại 360 Giải Phóng!
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("khuyenMai", 2, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_khuyenMai.like_2 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_khuyenMai.like_2}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                 </div>
@@ -496,13 +707,31 @@ class News extends Component {
                       lạc bộ phim điện ảnh đạt 100 tỷ đồng doanh thu phòng vé.
                       Dàn ngôi
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("khuyenMai", 3, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_khuyenMai.like_3 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_khuyenMai.like_3}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 movie__item">
@@ -522,13 +751,31 @@ class News extends Component {
                       chính thức phát động cuộc thi thiết kế trang phục cho siêu
                       anh hùng
                     </p>
-                    <a data-toggle="modal" data-target="#modal_news">
-                      <FontAwesomeIcon className="icon" icon="thumbs-up" />
-                      <span>0</span>
+                    <a
+                      onClick={() => {
+                        this.checkLike("khuyenMai", 4, "like");
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer" }}
+                        className="icon text-primary"
+                        icon="thumbs-up"
+                      />
+                      <span
+                        className={`${
+                          this.state.tab_khuyenMai.like_4 === 0
+                            ? ""
+                            : "text-primary"
+                        }`}
+                      >
+                        {this.state.tab_khuyenMai.like_4}
+                      </span>
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon?tab=comment">
-                      <FontAwesomeIcon className="icon" icon="comment-alt" />
-                      <span>0</span>
+                      <FontAwesomeIcon
+                        className="icon text-primary"
+                        icon="comment-alt"
+                      />
                     </a>
                   </div>
                   <div className="col-4 cot__3">
@@ -617,33 +864,15 @@ class News extends Component {
           {/* <!-- end tab panes  --> */}
 
           {/* load more */}
-          <div className="mt-4 container open text-center">
+          {/* <div className="mt-4 container open text-center">
             <a className="text-uppercase ">
               Xem thêm
             </a>
-          </div>
-        
-          {/* <!-- item for modal - bs4--> */}
-          <div className="modal signInModal fade" id="modal_news">
-            <div className="modal-dialog signIn_dialog">
-              <div className="modal-content signIn_content">
-                <div className="modal-header signIn_header">
-                  <button type="button" className="close" data-dismiss="modal">
-                    +
-                  </button>
-                </div>
-                <div className="modal-body signIn_body text-center">
-                  <h4> Bạn cần phải đăng nhập</h4>
-                  <a href="https://tix.vn/login">Đăng nhập</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <!-- end magnific popup  --> */}
+          </div> */}
         </div>
       </section>
     );
   }
 }
 
-export default News;
+export default withRouter(News);

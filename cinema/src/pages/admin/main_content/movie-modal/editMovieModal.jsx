@@ -15,21 +15,21 @@ function EditMovieModal(props) {
   return (
     <>
       <div
-        class="modal fade"
+        className="modal fade"
         id="editMovieModal"
-        tabindex="-1"
+        // tabindex="-1"
         role="dialog"
         aria-labelledby="modelTitleId"
         aria-hidden="true"
         style={{ padding: 0 }}
       >
-        <div class="modal-dialog" style={{ maxWidth: "600px" }} role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Cập nhật</h5>
+        <div className="modal-dialog" style={{ maxWidth: "600px" }} role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Cập nhật</h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
@@ -39,7 +39,7 @@ function EditMovieModal(props) {
                 <span aria-hidden="true">+</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               {/* form-group */}
               <Movie_Form
                 handleSubmit={handleSubmit}

@@ -14,7 +14,7 @@ function Sidebar() {
           <li className="dashboard_item nav-item">
             <a
               style={{ backgroundColor: "transparent" }}
-              class="nav-link dashboard_link active"
+              className="nav-link dashboard_link active"
               data-toggle="pill"
               href="#user_management"
             >
@@ -24,7 +24,7 @@ function Sidebar() {
           <li className="dashboard_item nav-item">
             <a
               style={{ backgroundColor: "transparent" }}
-              class="nav-link dashboard_link"
+              className="nav-link dashboard_link"
               data-toggle="pill"
               href="#film_management"
             >

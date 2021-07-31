@@ -16,7 +16,7 @@ import EditUserModal from "./user-modal/editUserModal";
 class User_content extends Component {
   state = {
     posts: [],
-    postsPerPage: 10, //12 user trên 1 trang
+    postsPerPage: 10, //10 user trên 1 trang
     currentPage: 1, //trang hiện hành
     pageNumberLimit: 7, //mỗi lần mở ra thêm 7 ô chuyển trang
     maxPageNumberLimit: 11, //số ô chuyển trang tối đa trong 1 lần mở

@@ -3,10 +3,11 @@ import format from "date-format";
 
 function Trade_2(props) {
   const { userProfile } = props;
+
   return (
     <div>
       <div id="trade_detail" className="collapse trade_2">
-        <table className="payment_2">
+        <table id="trade_table" className="payment_2">
           <thead>
             <tr>
               <th>Hệ thống rạp</th>
@@ -24,9 +25,11 @@ function Trade_2(props) {
                   <td>
                     {item.danhSachGhe.map((ghe, index) => {
                       return (
-                        <tr key={index}>
-                          <td>{ghe.tenHeThongRap}</td>
-                        </tr>
+                        <table key={index}>
+                          <tr>
+                            <td>{ghe.tenHeThongRap}</td>
+                          </tr>
+                        </table>
                       );
                     })}
                   </td>
@@ -38,24 +41,6 @@ function Trade_2(props) {
               );
             })}
           </tbody>
-          <tfoot>
-            <tr>
-              <td
-                className="text-right"
-                style={{ paddingRight: "5rem" }}
-                colSpan="3"
-              >
-                Tổng tiền
-              </td>
-              <td>
-                {userProfile?.thongTinDatVe
-                  .reduce((tongTien, item) => {
-                    return (tongTien += item.giaVe);
-                  }, 0)
-                  .toLocaleString()}
-              </td>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>

@@ -11,9 +11,11 @@ class Movie_Form extends Component {
       handleSubmit,
       button,
       idClose,
+      guide,
     } = this.props;
+
     return (
-      <form onSubmit={handleSubmit} id="movieForm" className="form-group">
+      <form onSubmit={handleSubmit} className="form-group movieForm">
         <div className="container">
           <div className="row">
             <div
@@ -21,12 +23,13 @@ class Movie_Form extends Component {
               style={{ padding: "1rem", boxShadow: "none" }}
             >
               <div className="mb-3">
+                <div className="text-danger">{guide?.maPhim}</div>
                 <label>Mã phim</label>
                 <input
                   disabled={disabled}
                   type="text"
                   name="maPhim"
-                  id="add_movie_code"
+                  // id="add_movie_code"
                   className="form-control"
                   placeholder
                   aria-describedby="helpId"
@@ -36,11 +39,12 @@ class Movie_Form extends Component {
                 <small className="text-danger">{errors.maPhim}</small>
               </div>
               <div className="mb-3">
+                <div className="text-danger">{guide?.tenPhim}</div>
                 <label>Tên phim</label>
                 <input
                   type="text"
                   name="tenPhim"
-                  id="add_movie_name"
+                  // id="add_movie_name"
                   className="form-control"
                   placeholder
                   aria-describedby="helpId"
@@ -50,11 +54,12 @@ class Movie_Form extends Component {
                 <small className="text-danger">{errors.tenPhim}</small>
               </div>
               <div className="mb-3">
+                <div className="text-danger">{guide?.trailer}</div>
                 <label>Trailer</label>
                 <input
                   type="text"
                   name="trailer"
-                  id="add_movie_trailer"
+                  // id="add_movie_trailer"
                   className="form-control"
                   placeholder
                   aria-describedby="helpId"
@@ -69,11 +74,12 @@ class Movie_Form extends Component {
               style={{ padding: "1rem", boxShadow: "none" }}
             >
               <div className="mb-3">
+                <div className="text-danger">{guide?.ngayKhoiChieu}</div>
                 <label>Ngày khởi chiếu</label>
                 <input
                   type="text"
                   name="ngayKhoiChieu"
-                  id="add_movie_time"
+                  // id="add_movie_time"
                   className="form-control"
                   placeholder="dd/mm/yyyy"
                   // data-date-format="DD/MM/YYYY"
@@ -84,11 +90,12 @@ class Movie_Form extends Component {
                 <small className="text-danger">{errors.ngayKhoiChieu}</small>
               </div>
               <div className="mb-3">
+                <div className="text-danger">{guide?.danhGia}</div>
                 <label>Đánh giá (1-10)</label>
                 <input
                   type="text"
                   name="danhGia"
-                  id="add_movie_mark"
+                  // id="add_movie_mark"
                   className="form-control"
                   placeholder
                   aria-describedby="helpId"
@@ -98,12 +105,13 @@ class Movie_Form extends Component {
                 <small className="text-danger">{errors.danhGia}</small>
               </div>
               <div className="mb-3">
+                <div className="text-danger">{guide?.hinhAnh}</div>
                 <label>Chọn hình ảnh</label>
                 <input
                   type="file"
                   className="form-control-file"
                   name="hinhAnh"
-                  id="add_movie_image"
+                  // id="add_movie_image"
                   placeholder
                   aria-describedby="fileHelpId"
                   onChange={handleChangeMovieInput}
@@ -118,11 +126,12 @@ class Movie_Form extends Component {
             </div>
           </div>
           <div>
+            <div className="text-danger">{guide?.moTa}</div>
             <p>Mô tả</p>
             <textarea
               style={{ width: "100%" }}
               name="moTa"
-              id="add_movie_tell"
+              // id="add_movie_tell"
               cols="30"
               rows="7"
               onChange={handleChangeMovieInput}

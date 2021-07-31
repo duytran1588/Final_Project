@@ -32,12 +32,22 @@ function Movie_content() {
   };
 
   //data for add movie
+  const [guide, setGuide] = useState({
+    maPhim: "(*) Bắt buộc",
+    tenPhim: "(*) Bắt buộc",
+    biDanh: "(*) Bắt buộc",
+    trailer: "(*) Bắt buộc",
+    hinhAnh: "(*) Bắt buộc",
+    moTa: "(*) Bắt buộc",
+    ngayKhoiChieu: "(*) Bắt buộc",
+    danhGia: "(*) Bắt buộc",
+  });
   const [values, setValues] = useState({
     maPhim: "",
     tenPhim: "",
     biDanh: "",
     trailer: "",
-    hinhAnh: {},
+    hinhAnh: "",
     moTa: "",
     maNhom: "GP01",
     ngayKhoiChieu: "",
@@ -70,6 +80,10 @@ function Movie_content() {
         break;
       }
     }
+    console.log(isValid);
+    console.log("values", values);
+    console.log("errors", errors);
+    console.log("guide", guide);
     return isValid;
   };
 
@@ -147,18 +161,21 @@ function Movie_content() {
 
     let newErrors = { ...errors };
 
+    //yêu cầu bắt buộc trên input
+    let newGuide = { ...guide };
+
+    if (value.trim() !== "") {
+      newGuide[name] = "";
+    } else {
+      newGuide[name] = "(*) Bắt buộc";
+    }
+
     //xét lỗi rỗng
     if (value.trim() === "") {
       //loại bỏ các khoảng trắng bằng trim()
       newErrors[name] = "Vui lòng không để trống !";
     } else {
-      if (name == "hinhAnh") {
-        if (newValues.hinhAnh == {}) {
-          newErrors[name] = "Vui lòng chọn hình ảnh";
-        } else {
-          newErrors[name] = "";
-        }
-      } else if (name == "ngayKhoiChieu") {
+      if (name == "ngayKhoiChieu") {
         const reg =
           /^((0[1-9]|[12][0-9]|3[01])(\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\/)(02))|((0[1-9]|[12][0-9]|3[0])(\/)(0[469]|11))(\/)\d{4}$/;
         console.log("date", reg.test(value));
@@ -180,34 +197,36 @@ function Movie_content() {
     }
 
     //note: setState là phương thức bất đồng bộ => hạn chế gọi trong code
-
+    setGuide(newGuide);
     setValues(newValues);
     setErrors(newErrors);
-    // console.log(this.state.values);
+    console.log(values);
   };
 
   const resetFormMovie = () => {
     //set lại values và errors
     let newValues = { ...values };
     let newErrors = { ...errors };
+    let newGuide = { ...guide };
     for (let key in newValues) {
-      if (key === "hinhAnh") {
-        newValues[key] = {};
-      }
+      // if (key === "hinhAnh") {
+      //   newValues[key] = {};
+      // }
       if (key !== "maNhom") {
         newValues[key] = "";
       }
+      // newValues[key] = "";
     }
     for (let key in newErrors) {
       newErrors[key] = "";
     }
-    // this.setState({
-    //   values: newValues,
-    //   errors: newErrors,
-    // });
+    for (let key in newGuide) {
+      newGuide[key] = "(*) Bắt buộc";
+    }
+    setGuide(newGuide);
     setValues(newValues);
     setErrors(newErrors);
-    document.getElementById("movieForm").reset(); //mất hình ảnh đã chọn khi thêm movie lần trước
+    document.getElementsByClassName("movieForm")[0].reset(); //mất hình ảnh đã chọn khi thêm movie lần trước
   };
 
   //for edit movie
@@ -661,6 +680,7 @@ function Movie_content() {
         errors={errors}
         button={"Thêm"}
         idClose={"btn_close_add_modal"}
+        guide={guide}
       />
 
       <EditMovieModal
@@ -672,6 +692,7 @@ function Movie_content() {
         disabled={"true"}
         button={"Cập nhật"}
         idClose={"btn_close_edit_modal"}
+        guide={guide}
       />
     </>
   );

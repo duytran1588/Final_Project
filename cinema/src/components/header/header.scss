@@ -41,14 +41,16 @@
                     }
                 }
             }
-            li:first-child,
-            li:nth-child(2) {
+            li:nth-child(2),
+            li:nth-child(1) {
                 visibility: collapse;
-                transition: 1s;
+                transition: 2s;
             }
-            li:nth-child(7) {
+            li.signOutButton,
+            li.gioHang {
                 //xử lý cho nút đăng xuất
-                display: none;
+                visibility: collapse;
+                transition: 2s;
             }
         }
         font-family: semibold;
@@ -98,13 +100,13 @@
 }
 
 //for responsive
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1250px) {
     .login_location {
         display: none !important;
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1250px) {
     .navbar {
         height: 4rem;
         .brand-title {
@@ -138,7 +140,13 @@
                     a {
                         overflow: hidden; //khi ô thu nhỏ lại chữ ko bị xuống hàng
                         white-space: nowrap; //ô thu nhỏ chũ ko bị xuống hàng
-                        @include text($color-white-0!important, $fs-2, $fw-bold-0);
+                        @include text($color-white-0, $fs-2, $fw-bold-0);
+                    }
+                }
+                li.gioHang {
+                    a {
+                        color: red !important;
+                        font-family: bold;
                     }
                 }
             }
@@ -157,8 +165,9 @@
             li:nth-child(2) {
                 visibility: visible;
             }
-            li:nth-child(7) {
-                display: block;
+            li.signOutButton,
+            li.gioHang {
+                visibility: visible;
             }
             li {
                 padding: 10px 2rem 10px 0;

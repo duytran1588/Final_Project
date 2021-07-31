@@ -13,6 +13,7 @@ import logo from "./logo/tix_logo.png";
 import admin from "./logo/server_admin.png";
 import { SIGN_IN } from "../../stores/constants/movie.const";
 import { Link } from "react-scroll";
+import GioHang from "./gioHang";
 
 class Header extends Component {
   getUserFromLocal = () => {
@@ -76,7 +77,7 @@ class Header extends Component {
       chevronRight.style.visibility = "collapse";
     }
 
-    setTimeout(this.handleHideToggleHeader, 200);
+    setTimeout(this.handleHideToggleHeader, 300);
   };
 
   handleSignOut = () => {
@@ -101,7 +102,7 @@ class Header extends Component {
   };
 
   render() {
-    const { classes, user } = this.props; //sau khi import withStyle và headerStyle => xuất hiện props classes
+    const { classes, user, gioHang, ticket_info } = this.props; //sau khi import withStyle và headerStyle => xuất hiện props classes
 
     let renderUserToggle;
     if (user) {
@@ -116,6 +117,19 @@ class Header extends Component {
               />
               <span className="text-success">{user.taiKhoan}</span>
             </NavLink>
+          </li>
+          <li className="gioHang" onClick={this.handleHideToggle}>
+            <a
+              data-toggle="modal"
+              href="#booking_ticket_info"
+              className="ml-3 text-danger"
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
+              <FontAwesomeIcon icon="shopping-cart" /> ({gioHang?.length})
+            </a>
           </li>
         </>
       );
@@ -135,6 +149,18 @@ class Header extends Component {
               {user.taiKhoan}
             </span>
           </NavLink>
+          <a
+            // onClick={this.handleSignOut}
+            data-toggle="modal"
+            href="#booking_ticket_info"
+            className="ml-3 text-danger"
+            style={{
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+          >
+            <FontAwesomeIcon icon="shopping-cart" /> ({gioHang?.length})
+          </a>
           <a
             onClick={this.handleSignOut}
             className="ml-3 text-danger"
@@ -208,7 +234,7 @@ class Header extends Component {
                 </Link>
               </li>
               {user ? (
-                <li onClick={this.signOut_hideToggle}>
+                <li className="signOutButton" onClick={this.signOut_hideToggle}>
                   <NavLink to="/">
                     <span className="text-danger">Đăng xuất</span>
                   </NavLink>
@@ -237,6 +263,7 @@ class Header extends Component {
             </li>
           </ul>
         </nav>
+        <GioHang gioHang={gioHang} ticket_info={ticket_info} />
       </>
     );
   }
@@ -245,6 +272,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.cinemaReducer.userLogin,
+    gioHang: state.cinemaReducer.store.tickets,
+    ticket_info: state.cinemaReducer.store.cinema_info,
   };
 };
 

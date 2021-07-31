@@ -59,7 +59,7 @@ function UserProfile() {
           <div className="mb-5">
             <button
               type="button"
-              class="btn btn-danger "
+              className="btn btn-danger "
               data-toggle="collapse"
               data-target="#trade_detail"
             >

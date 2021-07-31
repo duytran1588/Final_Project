@@ -61,7 +61,7 @@ class SignUpModal extends Component {
         </div>
         <div className="row">
           <div className="col-12">
-            <div class="group">
+            <div className="group">
               <input
                 // id="userPhoneNumber"
                 value={values.soDt}
@@ -79,7 +79,7 @@ class SignUpModal extends Component {
         </div>
         <div className="row">
           <div className="col-12">
-            <div class="group">
+            <div className="group">
               <input
                 // id="userEmailAccount"
                 value={values.email}
@@ -102,7 +102,7 @@ class SignUpModal extends Component {
           <div className="row">
             <div className="col-12">
               <div className="group">
-                <div class="form-group">
+                <div className="form-group">
                   <h4
                     style={{
                       color: "#999",
@@ -115,7 +115,7 @@ class SignUpModal extends Component {
                   <select
                     onChange={handleChangeValue}
                     style={{ fontSize: "20px", color: "black" }}
-                    class="custom-select"
+                    className="custom-select"
                     name="maLoaiNguoiDung"
                     
                     value={values.maLoaiNguoiDung}
@@ -133,7 +133,7 @@ class SignUpModal extends Component {
 
         <div className="row">
           <div className="col-12">
-            <div class="group">
+            <div className="group">
               <input
                 // id="userPassAccount"
                 value={values.matKhau}

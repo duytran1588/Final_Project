@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalVideo from "react-modal-video";
+import GioHang from "../../../components/header/gioHang";
 
 class Carousel extends Component {
   state = {
@@ -61,7 +62,7 @@ class Carousel extends Component {
         <div className="carousel">
           <Slider {...settings}>
             {this.state.carousel_list.map((item, index) => {
-              const trailerId = this.getTrailerId(item.trailer)
+              const trailerId = this.getTrailerId(item.trailer);
               return (
                 <div key={index}>
                   <img src={item.hinhAnh} />

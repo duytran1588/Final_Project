@@ -16,6 +16,10 @@ const initialState = {
   calendarMovie: null, //bao gồm luôn thông tin phim, danh sách ghế,
   chairList: null,
   choiceChairList: null,
+  store: {
+    tickets: [],
+    cinema_info: {},
+  },
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -33,6 +37,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state };
     case SIGN_OUT:
       state.userLogin = null;
+      state.store.tickets = [];
+      state.store.cinema_info = {};
       return { ...state };
     case UPDATE_USER:
       state.userProfile = {
@@ -66,17 +72,21 @@ export default (state = initialState, { type, payload }) => {
       return { ...state };
 
     case BOOKING_TICKET:
-      //payload la mang cho choiceChairList.dangChon = false;
       let newChoiceChairList = [...state.choiceChairList];
       for (let i = 0; i < newChoiceChairList.length; i++) {
-        newChoiceChairList[i].dangChon = false;
+        newChoiceChairList[i].dangChon = false; //cho các ghê đang chọn ở component mất màu xanh
       }
       state.choiceChairList = newChoiceChairList;
+
+      //gán choiceChairList cho gioHang để render trên header
+      state.store.tickets = [...state.choiceChairList];
+      state.store.cinema_info = { ...state.calendarMovie };
 
       //duyệt từng chair trong mảng payload so sánh với chairList
       let newChairListUpdate = [...state.chairList];
 
       for (let i = 0; i < payload.length; i++) {
+        //tìm trong chairlist ghế nào có mã trùng với payload[i] thì chuyển sang daDat=true
         const index = newChairListUpdate.findIndex((chair) => {
           return chair.maGhe === payload[i].maGhe;
         });
@@ -84,6 +94,7 @@ export default (state = initialState, { type, payload }) => {
           newChairListUpdate[index].daDat = true;
         }
       }
+      // state.gioHang =
 
       //cho choiceChairList = null để refresh thông tin vé sau mỗi lần đặt
       state.choiceChairList = null;

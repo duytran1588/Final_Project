@@ -10,30 +10,31 @@ function AddMovieModal(props) {
     errors,
     button,
     idClose,
+    guide
   } = props;
   return (
     <>
       <div
-        class="modal fade"
+        className="modal fade"
         id="addMovieModal"
-        tabindex="-1"
+        // tabindex="-1"
         role="dialog"
         aria-labelledby="modelTitleId"
         aria-hidden="true"
         style={{ padding: 0 }}
       >
-        <div class="modal-dialog" style={{ maxWidth: "600px" }} role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Thêm phim</h5>
+        <div className="modal-dialog" style={{ maxWidth: "600px" }} role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Thêm phim</h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
                   const btn_close_movie_modal = document.getElementById(
-                    "btn_close_movie_modal"
+                    idClose
                   );
                   if (btn_close_movie_modal) {
                     btn_close_movie_modal.click();
@@ -43,7 +44,7 @@ function AddMovieModal(props) {
                 <span aria-hidden="true">+</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               {/* form-group */}
               <Movie_Form
                 handleSubmit={handleSubmit}
@@ -53,6 +54,7 @@ function AddMovieModal(props) {
                 errors={errors}
                 button={button}
                 idClose={idClose}
+                guide={guide}
               />
             </div>
           </div>
