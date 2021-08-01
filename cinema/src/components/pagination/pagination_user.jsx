@@ -19,16 +19,16 @@ function Pagination_User({
   //viết hàm dàn pagination
   const render_User_Pagination = () => {
     return pageNumbers.map((number, index) => {
-      if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
-        //thử thêm dấu "="
-        //ví dụ trong lần đầu tiên number của ô chuyển trang nằm trong khoảng từ 1 đến 12 + 1
-        //lần thứ 2 number trong khoảng từ 10 đên 21 + 1
+      if (
+        number < maxPageNumberLimit + 1 &&
+        number > minPageNumberLimit &&
+        index < pageNumbers.length - 1
+      ) {
         return (
           <li
             key={index}
             id={`pageUser_${number}`}
             style={{ cursor: "pointer" }}
-            key={number}
             className="page-item"
           >
             <a
@@ -48,6 +48,29 @@ function Pagination_User({
         return null;
       }
     });
+  };
+
+  //viết hàm dàn pagination last
+  const render_Last_Pagination = () => {
+    const number = pageNumbers[pageNumbers.length - 1];
+    return (
+      <li
+        id={`pageUser_${number}`}
+        style={{ cursor: "pointer" }}
+        key={number}
+        className="page-item"
+      >
+        <a
+          id={`aUser_${number}`}
+          onClick={() => paginate(number)}
+          className={`page-link ${
+            currentPage == number ? "pagination_active" : ""
+          } `}
+        >
+          {number}
+        </a>
+      </li>
+    );
   };
 
   let pageIncrementBtn = null;
@@ -119,6 +142,7 @@ function Pagination_User({
         {pageDecrementBtn}
         {render_User_Pagination()}
         {pageIncrementBtn}
+        {render_Last_Pagination()}
         <li
           id="pageUser_Next"
           style={{
@@ -142,23 +166,6 @@ function Pagination_User({
             Next
           </a>
         </li>
-
-        {/* Them last pagination */}
-        {/* <li
-          className="page-item"
-          style={{
-            cursor: `${currentPage === pageNumbers[pageNumbers.length - 1] ? "default" : "pointer"}`,
-          }}
-        >
-          <a
-            className={`page-link ${
-              currentPage === pageNumbers[pageNumbers.length - 1] ? "disable_pagination" : ""
-            }`}
-            onClick={() => paginateTarget("last")}
-          >
-            Last
-          </a>
-        </li> */}
       </ul>
     </nav>
   );

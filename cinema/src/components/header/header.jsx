@@ -64,6 +64,9 @@ class Header extends Component {
   };
 
   //nhấn mũi tên để back lại toggle button
+  handleHome = () => {
+    this.props.history.push("/");
+  };
 
   handleHideToggle = () => {
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
@@ -78,6 +81,7 @@ class Header extends Component {
     }
 
     setTimeout(this.handleHideToggleHeader, 300);
+    this.handleHome();
   };
 
   handleSignOut = () => {
@@ -214,22 +218,42 @@ class Header extends Component {
               {/* muốn lưu dữ liệu trên header mỗi khi refresh trang cần xử lý thêm ở app.js */}
 
               <li>
-                <Link onClick={this.handleHideToggle} to="schedule">
+                <Link
+                  onClick={this.handleHideToggle}
+                  to="schedule"
+                  smooth={true}
+                  duration={1000}
+                >
                   Lịch Chiếu
                 </Link>
               </li>
               <li>
-                <Link onClick={this.handleHideToggle} to="intro">
+                <Link
+                  onClick={this.handleHideToggle}
+                  to="intro"
+                  smooth={true}
+                  duration={1000}
+                >
                   Cụm Rạp
                 </Link>
               </li>
               <li>
-                <Link onClick={this.handleHideToggle} to="intro">
+                <Link
+                  onClick={this.handleHideToggle}
+                  to="intro"
+                  smooth={true}
+                  duration={1000}
+                >
                   Tin Tức
                 </Link>
               </li>
               <li>
-                <Link onClick={this.handleHideToggle} to="homeApp">
+                <Link
+                  onClick={this.handleHideToggle}
+                  to="homeApp"
+                  smooth={true}
+                  duration={1000}
+                >
                   Ứng Dụng
                 </Link>
               </li>

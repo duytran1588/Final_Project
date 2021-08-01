@@ -2,7 +2,6 @@ import React from "react";
 
 function GioHang(props) {
   const { ticket_info, gioHang } = props;
-  console.log(ticket_info);
   return (
     <div className="modal fade" id="booking_ticket_info">
       <div className="modal-dialog">

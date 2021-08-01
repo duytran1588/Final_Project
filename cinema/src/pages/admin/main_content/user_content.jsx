@@ -19,9 +19,9 @@ class User_content extends Component {
     postsPerPage: 10, //10 user trên 1 trang
     currentPage: 1, //trang hiện hành
     pageNumberLimit: 7, //mỗi lần mở ra thêm 7 ô chuyển trang
-    maxPageNumberLimit: 11, //số ô chuyển trang tối đa trong 1 lần mở
+    maxPageNumberLimit: 10, //số ô chuyển trang tối đa trong 1 lần mở
     minPageNumberLimit: 0,
-    min_max_differ: 11,
+    min_max_differ: 10,
     userSearch: "",
 
     maxPageNumberLimit_search: 5,
@@ -202,7 +202,6 @@ class User_content extends Component {
   };
 
   getUserPageList = async () => {
-    console.log("getUserPageList");
     this.props.dispatch(startLoadingAction());
     const res = await axios.get(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01"
@@ -362,15 +361,17 @@ class User_content extends Component {
     });
   };
   renderUserPageList = () => {
-    console.log("rerenderUserPageList");
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
-    let currentPosts = this.state.posts?.slice(
-      indexOfFirstPost,
-      indexOfLastPost
-    );
+    //tạo mảng mới từ state;
+    let newPosts = [...this.state.posts];
+    for (let i = 0; i < newPosts.length; i++) {
+      newPosts[i]["STT"] = i + 1;
+    }
 
-    return currentPosts?.map((user, index) => {
+    let newCurrentPosts = newPosts?.slice(indexOfFirstPost, indexOfLastPost);
+
+    return newCurrentPosts?.map((user, index) => {
       return (
         <tr key={index}>
           <td id="choose_checkbox" style={{ display: "none", width: "6rem" }}>
@@ -380,7 +381,7 @@ class User_content extends Component {
               defaultValue="checkedValue"
             />
           </td>
-          <td>{index + 1}</td>
+          <td>{user.STT}</td>
           <td>
             {user?.taiKhoan.length > 10
               ? user.taiKhoan.substring(0, 9) + " ..."
@@ -427,6 +428,7 @@ class User_content extends Component {
     this.setState({
       currentPage: pageNumber,
     });
+
   };
   paginate_search = (pageNumber) => {
     this.setState({
@@ -441,23 +443,26 @@ class User_content extends Component {
       maxPageNumberLimit,
       minPageNumberLimit,
       pageNumberLimit,
+      
     } = this.state;
     if (btnArrow === "prev") {
       this.setState({
         currentPage: currentPage - 1,
       });
-      if ((currentPage - 1) % pageNumberLimit == 0) {
+      console.log(minPageNumberLimit);
+
+      //nếu trang hiện tại trừ đi 1 trang mà bằng với minPageNumberLimit thì set lại maxPageNumberLimit và minPageNumberLimit mới
+      if (currentPage - 1 == minPageNumberLimit) {
         this.setState({
           maxPageNumberLimit: maxPageNumberLimit - pageNumberLimit,
           minPageNumberLimit: minPageNumberLimit - pageNumberLimit,
         });
       }
-      console.log(minPageNumberLimit);
-      console.log(maxPageNumberLimit);
     } else {
       this.setState({
         currentPage: currentPage + 1,
       });
+      console.log(minPageNumberLimit);
       if (currentPage + 1 > maxPageNumberLimit) {
         this.setState({
           maxPageNumberLimit: maxPageNumberLimit + pageNumberLimit,
@@ -506,7 +511,7 @@ class User_content extends Component {
     if (target == "first") {
       this.setState({
         currentPage: 1,
-        maxPageNumberLimit: 11,
+        maxPageNumberLimit: 10,
         minPageNumberLimit: 0,
       });
     } else {
@@ -607,11 +612,17 @@ class User_content extends Component {
     const indexOfLastPost =
       this.state.currentPage_search * this.state.postsPerPage;
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
-    const currentPosts = this.state.userFind?.slice(
+
+    let newUserFind = [...this.state.userFind];
+    for (let i = 0; i < newUserFind.length; i++) {
+      newUserFind[i]["STT"] = i + 1;
+    }
+
+    const newCurrentPosts = newUserFind.slice(
       indexOfFirstPost,
       indexOfLastPost
     );
-    return currentPosts?.map((user, index) => {
+    return newCurrentPosts?.map((user, index) => {
       return (
         <tr key={index}>
           <td id="choose_checkbox" style={{ display: "none", width: "6rem" }}>
@@ -621,7 +632,7 @@ class User_content extends Component {
               defaultValue="checkedValue"
             />
           </td>
-          <td>{index + 1}</td>
+          <td>{user.STT}</td>
           <td>
             {user?.taiKhoan.length > 10
               ? user.taiKhoan.substring(0, 9) + " ..."
