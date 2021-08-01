@@ -46,15 +46,19 @@
                                     font-family: semibold;
                                     padding: 10px;
                                     border: solid $color-black-3 1px;
-                                    > tr {
-                                        // border-bottom: solid 1px $color-black-3;
-                                        display: block;
-                                        height: 3rem;
-                                        width: 100%;
-                                        display: flex;
-                                        align-items: center;
-                                        td {
-                                            padding: 10px;
+                                    table {
+                                        tbody {
+                                            tr {
+                                                // border-bottom: solid 1px $color-black-3;
+                                                display: block;
+                                                height: 3rem;
+                                                width: 100%;
+                                                display: flex;
+                                                align-items: center;
+                                                td {
+                                                    padding: 10px;
+                                                }
+                                            }
                                         }
                                     }
                                 }

@@ -25,10 +25,14 @@ function Trade_2(props) {
                   <td>
                     {item.danhSachGhe.map((ghe, index) => {
                       return (
-                        <table key={index}>
-                          <tr>
-                            <td>{ghe.tenHeThongRap}</td>
-                          </tr>
+                        <table style={{ border: "none" }} key={index}>
+                          <tbody style={{ border: "none" }}>
+                            <tr style={{ border: "none" }}>
+                              <td style={{ border: "none" }}>
+                                {ghe.tenHeThongRap}
+                              </td>
+                            </tr>
+                          </tbody>
                         </table>
                       );
                     })}

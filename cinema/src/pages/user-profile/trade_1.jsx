@@ -24,9 +24,13 @@ function Trade_1(props) {
                     {item.danhSachGhe.map((ghe, index) => {
                       return (
                         <table key={index}>
-                          <tr>
-                            <td>{ghe.tenHeThongRap}</td>
-                          </tr>
+                          <tbody style={{ border: "none" }}>
+                            <tr style={{ border: "none" }}>
+                              <td style={{ border: "none" }}>
+                                {ghe.tenHeThongRap}
+                              </td>
+                            </tr>
+                          </tbody>
                         </table>
                       );
                     })}
@@ -34,10 +38,14 @@ function Trade_1(props) {
                   <td>
                     {item.danhSachGhe.map((ghe, index) => {
                       return (
-                        <table key={index}>
-                          <tr>
-                            <td>{ghe.tenCumRap}</td>
-                          </tr>
+                        <table style={{ border: "none" }} key={index}>
+                          <tbody style={{ border: "none" }}>
+                            <tr style={{ border: "none" }}>
+                              <td style={{ border: "none" }}>
+                                {ghe.tenCumRap}
+                              </td>
+                            </tr>
+                          </tbody>
                         </table>
                       );
                     })}
@@ -45,10 +53,12 @@ function Trade_1(props) {
                   <td>
                     {item.danhSachGhe.map((ghe, index) => {
                       return (
-                        <table key={index}>
-                          <tr>
-                            <td>{ghe.tenGhe}</td>
-                          </tr>
+                        <table style={{ border: "none" }} key={index}>
+                          <tbody style={{ border: "none" }}>
+                            <tr style={{ border: "none" }}>
+                              <td style={{ border: "none" }}>{ghe.tenGhe}</td>
+                            </tr>
+                          </tbody>
                         </table>
                       );
                     })}
