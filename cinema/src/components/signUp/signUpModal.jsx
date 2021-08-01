@@ -11,7 +11,6 @@ class SignUpModal extends Component {
       button,
       resetInputForm,
       idClose,
-      // idType,
       disabled,
     } = this.props;
     return (
@@ -35,7 +34,7 @@ class SignUpModal extends Component {
               />
               <span className="highlight" />
               <span className="bar" />
-              <label>{button==="Cập nhật" ? "" : "Tài khoản"}</label>
+              <label>{button === "Cập nhật" ? "" : "Tài khoản"}</label>
               <span className="text-danger">{errors.taiKhoan}</span>
             </div>
           </div>
@@ -117,7 +116,6 @@ class SignUpModal extends Component {
                     style={{ fontSize: "20px", color: "black" }}
                     className="custom-select"
                     name="maLoaiNguoiDung"
-                    
                     value={values.maLoaiNguoiDung}
                   >
                     <option value="KhachHang">KhachHang</option>

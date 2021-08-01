@@ -13,6 +13,7 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+
 function MovieDetail() {
   const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ function MovieDetail() {
   const movie_detail = useSelector((state) => {
     return state.movieReducer.movie_detail;
   });
-  console.log(movie_detail);
+
   //lay param tren url về
   const { maPhim } = useParams();
 
@@ -252,6 +253,7 @@ function MovieDetail() {
         </div>
       </section>
       <Cinema_Schedule movie_detail={movie_detail} />
+     
       <ModalVideo
         channel="youtube"
         isOpen={control}

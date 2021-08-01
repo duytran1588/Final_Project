@@ -181,7 +181,6 @@ class Show_Time extends Component {
   }
   componentDidMount() {
     const maPhim = this.props.match.params.maPhim;
-    console.log(maPhim);
     this.props.dispatch(getShowTimeList(maPhim));
   }
 }

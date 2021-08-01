@@ -31,7 +31,6 @@ class Movie_Form extends Component {
                   name="maPhim"
                   // id="add_movie_code"
                   className="form-control"
-                  placeholder
                   aria-describedby="helpId"
                   onChange={handleChangeMovieInput}
                   value={values.maPhim}
@@ -46,7 +45,6 @@ class Movie_Form extends Component {
                   name="tenPhim"
                   // id="add_movie_name"
                   className="form-control"
-                  placeholder
                   aria-describedby="helpId"
                   onChange={handleChangeMovieInput}
                   value={values.tenPhim}
@@ -61,7 +59,6 @@ class Movie_Form extends Component {
                   name="trailer"
                   // id="add_movie_trailer"
                   className="form-control"
-                  placeholder
                   aria-describedby="helpId"
                   onChange={handleChangeMovieInput}
                   value={values.trailer}
@@ -95,9 +92,7 @@ class Movie_Form extends Component {
                 <input
                   type="text"
                   name="danhGia"
-                  // id="add_movie_mark"
                   className="form-control"
-                  placeholder
                   aria-describedby="helpId"
                   onChange={handleChangeMovieInput}
                   value={values.danhGia}
@@ -112,7 +107,7 @@ class Movie_Form extends Component {
                   className="form-control-file"
                   name="hinhAnh"
                   // id="add_movie_image"
-                  placeholder
+
                   aria-describedby="fileHelpId"
                   onChange={handleChangeMovieInput}
                 />

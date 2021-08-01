@@ -11,8 +11,6 @@ function Show_Time_Modal(props) {
   const [cinema_system_list, setCinema_system_list] = useState([]);
   //data cụm rạp
   const [cinema_brand, setCinemaBrand] = useState([]);
-  //data tên rạp của mỗi cụm rạp
-  const [cinema_number_list, setCinemaNumber_list] = useState([]);
 
   //data để submit thêm lịch chiếu
   const [showTimeData, setShowTimeData] = useState({
@@ -37,9 +35,10 @@ function Show_Time_Modal(props) {
     time: "(*) Bắt buộc",
   });
 
+  const [isMounted, setIsMounted] = useState(true);
+
   //call api lấy danh sách hệ thống rạp
   const getCinemaSystemList = async () => {
-    console.log(showTimeData);
     try {
       const res = await axios({
         method: "GET",
@@ -71,7 +70,7 @@ function Show_Time_Modal(props) {
 
       //tìm xem hệ thống rạp đang ở cụm rạp nào, lấy value => dom tới id có value tương ứng gán active
       const valueCinemaSystem =
-        document.getElementById("cinemaSystemChoice").value;
+        document.getElementById("cinemaSystemChoice")?.value;
 
       //các thẻ a trung gian đang active được bỏ active
       document
@@ -164,23 +163,22 @@ function Show_Time_Modal(props) {
         break;
       }
     }
-    console.log(isValid);
+
     for (let key in showTimeErrors) {
       if (showTimeErrors[key] !== "") {
         isValid = false;
         break;
       }
     }
-    console.log(isValid);
+
     return isValid;
   };
 
   const handleAddShowTime = (e) => {
     e.preventDefault();
-    console.log(showTimeData);
-    console.log(showTimeErrors);
+
     const isValid = checkValidShowtime();
-    console.log(isValid);
+
     if (!isValid) {
       Swal.fire({
         title: "Thông tin của Bạn chưa đúng",
@@ -207,7 +205,7 @@ function Show_Time_Modal(props) {
           maRap: showTimeData.cinema,
           giaVe: showTimeData.price,
         };
-        console.log(showTimeInfo);
+
         axios({
           method: "POST",
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu",
@@ -302,16 +300,19 @@ function Show_Time_Modal(props) {
     for (let key in newShowTimeErrors) {
       newShowTimeErrors[key] = "";
     }
-    console.log(newShowTimeData);
-    console.log(newShowTimeErrors);
+
     setShowTimeErrors(newShowTimeErrors);
     setShowTimeData(newShowTimeData);
   };
 
   useEffect(() => {
-    getCinemaSystemList();
-    console.log("maHeThongRap", cinema_system_list);
-    // getCinemaSystemBrand(value);
+    if (isMounted) {
+      getCinemaSystemList();
+    }
+    return () => { //khi unmount
+      setIsMounted(false);
+      console.log(isMounted);
+    };
   }, []);
   return (
     <div className="modal fade" style={{ padding: 0 }} id="addShowTime">
@@ -333,7 +334,7 @@ function Show_Time_Modal(props) {
             </button>
           </div>
           {/* Modal body */}
-          <div classname="modal-body">
+          <div className="modal-body">
             <form
               onSubmit={handleAddShowTime}
               id="ShowTimeForm"
@@ -352,13 +353,13 @@ function Show_Time_Modal(props) {
                         //onchange vừa đổi data trên state vừa gọi api với mã tương ứng lấy cụm rạp
                         style={{ fontSize: "20px", color: "black" }}
                         className="custom-select"
-                        name
-
-                        // value={values.maLoaiNguoiDung}
                       >
                         {cinema_system_list.map((cinema, index) => {
                           return (
-                            <option key={index} value={cinema.maHeThongRap}>
+                            <option
+                              key={`cinema_${index}`}
+                              value={cinema.maHeThongRap}
+                            >
                               {cinema.tenHeThongRap}
                             </option>
                           );
@@ -376,6 +377,7 @@ function Show_Time_Modal(props) {
                         {cinema_brand.map((cinema, index) => {
                           return (
                             <optgroup
+                              key={`cinema_2_${index}`}
                               className={`tab-pane ${
                                 index === 0 ? "active" : "fade"
                               }`}
@@ -385,7 +387,10 @@ function Show_Time_Modal(props) {
                             >
                               {cinema.danhSachRap.map((rap, index) => {
                                 return (
-                                  <option key={index} value={rap.maRap}>
+                                  <option
+                                    key={`rap_${index}`}
+                                    value={rap.maRap}
+                                  >
                                     {rap.tenRap}
                                   </option>
                                 );
@@ -420,7 +425,6 @@ function Show_Time_Modal(props) {
                         type="text"
                         name="price"
                         className="form-control"
-                        placeholder
                         aria-describedby="helpId"
                         onChange={handleChangeShowTime}
                         value={showTimeData.price}
@@ -447,7 +451,7 @@ function Show_Time_Modal(props) {
                           {cinema_brand.map((brand, index) => {
                             return (
                               <option
-                                key={index}
+                                key={`brand_${index}`}
                                 // name={brand.danhSachRap}
                                 value={brand.maCumRap}
                               >
@@ -469,7 +473,6 @@ function Show_Time_Modal(props) {
                         type="text"
                         name="duration"
                         className="form-control"
-                        placeholder
                         aria-describedby="helpId"
                         onChange={handleChangeShowTime}
                         value={showTimeData.duration}
@@ -532,9 +535,9 @@ function Show_Time_Modal(props) {
             <ul className="tab_control_link" style={{ display: "none" }}>
               {cinema_brand.map((cinema, index) => {
                 return (
-                  <li>
+                  <li key={`cinema_3${index}`}>
                     <a
-                      class={`nav-link ${index === 0 ? "active" : ""}`}
+                      className={`nav-link ${index === 0 ? "active" : ""}`}
                       id={cinema.maCumRap}
                       label={cinema.tenCumRap}
                       key={index}

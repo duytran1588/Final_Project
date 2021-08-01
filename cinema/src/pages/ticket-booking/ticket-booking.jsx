@@ -74,7 +74,7 @@ class TicketBooking extends Component {
 
     for (let i = 0; i < alphabet.length; i++) {
       items.push(
-        <div className="col-12 chair alphabet mb-2 ml-2">
+        <div key={`alphabet_${i}`} className="col-12 chair alphabet mb-2 ml-2">
           <button
             // disabled="true"
             style={{ width: "3rem", cursor: "default" }}
@@ -95,7 +95,7 @@ class TicketBooking extends Component {
     if (chairList) {
       for (let i = begin; i < length; i++) {
         items.push(
-          <div className={`${column} chair mb-2 ml-2`}>
+          <div key={chairList[i].maGhe} className={`${column} chair mb-2 ml-2`}>
             <button
               onClick={() => {
                 this.handleChairChoice(chairList[i]);
@@ -126,7 +126,7 @@ class TicketBooking extends Component {
     if (chairList) {
       for (let i = 108; i < chairList.length; i++) {
         items.push(
-          <div className="col-3 chair mb-2 ml-2">
+          <div key={chairList[i].maGhe} className="col-3 chair mb-2 ml-2">
             <button
               onClick={() => {
                 this.handleChairChoice(chairList[i]);
@@ -285,7 +285,7 @@ class TicketBooking extends Component {
                     <tbody>
                       {choiceChairList?.map((chair, index) => {
                         return (
-                          <tr key={index}>
+                          <tr key={chair.maGhe}>
                             <td>{index + 1}</td>
                             <td>{chair.tenGhe}</td>
                             <td>{chair.giaVe.toLocaleString()}</td>
@@ -333,7 +333,6 @@ class TicketBooking extends Component {
   }
   componentDidMount() {
     const maLichChieu = this.props.match.params.maLichChieu;
-    console.log(maLichChieu);
     this.props.dispatch(getMovieCalendar(maLichChieu));
   }
 }

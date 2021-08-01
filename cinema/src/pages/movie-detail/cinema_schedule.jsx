@@ -33,7 +33,10 @@ function Cinema_Schedule(props) {
                 mỗi li sẽ có thêm function chooseCinema */}
                 {movie_detail?.heThongRapChieu.map((cinema, index) => {
                   return (
-                    <li key={index} className="nav-item cinema__icon">
+                    <li
+                      key={cinema.maHeThongRap}
+                      className="nav-item cinema__icon"
+                    >
                       {/* gán active cho phần tử đầu tiên của cột 1 */}
                       <a
                         className={`nav-link ${index === 0 ? "active" : ""}`}
@@ -61,16 +64,12 @@ function Cinema_Schedule(props) {
                 return (
                   <ul
                     id={cinema.maHeThongRap}
-                    key={index}
+                    key={cinema.tenHeThongRap}
                     className={`tab-pane ${index === 0 ? "active" : ""}`}
                   >
                     {cinema.cumRapChieu.map((cumRap, index) => {
                       return (
-                        <li
-                          // data-toggle="collapse"
-                          key={index}
-                          // data-target="#film__time"
-                        >
+                        <li key={cumRap.maCumRap}>
                           {/*collapse in bootstrap 4*/}
                           <div className="row">
                             <div className="col-3">
@@ -96,11 +95,12 @@ function Cinema_Schedule(props) {
                                 {cumRap.lichChieuPhim.map(
                                   (lichChieu, index) => {
                                     return (
-                                      // <div className="row">
-                                      <div className="day_time_show">
+                                      <div
+                                        key={lichChieu.maLichChieu}
+                                        className="day_time_show"
+                                      >
                                         <a
                                           style={{ cursor: "pointer" }}
-                                          key={index}
                                           onClick={() =>
                                             handle_booking(
                                               lichChieu.maLichChieu

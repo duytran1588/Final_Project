@@ -63,7 +63,6 @@ export const searchMovie = (movieName) => {
         method: "GET",
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${movieName}`,
       });
-      // console.log(res.data);
       dispatch({
         type: SEARCH_MOVIE,
         payload: res.data,

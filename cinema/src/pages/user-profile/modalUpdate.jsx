@@ -11,7 +11,6 @@ function ModalUpdate(props) {
   const { userProfile } = props;
   const dispatch = useDispatch();
   const getDataFromUserLogin = () => {
-    console.log("getdata");
     document.getElementById("userFullName").defaultValue = userProfile?.hoTen;
     document.getElementById("user_Account").defaultValue =
       userProfile?.taiKhoan;
@@ -125,8 +124,6 @@ function ModalUpdate(props) {
       maLoaiNguoiDung: "KhachHang",
     };
 
-    console.log("account", account.values);
-
     //nếu valid = true => ra thông báo xác nhận
     Swal.fire({
       title: "Bạn chắc chắn muốn cập nhật thông tin?",
@@ -165,7 +162,7 @@ function ModalUpdate(props) {
               <div className="form-group">
                 <Form_group_input
                   // dung defaultValue de type trong input (TH da duoc binding)
-                 
+
                   label={"Họ Tên"}
                   name={"hoTen"}
                   type={"text"}
@@ -181,7 +178,8 @@ function ModalUpdate(props) {
                   handleChange={handleChange}
                   error={account.errors.taiKhoan}
                   id="user_Account"
-                  disabled="true"
+                  // disabled="true"
+                  disabled
                 />
 
                 <Form_group_input
@@ -229,7 +227,6 @@ function ModalUpdate(props) {
               id="btn_cancel"
               onClick={() => {
                 getDataFromUserLogin();
-                console.log("hủy");
               }}
             >
               Hủy

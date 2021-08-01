@@ -80,10 +80,7 @@ function Movie_content() {
         break;
       }
     }
-    console.log(isValid);
-    console.log("values", values);
-    console.log("errors", errors);
-    console.log("guide", guide);
+
     return isValid;
   };
 
@@ -109,8 +106,8 @@ function Movie_content() {
         let form_data = new FormData();
         for (let key in values) {
           form_data.append(key, values[key]);
-          // console.log(key, form_data.get(key));
         }
+
         //call api
         axios({
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
@@ -118,7 +115,7 @@ function Movie_content() {
           data: form_data,
         })
           .then((res) => {
-            console.log(res.data);
+            console.log(res);
             //tắt modal
             const btn_close_movie_modal = document.getElementById(
               "btn_close_add_modal"
@@ -178,7 +175,7 @@ function Movie_content() {
       if (name == "ngayKhoiChieu") {
         const reg =
           /^((0[1-9]|[12][0-9]|3[01])(\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\/)(02))|((0[1-9]|[12][0-9]|3[0])(\/)(0[469]|11))(\/)\d{4}$/;
-        console.log("date", reg.test(value));
+
         if (!reg.test(value)) {
           newErrors[name] = "Định dạng ngày chưa đúng";
         } else {
@@ -200,7 +197,6 @@ function Movie_content() {
     setGuide(newGuide);
     setValues(newValues);
     setErrors(newErrors);
-    console.log(values);
   };
 
   const resetFormMovie = () => {
@@ -231,9 +227,6 @@ function Movie_content() {
 
   //for edit movie
   const getDataFromMovie = (movie) => {
-    // console.log("getData");
-    console.log(movie.hinhAnh);
-    // console.log(user);
     setValues({
       maPhim: movie.maPhim,
       tenPhim: movie.tenPhim,
@@ -280,7 +273,6 @@ function Movie_content() {
           headers: { Authorization: `Bearer ${accessToken}` },
         })
           .then((res) => {
-            console.log(res.data);
             //tắt modal
             const btn_close_movie_modal = document.getElementById(
               "btn_close_edit_modal"
@@ -428,13 +420,12 @@ function Movie_content() {
   };
   const handleSearchMovie = async (e) => {
     e.preventDefault();
-    console.log(movieSearch);
+
     const movie = movieSearch;
 
     const res = await axios.get(
       `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${movie}`
     );
-    console.log(res.data);
 
     if (res.data.length !== 0) {
       setPostsSearch(res.data);
@@ -590,7 +581,6 @@ function Movie_content() {
             type="text"
             className="form-control"
             name="movieSearch"
-            id
             aria-describedby="helpId"
             placeholder="Nhập vào tên phim"
             onChange={handleChangeMovieSearch}
@@ -689,7 +679,7 @@ function Movie_content() {
         resetFormMovie={resetFormMovie}
         values={values}
         errors={errors}
-        disabled={"true"}
+        disabled
         button={"Cập nhật"}
         idClose={"btn_close_edit_modal"}
         guide={guide}

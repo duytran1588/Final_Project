@@ -18,19 +18,18 @@ class User_content extends Component {
     posts: [],
     postsPerPage: 10, //10 user trên 1 trang
     currentPage: 1, //trang hiện hành
-    pageNumberLimit: 7, //mỗi lần mở ra thêm 7 ô chuyển trang
-    maxPageNumberLimit: 10, //số ô chuyển trang tối đa trong 1 lần mở
+    pageNumberLimit: 10, //mỗi lần mở ra thêm 10 ô chuyển trang (set < 10)
+    maxPageNumberLimit: 10, //số ô chuyển trang tối đa trong 1 lần mở (ban đầu set bằng pageNumberLimit luôn)
     minPageNumberLimit: 0,
-    min_max_differ: 10,
+
     userSearch: "",
 
     maxPageNumberLimit_search: 5,
     minPageNumberLimit_search: 0,
-    pageNumberLimit_search: 3,
+    pageNumberLimit_search: 5,
     currentPage_search: 1,
     postPerPage_search: 10,
     userFind: [],
-    min_max_search_differ: 5,
 
     //for add user
     values: {
@@ -119,8 +118,7 @@ class User_content extends Component {
   };
   handleSubmitAddUser = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
-    console.log("submit");
-    console.log(this.state.values);
+
     //xét dk cho submit
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
@@ -141,7 +139,6 @@ class User_content extends Component {
       }
     }
 
-    console.log(values);
     if (!valid) {
       Swal.fire({
         title: "Thông tin của Bạn chưa đúng",
@@ -166,7 +163,7 @@ class User_content extends Component {
       if (result.isConfirmed) {
         const dataStorage = JSON.parse(localStorage.getItem("userLogin"));
         const accessToken = dataStorage.accessToken;
-        console.log(addedUser);
+
         let promise = axios({
           method: "POST",
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
@@ -262,8 +259,6 @@ class User_content extends Component {
   };
 
   getDataFromUser = (user) => {
-    console.log("getData");
-    console.log(user);
     this.setState({
       values: {
         hoTen: user.hoTen,
@@ -278,7 +273,7 @@ class User_content extends Component {
 
   handleEditUser = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
-    console.log("submit");
+
     //xét dk cho submit
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
@@ -322,7 +317,7 @@ class User_content extends Component {
       if (result.isConfirmed) {
         const dataStorage = JSON.parse(localStorage.getItem("userLogin"));
         const accessToken = dataStorage.accessToken;
-        // console.log(addedUser);
+
         let promise = axios({
           method: "PUT",
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
@@ -424,16 +419,56 @@ class User_content extends Component {
   }
 
   //change page
-  paginate = (pageNumber) => {
-    this.setState({
-      currentPage: pageNumber,
-    });
-
-  };
   paginate_search = (pageNumber) => {
     this.setState({
       currentPage_search: pageNumber,
     });
+    //set lại min maxPageNumberLimit mỗi khi nhấn chọn trang
+    if (pageNumber % this.state.pageNumberLimit_search !== 0) {
+      const min = Math.floor(pageNumber / this.state.pageNumberLimit_search); //10 dễ set nhất
+      const max = Math.ceil(pageNumber / this.state.pageNumberLimit_search);
+      const minPageNumberLimit_search = min * this.state.pageNumberLimit_search;
+      const maxPageNumberLimit_search = max * this.state.pageNumberLimit_search;
+      this.setState({
+        minPageNumberLimit_search,
+        maxPageNumberLimit_search,
+      });
+    } else {
+      const res = pageNumber / this.state.pageNumberLimit_search;
+      const min = res - 1;
+      const max = res;
+      const minPageNumberLimit_search = min * this.state.pageNumberLimit_search;
+      const maxPageNumberLimit_search = max * this.state.pageNumberLimit_search;
+      this.setState({
+        minPageNumberLimit_search,
+        maxPageNumberLimit_search,
+      });
+    }
+  };
+  paginate = (pageNumber) => {
+    this.setState({
+      currentPage: pageNumber,
+    });
+    if (pageNumber % this.state.pageNumberLimit !== 0) {
+      const min = Math.floor(pageNumber / this.state.pageNumberLimit); //10 dễ set nhất
+      const max = Math.ceil(pageNumber / this.state.pageNumberLimit);
+      const minPageNumberLimit = min * this.state.pageNumberLimit;
+      const maxPageNumberLimit = max * this.state.pageNumberLimit;
+      this.setState({
+        minPageNumberLimit,
+        maxPageNumberLimit,
+      });
+    } else {
+      const res = pageNumber / this.state.pageNumberLimit;
+      const min = res - 1;
+      const max = res;
+      const minPageNumberLimit = min * this.state.pageNumberLimit;
+      const maxPageNumberLimit = max * this.state.pageNumberLimit;
+      this.setState({
+        minPageNumberLimit,
+        maxPageNumberLimit,
+      });
+    }
   };
 
   //change page by arrow
@@ -443,13 +478,11 @@ class User_content extends Component {
       maxPageNumberLimit,
       minPageNumberLimit,
       pageNumberLimit,
-      
     } = this.state;
     if (btnArrow === "prev") {
       this.setState({
         currentPage: currentPage - 1,
       });
-      console.log(minPageNumberLimit);
 
       //nếu trang hiện tại trừ đi 1 trang mà bằng với minPageNumberLimit thì set lại maxPageNumberLimit và minPageNumberLimit mới
       if (currentPage - 1 == minPageNumberLimit) {
@@ -462,7 +495,7 @@ class User_content extends Component {
       this.setState({
         currentPage: currentPage + 1,
       });
-      console.log(minPageNumberLimit);
+
       if (currentPage + 1 > maxPageNumberLimit) {
         this.setState({
           maxPageNumberLimit: maxPageNumberLimit + pageNumberLimit,
@@ -475,14 +508,15 @@ class User_content extends Component {
     const {
       currentPage_search,
       maxPageNumberLimit_search,
-      minPageNumberLimit_search,
       pageNumberLimit_search,
+      minPageNumberLimit_search,
     } = this.state;
     if (btnArrow === "prev") {
       this.setState({
         currentPage_search: currentPage_search - 1,
       });
-      if ((currentPage_search - 1) % pageNumberLimit_search == 0) {
+
+      if (currentPage_search - 1 == minPageNumberLimit_search) {
         this.setState({
           maxPageNumberLimit_search:
             maxPageNumberLimit_search - pageNumberLimit_search,
@@ -494,6 +528,7 @@ class User_content extends Component {
       this.setState({
         currentPage_search: currentPage_search + 1,
       });
+
       if (currentPage_search + 1 > maxPageNumberLimit_search) {
         this.setState({
           maxPageNumberLimit_search:
@@ -507,64 +542,22 @@ class User_content extends Component {
 
   //change for first page
   paginateTarget = (target) => {
-    const { posts, postsPerPage, pageNumberLimit, min_max_differ } = this.state;
     if (target == "first") {
       this.setState({
         currentPage: 1,
-        maxPageNumberLimit: 10,
+        maxPageNumberLimit: this.state.pageNumberLimit,
         minPageNumberLimit: 0,
-      });
-    } else {
-      let maxPageSquareInt = Math.ceil(posts.length / postsPerPage); //tính số ô chuyển trang nguyên
-      console.log("maxPageSquareInt", maxPageSquareInt);
-      // /**
-      //  * mỗi lần mở => pageNumberLimit ô
-      //  * ta có tổng cộng maxPageSquareInt ô => maxPageSquareInt / pageNumberLimit => tổng số lần mở
-      //  * min khởi động = 0 => mỗi lần mở min + pageNumberLimit => vị trí của min
-      //  * sau khi có được tổng số lần mở: pageNumberLimit * tổng số lần
-      //  */
-      //tìm tổng số lần mở khi click ô 3 chấm
-      const n = Math.floor(maxPageSquareInt / pageNumberLimit);
-      const minPageSquareInt = n * pageNumberLimit;
-      console.log(minPageSquareInt);
-      //Nếu để maxPageSquareInt đúng vs thực tế thì khi nhấn nút 3 chấm sẽ không chuyển đúng tỉ lệ mặc định => gán lại
-      const maxPageSquareAdjust = minPageSquareInt + min_max_differ; //vì khoảng cách giữa min và max lúc nào cũng là 11 (do đã set từ đầu)
-      console.log(maxPageSquareAdjust);
-      this.setState({
-        maxPageNumberLimit: maxPageSquareAdjust,
-        minPageNumberLimit: minPageSquareInt, //tạm dùng 80 , cần tìm ra min
-        currentPage: maxPageSquareInt,
       });
     }
   };
 
   //pagination for user searching
   paginateTarget_Searching = (target) => {
-    const {
-      userFind,
-      postsPerPage,
-      pageNumberLimit_search,
-      min_max_search_differ,
-    } = this.state;
     if (target == "first") {
       this.setState({
         currentPage_search: 1,
-        maxPageNumberLimit_search: 5,
+        maxPageNumberLimit_search: this.state.pageNumberLimit_search,
         minPageNumberLimit_search: 0,
-      });
-    } else {
-      let maxPageSquareInt = Math.ceil(userFind.length / postsPerPage); //tính số ô chuyển trang nguyên
-      console.log(maxPageSquareInt);
-
-      const n = Math.floor(maxPageSquareInt / pageNumberLimit_search); //n=1
-      const minPageSquareInt = n * pageNumberLimit_search; //=3
-
-      const maxPageSquareAdjust = minPageSquareInt + min_max_search_differ; //= 8
-      console.log(maxPageSquareAdjust);
-      this.setState({
-        maxPageNumberLimit_search: maxPageSquareAdjust,
-        minPageNumberLimit_search: minPageSquareInt,
-        currentPage_search: maxPageSquareInt,
       });
     }
   };
@@ -708,7 +701,6 @@ class User_content extends Component {
             type="text"
             className="form-control"
             name="userSearch"
-            id
             aria-describedby="helpId"
             placeholder="Nhập tài khoản hoặc họ tên người dùng"
             onChange={this.handleChangeUser}
@@ -818,7 +810,7 @@ class User_content extends Component {
           button={"Cập nhật"}
           resetInputForm={this.resetInputForm}
           idClose={"editUserModalClose"}
-          disabled={"true"}
+          disabled
         />
       </div>
     );

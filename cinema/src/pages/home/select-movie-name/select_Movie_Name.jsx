@@ -18,7 +18,6 @@ function SelectMovieName() {
   const handleChange = (event) => {
     const { value } = event.target;
     setMovieName(value);
-    console.log(movieName);
   };
 
   let movieSearch = useSelector((state) => {
@@ -42,7 +41,6 @@ function SelectMovieName() {
   };
 
   const handleTableSearch = (control) => {
-    console.log("handletablesearch");
     if (control == 1) {
       const table_search = document.getElementById("modal_search");
       if (table_search) {

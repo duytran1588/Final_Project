@@ -73,13 +73,10 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
-    console.log("submit");
     //xét dk cho submit
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
     let valid = true;
-    // console.log(this.props.history);
-    // console.log(this.props.match);
     //dùng for in để xét vòng lặp trog object
     // let profileContent = "";
     //th error

@@ -54,7 +54,7 @@ library.add(
   faFilm,
   faVideo,
   faHome,
-  faShoppingCart,
+  faShoppingCart
 );
 
 function App() {
@@ -94,6 +94,7 @@ function App() {
         </Route>
         <Route path="/ticket-booking/:maLichChieu" exact>
           <TicketBooking />
+          {/* <Test/> */}
         </Route>
         <Route path="/admin" exact>
           <Guard>

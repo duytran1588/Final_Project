@@ -43,8 +43,7 @@ function Pagination_User({
           </li>
         );
       } else {
-        //lần 1 nếu number là 13 (ô chuyển trang thứ 13) => không hiển thị ô này, mà hiển thị ô ...
-        //lần 2 number =13 thuộc (10 - 22) => hiển thị
+     
         return null;
       }
     });
@@ -74,7 +73,10 @@ function Pagination_User({
   };
 
   let pageIncrementBtn = null;
-  if (pageNumbers.length > maxPageNumberLimit) {
+  if (
+    pageNumbers.length > maxPageNumberLimit &&
+    pageNumbers.length - maxPageNumberLimit !== 1 //trang cuối và trang kế không cần cách nhau bằng dấu "..."
+  ) {
     //chừng nào số lượng tất cả các ô chuyển trang còn nhiều hơn max thì vẫn tạo ô ...
     //mục đích xét if là để ô cuối cùng không xuất hiện ô ...
     pageIncrementBtn = (

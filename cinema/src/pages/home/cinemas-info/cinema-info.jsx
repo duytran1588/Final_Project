@@ -47,7 +47,6 @@ function CinemaInfo() {
     //dom toi id của thẻ ul cột 2 để vào thẻ li đầu tiên lấy href của thẻ a
     const id_schedule = document.getElementById(id);
     const id_cot3 = id_schedule.firstChild.firstChild.href.slice(23);
-    console.log(id_cot3);
     document.querySelector(`.col-md-7 #${id_cot3}`).classList.add("active");
   };
 
@@ -120,7 +119,7 @@ function CinemaInfo() {
                 {cinemaList?.map((cinema, index) => {
                   return (
                     <li
-                      key={index}
+                      key={`cinema_${index}`}
                       onClick={() => {
                         chooseCinema(`${cinema.maHeThongRap}`); //tạm thời có thể sẽ lấy từ api truyền xuống
                       }}
@@ -148,7 +147,7 @@ function CinemaInfo() {
               {cinemaList?.map((cinema, index) => {
                 return (
                   <ul
-                    key={index}
+                    key={`cinema_2${index}`}
                     className={`tab-pane nav nav-tabs ${
                       index === 0 ? "active" : ""
                     } `}
@@ -157,7 +156,7 @@ function CinemaInfo() {
                     {cinema.lstCumRap.map((cumRap, index) => {
                       return (
                         <li
-                          key={index}
+                          key={`cumRap_${index}`}
                           id={cumRap.maCumRap}
                           // gán active cho phần tử đầu tiên của mỗi cụm rạp */}
                           className={`nav-item ${index === 0 ? "active" : ""}`}
@@ -215,12 +214,13 @@ function CinemaInfo() {
             </div>
             {/* dữ liệu cột 3  */}
             <div id="sheduleInfo" className="col-md-7 tab-content">
-              {cinemaList.map((cinema) => {
+              {cinemaList.map((cinema, index) => {
                 return (
-                  <>
+                  <React.Fragment key={`cinema_empty${index}`}>
                     {cinema.lstCumRap.map((cumRap, index) => {
                       return (
                         <ul
+                          key={`cumRap_${index}`}
                           className={`tab-pane nav nav-tabs ${
                             index === 0 ? "active" : ""
                           }`}
@@ -230,7 +230,7 @@ function CinemaInfo() {
                         >
                           {cumRap.danhSachPhim.map((phim, index) => {
                             return (
-                              <li key={index}>
+                              <li key={`phim_${index}`}>
                                 {/*collapse in bootstrap 4*/}
                                 <div className="row">
                                   <div className="col-3">
@@ -257,6 +257,7 @@ function CinemaInfo() {
                                         (lichChieu, index) => {
                                           return (
                                             <div
+                                              key={`lichChieu_${index}`}
                                               style={{ marginBottom: "2rem" }}
                                               className="col-4"
                                             >
@@ -299,7 +300,7 @@ function CinemaInfo() {
                         </ul>
                       );
                     })}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>

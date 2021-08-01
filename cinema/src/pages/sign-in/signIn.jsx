@@ -13,7 +13,8 @@ class SignIn extends Component {
     },
     errors: {
       taiKhoan: "",
-      matKhau: "",    },
+      matKhau: "",
+    },
   };
 
   handleChangeValue = (e) => {
@@ -35,17 +36,14 @@ class SignIn extends Component {
       values: newValues,
       errors: newErrors,
     });
-    console.log(this.state.values);
   };
 
   handleSignIn = (e) => {
     e.preventDefault(); //ngăn submit gây reload trang
-    console.log("submit");
     //xét dk cho submit
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
     let valid = true;
-
     //dùng for in để xét vòng lặp trog object
     // let profileContent = "";
     //th error
