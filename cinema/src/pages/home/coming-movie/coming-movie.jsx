@@ -91,7 +91,9 @@ function ComingMovie() {
     setControl(true);
     setVideo(trailer);
   };
-
+  const closeModal = () => {
+    setControl(false);
+  };
   //for tab showing
   const movieList = useSelector((state) => {
     return state.movieReducer.movieList;
@@ -101,7 +103,7 @@ function ComingMovie() {
   const movieListComing = useSelector((state) => {
     return state.movieReducer.movieListComing;
   });
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -188,7 +190,7 @@ function ComingMovie() {
         channel="youtube"
         isOpen={control}
         videoId={video}
-        onClose={() => setControl(false)}
+        onClose={closeModal}
       />
     </div>
   );

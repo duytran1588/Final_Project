@@ -309,9 +309,9 @@ function Show_Time_Modal(props) {
     if (isMounted) {
       getCinemaSystemList();
     }
-    return () => { //khi unmount
+    return () => {
+      //khi unmount
       setIsMounted(false);
-      console.log(isMounted);
     };
   }, []);
   return (

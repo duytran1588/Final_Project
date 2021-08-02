@@ -13,7 +13,6 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-
 function MovieDetail() {
   const dispatch = useDispatch();
 
@@ -23,6 +22,10 @@ function MovieDetail() {
   const handlePlay = (trailer) => {
     setControl(true);
     setVideo(trailer);
+  };
+
+  const closeModal = () => {
+    setControl(false);
   };
 
   const changeHTTP = (hinhAnh) => {
@@ -253,12 +256,12 @@ function MovieDetail() {
         </div>
       </section>
       <Cinema_Schedule movie_detail={movie_detail} />
-     
+
       <ModalVideo
         channel="youtube"
         isOpen={control}
         videoId={video}
-        onClose={() => setControl(false)}
+        onClose={closeModal}
       />
     </div>
   );

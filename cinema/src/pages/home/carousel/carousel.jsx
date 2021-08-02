@@ -38,6 +38,10 @@ class Carousel extends Component {
     });
   };
 
+  closeModal = () => {
+    this.setState({ isOpen: false });
+  };
+
   getTrailerId = (url) => {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -83,7 +87,7 @@ class Carousel extends Component {
           channel="youtube"
           isOpen={this.state.isOpen}
           videoId={this.state.video_play}
-          onClose={() => this.setState({ isOpen: false })}
+          onClose={this.closeModal}
         />
       </>
     );
