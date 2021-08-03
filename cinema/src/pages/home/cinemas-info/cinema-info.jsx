@@ -46,8 +46,12 @@ function CinemaInfo() {
 
     //dom toi id của thẻ ul cột 2 để vào thẻ li đầu tiên lấy href của thẻ a
     const id_schedule = document.getElementById(id);
-    const id_cot3 = id_schedule.firstChild.firstChild.href.slice(23);
-    document.querySelector(`.col-md-7 #${id_cot3}`).classList.add("active");
+    if (id_schedule) {
+      console.log("id_schedule", id_schedule);
+      const id_cot3 = id_schedule.firstChild.firstChild.href.slice(23);
+      document.querySelector(`.col-md-7 #${id_cot3}`).classList.add("active");
+      console.log("id_cot3", id_cot3);
+    }
   };
 
   //đổi từ http sang https để dành cho iphone
@@ -121,7 +125,7 @@ function CinemaInfo() {
                     <li
                       key={`cinema_${index}`}
                       onClick={() => {
-                        chooseCinema(`${cinema.maHeThongRap}`); //tạm thời có thể sẽ lấy từ api truyền xuống
+                        chooseCinema(`${cinema.maHeThongRap}`);
                       }}
                       className="nav-item cinema__icon"
                     >
