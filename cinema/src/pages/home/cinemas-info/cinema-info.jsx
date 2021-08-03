@@ -47,10 +47,21 @@ function CinemaInfo() {
     //dom toi id của thẻ ul cột 2 để vào thẻ li đầu tiên lấy href của thẻ a
     const id_schedule = document.getElementById(id);
     if (id_schedule) {
-      console.log("id_schedule", id_schedule);
-      const id_cot3 = id_schedule.firstChild.firstChild.href.slice(23);
-      document.querySelector(`.col-md-7 #${id_cot3}`).classList.add("active");
-      console.log("id_cot3", id_cot3);
+      const id_cot3 = id_schedule.firstChild.firstChild.href;
+      let id_index = 0;
+      //xét href chỉ lấy sau dấu "#" trở đi
+      for (let i = 0; i < id_cot3.length; i++) {
+        if (id_cot3[i] === "#") {
+          id_index = i + 1;
+          break;
+        }
+      }
+      const exact_id_cot3 =
+        id_schedule.firstChild.firstChild.href.slice(id_index);
+
+      document
+        .querySelector(`.col-md-7 #${exact_id_cot3}`)
+        .classList.add("active");
     }
   };
 
