@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router";
 
-function Admin_Home(props) {
+function AdminHome(props) {
   const userLogin = JSON.parse(localStorage.getItem("userLogin"));
   const maLoaiNguoiDung = userLogin?.maLoaiNguoiDung;
   if (maLoaiNguoiDung === "QuanTri") {
@@ -11,4 +11,4 @@ function Admin_Home(props) {
   }
 }
 
-export default Admin_Home;
+export default AdminHome;

@@ -1,7 +1,7 @@
 import React from "react";
 import format from "date-format";
 
-function Trade_2(props) {
+function Trade2(props) {
   const { userProfile } = props;
 
   return (
@@ -51,4 +51,4 @@ function Trade_2(props) {
   );
 }
 
-export default Trade_2;
+export default Trade2;

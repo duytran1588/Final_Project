@@ -6,14 +6,14 @@ import {
   stopLoadingAction,
 } from "../../../stores/actions/movie.action";
 import axios from "axios";
-import Pagination_User from "../../../components/pagination/pagination_user";
+import PaginationUser from "../../../components/pagination/pagination_user";
 import Swal from "sweetalert2";
 import "../../../components/sweet-alert/sweetAlert.scss";
 import Loading from "../../../components/loading/loading";
 import AddUserModal from "./user-modal/addUserModal";
 import EditUserModal from "./user-modal/editUserModal";
 
-class User_content extends Component {
+class UserContent extends Component {
   state = {
     posts: [],
     postsPerPage: 10, //10 user trên 1 trang
@@ -485,7 +485,7 @@ class User_content extends Component {
       });
 
       //nếu trang hiện tại trừ đi 1 trang mà bằng với minPageNumberLimit thì set lại maxPageNumberLimit và minPageNumberLimit mới
-      if (currentPage - 1 == minPageNumberLimit) {
+      if (currentPage - 1 === minPageNumberLimit) {
         this.setState({
           maxPageNumberLimit: maxPageNumberLimit - pageNumberLimit,
           minPageNumberLimit: minPageNumberLimit - pageNumberLimit,
@@ -516,7 +516,7 @@ class User_content extends Component {
         currentPage_search: currentPage_search - 1,
       });
 
-      if (currentPage_search - 1 == minPageNumberLimit_search) {
+      if (currentPage_search - 1 === minPageNumberLimit_search) {
         this.setState({
           maxPageNumberLimit_search:
             maxPageNumberLimit_search - pageNumberLimit_search,
@@ -542,7 +542,7 @@ class User_content extends Component {
 
   //change for first page
   paginateTarget = (target) => {
-    if (target == "first") {
+    if (target === "first") {
       this.setState({
         currentPage: 1,
         maxPageNumberLimit: this.state.pageNumberLimit,
@@ -553,7 +553,7 @@ class User_content extends Component {
 
   //pagination for user searching
   paginateTarget_Searching = (target) => {
-    if (target == "first") {
+    if (target === "first") {
       this.setState({
         currentPage_search: 1,
         maxPageNumberLimit_search: this.state.pageNumberLimit_search,
@@ -668,7 +668,7 @@ class User_content extends Component {
     if (loading) {
       return <Loading />;
     }
-    let { values } = this.state;
+   
     return (
       <div
         className="main_content_user tab-pane container active"
@@ -739,13 +739,13 @@ class User_content extends Component {
             </tr>
           </thead>
           <tbody id="tableUserList">
-            {this.state.userFind.length == 0
+            {this.state.userFind.length === 0
               ? this.renderUserPageList()
               : this.renderSearchUser()}
           </tbody>
         </table>
-        {this.state.userFind.length == 0 ? (
-          <Pagination_User
+        {this.state.userFind.length === 0 ? (
+          <PaginationUser
             postsPerPage={this.state.postsPerPage}
             totalPosts={this.state.posts?.length} //tất cả user thực tế
             paginate={this.paginate}
@@ -763,7 +763,7 @@ class User_content extends Component {
               alignItems: "center",
             }}
           >
-            <Pagination_User
+            <PaginationUser
               postsPerPage={this.state.postsPerPage}
               totalPosts={this.state.userFind?.length} //tất cả user thực tế
               paginate={this.paginate_search}
@@ -821,4 +821,4 @@ const mapStateToProps = (state) => {
   return { loading: state.movieReducer.loading };
 };
 
-export default connect(mapStateToProps)(User_content);
+export default connect(mapStateToProps)(UserContent);

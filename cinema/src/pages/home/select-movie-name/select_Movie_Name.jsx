@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
+
 import Input from "@material-ui/core/Input";
 import "./selectMovieName.scss";
 import {
@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SelectMovieName() {
   const [movieName, setMovieName] = useState("");
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -26,7 +27,9 @@ function SelectMovieName() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    dispatch(searchMovie(movieName));
+    if (movieName !== "") {
+      dispatch(searchMovie(movieName));
+    }
   };
 
   const history = useHistory();
@@ -41,7 +44,7 @@ function SelectMovieName() {
   };
 
   const handleTableSearch = (control) => {
-    if (control == 1) {
+    if (control === 1) {
       const table_search = document.getElementById("modal_search");
       if (table_search) {
         table_search.style.display = "block";
@@ -134,10 +137,17 @@ function SelectMovieName() {
         }}
         className="container"
       >
-        <h2 className="text-center">Không tìm thấy</h2>
+        <h2 className="text-center">{`${
+          movieName !== "" ? "Không tìm thấy" : "Vui lòng nhập tên phim"
+        }`}</h2>
         <div className="text-right">
           <button
-            style={{ width: "6rem" }}
+            style={{
+              width: "6rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             className="btn btn-danger"
             id="btn_close_search"
             onClick={() => {
@@ -151,10 +161,6 @@ function SelectMovieName() {
     );
   };
 
-  const loading = useSelector((state) => {
-    return state.movieReducer.loading;
-  });
-
   return (
     <div id="search_movie_name_result">
       <form onSubmit={handleSearch} className="searchForm mb-5">
@@ -164,7 +170,6 @@ function SelectMovieName() {
           inputProps={{ "aria-label": "description" }}
           aria-describedby="component-error-text"
         />
-
         <button
           onClick={() => {
             handleTableSearch(1);

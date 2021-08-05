@@ -35,23 +35,23 @@
                 border: solid 1px rgba(0, 0, 0, 0.19);
             }
         }
-        thead{
-            tr{
-                th{
+        thead {
+            tr {
+                th {
                     font-family: bold;
                 }
             }
         }
-        tbody{
-            tr{
-                td{
+        tbody {
+            tr {
+                td {
                     font-family: semibold;
                 }
             }
         }
-        tfoot{
-            tr{
-                td{
+        tfoot {
+            tr {
+                td {
                     font-family: semibold;
                 }
             }
@@ -135,13 +135,36 @@
                     }
                 }
             }
+            tfoot,
             tbody {
                 tr {
                     td {
                         font-size: 12px;
+                        button {
+                            width: 4rem !important;
+                            font-size: 13px;
+                            height: 31px;
+                            display: flex;
+                            margin-left: 100%;
+                            transform: translate(-100%);
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
                 }
             }
+            h2 {
+                font-size: 17px;
+            }
+            div {
+                #btn_close_search {
+                    font-size: 14px;
+                    width: 3rem !important;
+                    height: 1.5rem;
+                    margin: 1rem auto 0;
+                }
+            }
+            width: 95% !important;
         }
     }
 }

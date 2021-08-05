@@ -1,5 +1,5 @@
 import React from "react";
-import Movie_Form from "../../../../components/movie-form-group/movie_form";
+import MovieForm from "../../../../components/movie-form-group/movie_form";
 
 function EditMovieModal(props) {
   const {
@@ -41,7 +41,7 @@ function EditMovieModal(props) {
             </div>
             <div className="modal-body">
               {/* form-group */}
-              <Movie_Form
+              <MovieForm
                 handleSubmit={handleSubmit}
                 handleChangeMovieInput={handleChangeMovieInput}
                 resetFormMovie={resetFormMovie}

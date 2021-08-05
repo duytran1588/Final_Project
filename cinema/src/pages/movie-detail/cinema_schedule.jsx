@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import format from "date-format";
 import { useHistory } from "react-router";
 // import "../home/cinemas-info/cinema-info.scss";
 
-function Cinema_Schedule(props) {
+function CinemaSchedule(props) {
   const history = useHistory();
   const { movie_detail } = props;
   const handle_booking = (maLichChieu) => {
@@ -44,6 +44,7 @@ function Cinema_Schedule(props) {
                         href={`#${cinema.maHeThongRap}`}
                       >
                         <img
+                          alt=""
                           className="img-fluid"
                           src={changeHTTP(cinema.logo)}
                         />
@@ -74,6 +75,7 @@ function Cinema_Schedule(props) {
                           <div className="row">
                             <div className="col-3">
                               <img
+                                alt=""
                                 className="img-fluid"
                                 src="https://images.foody.vn/res/g27/262308/prof/s576x330/foody-mobile-foody-mobile-gala-jp-702-636160345829883648.jpg"
                                 width="100%"
@@ -148,4 +150,4 @@ function Cinema_Schedule(props) {
   );
 }
 
-export default Cinema_Schedule;
+export default CinemaSchedule;

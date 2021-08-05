@@ -32,11 +32,11 @@ import MovieDetail from "./pages/movie-detail/movie-detail";
 import TicketBooking from "./pages/ticket-booking/ticket-booking";
 import Guard from "./components/HOC/guard";
 import Admin from "./pages/admin/admin";
-import Admin_Home from "./components/HOC/admin_home";
+import AdminHome from "./components/HOC/admin_home";
 import { useEffect } from "react";
 import { SIGN_IN } from "./stores/constants/movie.const";
 import { useDispatch } from "react-redux";
-import Show_Time from "./pages/admin/main_content/lich_chieu/show_time";
+import ShowTime from "./pages/admin/main_content/lich_chieu/show_time";
 
 library.add(
   faChevronRight,
@@ -69,9 +69,12 @@ function App() {
     }
   };
 
+  // useEffect(() => {
+  //   getUserFromLocal();
+  // }, []);
   useEffect(() => {
     getUserFromLocal();
-  }, []);
+  }); //app js không lên reducer lấy dữ liệu nên không cần truyền tham số vào [] của useEffect
   return (
     <BrowserRouter>
       <Header />
@@ -103,11 +106,11 @@ function App() {
         </Route>
         <Route path="/lich-chieu/:maPhim" exact>
           <Guard>
-            <Show_Time />
+            <ShowTime />
           </Guard>
         </Route>
         <Route path="" exact>
-          <Admin_Home />
+          <AdminHome />
         </Route>
       </Switch>
       <Footer />

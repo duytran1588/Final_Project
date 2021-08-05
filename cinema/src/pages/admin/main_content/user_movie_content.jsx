@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Movie_content from "./movie_content";
-import User_content from "./user_content";
+import MovieContent from "./movie_content";
+import UserContent from "./user_content";
 
-class User_Movie_Content extends Component {
+class UserMovieContent extends Component {
   render() {
     return (
       <div className="main_content tab-content">
         {/* for user management */}
-        <User_content />
+        <UserContent />
         {/* for movie management */}
-        <Movie_content />
+        <MovieContent />
       </div>
     );
   }
 }
 
-export default User_Movie_Content;
+export default UserMovieContent;

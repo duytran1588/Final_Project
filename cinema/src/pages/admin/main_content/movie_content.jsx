@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import format from "date-format";
 import Pagination from "../../../components/pagination/pagination";
@@ -9,13 +9,12 @@ import AddMovieModal from "./movie-modal/addMovieModal";
 import EditMovieModal from "./movie-modal/editMovieModal";
 import { useHistory } from "react-router";
 
-function Movie_content() {
-  const dispatch = useDispatch();
+function MovieContent() {
   const [posts, setPosts] = useState([]);
   //for movieSearch
   const [postsSearch, setPostsSearch] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(7); //7 phim 1 trang
+  const postsPerPage = 7; //7 phim 1 trang
 
   //data cho search movie
   const [movieSearch, setMovieSearch] = useState("");
@@ -144,7 +143,7 @@ function Movie_content() {
     });
   };
   const handleChangeMovieInput = (e) => {
-    const { name, type, value } = e.target; //boc tach bien <ES6>
+    const { name, value } = e.target; //boc tach bien <ES6>
 
     let newValues = { ...values };
     if (name === "hinhAnh") {
@@ -172,7 +171,7 @@ function Movie_content() {
       //loại bỏ các khoảng trắng bằng trim()
       newErrors[name] = "Vui lòng không để trống !";
     } else {
-      if (name == "ngayKhoiChieu") {
+      if (name === "ngayKhoiChieu") {
         const reg =
           /^((0[1-9]|[12][0-9]|3[01])(\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\/)(02))|((0[1-9]|[12][0-9]|3[0])(\/)(0[469]|11))(\/)\d{4}$/;
 
@@ -181,7 +180,7 @@ function Movie_content() {
         } else {
           newErrors[name] = "";
         }
-      } else if (name == "danhGia") {
+      } else if (name === "danhGia") {
         const reg = /^([1-9]|10)$/;
         if (!reg.test(value)) {
           newErrors[name] = "Điểm chưa đúng";
@@ -688,4 +687,4 @@ function Movie_content() {
   );
 }
 
-export default Movie_content;
+export default MovieContent;

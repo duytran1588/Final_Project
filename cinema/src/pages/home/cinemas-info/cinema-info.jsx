@@ -16,7 +16,7 @@ function CinemaInfo() {
   useEffect(() => {
     //call api lấy LayThongTinHeThongRap cho cột 1 (các logo của cinema)
     dispatch(getCinemaList());
-  }, []);
+  }, [dispatch]); //thêm dispatch tránh lỗi warning
 
   const chooseCinema = (id) => {
     //kiểm tra trong ul cột 2 đang active có li nào active thì remove
@@ -121,6 +121,7 @@ function CinemaInfo() {
         <div className="small-container">
           <div>
             <img
+              alt=""
               className="img-fluid"
               src={"./assets/images/background_cinema_info/back-news.png"}
             />
@@ -147,6 +148,7 @@ function CinemaInfo() {
                         href={`#${cinema.maHeThongRap}`}
                       >
                         <img
+                          alt=""
                           className="img-fluid"
                           src={changeHTTP(cinema.logo)}
                         />
@@ -196,6 +198,7 @@ function CinemaInfo() {
                             <div className="col-md-3">
                               <div className="cinema__add">
                                 <img
+                                  alt=""
                                   className="img-fluid"
                                   src={
                                     "./assets/images/bhd_logos/bhd-star-bitexco-16105952137769.png"
@@ -241,7 +244,6 @@ function CinemaInfo() {
                           }`}
                           // className="tab-pane nav nav-tabs"
                           id={`movie${cumRap.maCumRap}`}
-                          key={index}
                         >
                           {cumRap.danhSachPhim.map((phim, index) => {
                             return (
@@ -250,6 +252,7 @@ function CinemaInfo() {
                                 <div className="row">
                                   <div className="col-3">
                                     <img
+                                      alt=""
                                       className="img-fluid"
                                       src={changeHTTP(phim.hinhAnh)}
                                       width="100%"
@@ -322,6 +325,7 @@ function CinemaInfo() {
           </div>
           <div>
             <img
+              alt=""
               className="img-fluid"
               src={"./assets/images/background_cinema_info/back-news.png"}
             />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Movie_Form extends Component {
+class MovieForm extends Component {
   render() {
     const {
       values,
@@ -154,4 +154,4 @@ class Movie_Form extends Component {
   }
 }
 
-export default Movie_Form;
+export default MovieForm;

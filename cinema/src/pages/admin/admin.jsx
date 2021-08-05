@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import User_Movie_Content from "./main_content/user_movie_content";
+import UserMovieContent from "./main_content/user_movie_content";
 // import User_content from "./main_content/user_content";
 import Sidebar from "./sidebar/sidebar";
 
@@ -15,7 +15,7 @@ class Admin extends Component {
             <Sidebar />
           </div>
           <div className="col-9">
-            <User_Movie_Content />
+            <UserMovieContent />
           </div>
         </div>
       </div>

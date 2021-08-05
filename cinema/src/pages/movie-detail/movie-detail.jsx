@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getMovieDetail } from "../../stores/actions/movie.action";
-import Cinema_Schedule from "./cinema_schedule";
+import CinemaSchedule from "./cinema_schedule";
 import format from "date-format";
 import Loading from "../../components/loading/loading";
 import ModalVideo from "react-modal-video";
@@ -15,7 +15,8 @@ import "react-circular-progressbar/dist/styles.css";
 
 function MovieDetail() {
   const dispatch = useDispatch();
-
+  //lay param tren url về
+  const { maPhim } = useParams();
   //for  video-player
   const [control, setControl] = useState(false);
   const [video, setVideo] = useState("");
@@ -43,19 +44,16 @@ function MovieDetail() {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     let match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    return match ? match[7] : false;
   };
 
   useEffect(() => {
     dispatch(getMovieDetail(maPhim));
-  }, []);
+  }, [dispatch, maPhim]);
 
   const movie_detail = useSelector((state) => {
     return state.movieReducer.movie_detail;
   });
-
-  //lay param tren url về
-  const { maPhim } = useParams();
 
   const loading = useSelector((state) => {
     return state.movieReducer.loading;
@@ -81,6 +79,7 @@ function MovieDetail() {
                 <div className="row">
                   <div className="col-6 movie-img">
                     <img
+                      alt=""
                       width="100%"
                       height="100%"
                       src={changeHTTP(movie_detail?.hinhAnh)}
@@ -255,7 +254,7 @@ function MovieDetail() {
           </div>
         </div>
       </section>
-      <Cinema_Schedule movie_detail={movie_detail} />
+      <CinemaSchedule movie_detail={movie_detail} />
 
       <ModalVideo
         channel="youtube"

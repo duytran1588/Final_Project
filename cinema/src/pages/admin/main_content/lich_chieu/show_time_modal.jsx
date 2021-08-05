@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { getShowTimeList } from "../../../../stores/actions/admin.action";
 
-function Show_Time_Modal(props) {
+function ShowTimeModal(props) {
   const { maPhim } = props;
   const dispatch = useDispatch();
   //data hệ thống rạp
@@ -313,7 +313,7 @@ function Show_Time_Modal(props) {
       //khi unmount
       setIsMounted(false);
     };
-  }, []);
+  }); //không cần [] nếu không render data từ store
   return (
     <div className="modal fade" style={{ padding: 0 }} id="addShowTime">
       <div className="modal-dialog">
@@ -383,7 +383,6 @@ function Show_Time_Modal(props) {
                               }`}
                               id={`control_${cinema.maCumRap}`}
                               label={cinema.tenCumRap}
-                              key={index}
                             >
                               {cinema.danhSachRap.map((rap, index) => {
                                 return (
@@ -558,4 +557,4 @@ function Show_Time_Modal(props) {
   );
 }
 
-export default Show_Time_Modal;
+export default ShowTimeModal;

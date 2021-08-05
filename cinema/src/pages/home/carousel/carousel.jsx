@@ -3,9 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import ModalVideo from "react-modal-video";
-import GioHang from "../../../components/header/gioHang";
 
 class Carousel extends Component {
   state = {
@@ -46,7 +44,7 @@ class Carousel extends Component {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     let match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    return match ? match[7] : false;
   };
 
   render() {
@@ -69,7 +67,7 @@ class Carousel extends Component {
               const trailerId = this.getTrailerId(item.trailer);
               return (
                 <div key={index}>
-                  <img src={item.hinhAnh} />
+                  <img src={item.hinhAnh} alt="" />
                   <button
                     className="btnPlay"
                     onClick={() => {

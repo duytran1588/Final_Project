@@ -1,7 +1,7 @@
 import React from "react";
 import "./pagination.scss";
 
-function Pagination_User({
+function PaginationUser({
   postsPerPage,
   totalPosts,
   paginate,
@@ -35,7 +35,7 @@ function Pagination_User({
               id={`aUser_${number}`}
               onClick={() => paginate(number)}
               className={`page-link ${
-                currentPage == number ? "pagination_active" : ""
+                currentPage === number ? "pagination_active" : ""
               } `}
             >
               {number}
@@ -63,7 +63,7 @@ function Pagination_User({
           id={`aUser_${number}`}
           onClick={() => paginate(number)}
           className={`page-link ${
-            currentPage == number ? "pagination_active" : ""
+            currentPage === number ? "pagination_active" : ""
           } `}
         >
           {number}
@@ -173,4 +173,4 @@ function Pagination_User({
   );
 }
 
-export default Pagination_User;
+export default PaginationUser;

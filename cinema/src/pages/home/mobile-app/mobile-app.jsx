@@ -8,7 +8,7 @@ class MobileApp extends Component {
     const settings = {
       dots: false,
       infinite: true,
-    //   speed: 500,
+      //   speed: 500,
       autoplaySpeed: 5000,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -28,6 +28,7 @@ class MobileApp extends Component {
                   và đổi quà hấp dẫn.
                 </p>
                 <a
+                  rel="noreferrer"
                   href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"
                   target="_blank"
                 >
@@ -36,6 +37,7 @@ class MobileApp extends Component {
                 <p>
                   TIX có hai phiên bản{" "}
                   <a
+                    rel="noreferrer"
                     href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"
                     target="_blank"
                   >
@@ -43,6 +45,7 @@ class MobileApp extends Component {
                   </a>{" "}
                   &amp;{" "}
                   <a
+                    rel="noreferrer"
                     href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
                     target="_blank"
                   >

@@ -18,7 +18,7 @@ class SignIn extends Component {
   };
 
   handleChangeValue = (e) => {
-    const { name, type, value } = e.target; //boc tach bien <ES6>
+    const { name, value } = e.target; //boc tach bien <ES6>
 
     let newValues = { ...this.state.values, [name]: value };
     let newErrors = { ...this.state.errors };
@@ -105,7 +105,7 @@ class SignIn extends Component {
                 </div>
                 <div className="row">
                   <div className="col-12">
-                    <div class="group">
+                    <div className="group">
                       <input
                         value={this.state.values.matKhau}
                         onChange={this.handleChangeValue}

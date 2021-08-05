@@ -109,7 +109,7 @@ function ComingMovie() {
   useEffect(() => {
     dispatch(getMovieList());
     dispatch(getMovieListComing());
-  }, []);
+  }, [dispatch]);
 
   const history = useHistory();
   const handleDetail = (maPhim) => {
@@ -133,7 +133,7 @@ function ComingMovie() {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     let match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    return match ? match[7] : false;
   };
 
   return (

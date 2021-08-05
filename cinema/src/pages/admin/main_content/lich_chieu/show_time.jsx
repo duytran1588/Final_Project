@@ -5,10 +5,10 @@ import { getShowTimeList } from "../../../../stores/actions/admin.action";
 import format from "date-format";
 import Loading from "../../../../components/loading/loading";
 import Pagination from "../../../../components/pagination/pagination";
-import Show_Time_Modal from "./show_time_modal";
+import ShowTimeModal from "./show_time_modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class Show_Time extends Component {
+class ShowTime extends Component {
   state = {
     currentPage: 1,
     postsPerPage: 10,
@@ -105,6 +105,7 @@ class Show_Time extends Component {
             className="col-5 text-right movie-poster"
           >
             <img
+              alt=""
               height="100%"
               width="100%"
               src={this.changeHTTP(showTimeList?.hinhAnh)}
@@ -175,7 +176,7 @@ class Show_Time extends Component {
           paginate={this.paginate}
           paginateArrow={this.paginateArrow}
         />
-        <Show_Time_Modal maPhim={maPhim} />
+        <ShowTimeModal maPhim={maPhim} />
       </div>
     );
   }
@@ -191,4 +192,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Show_Time));
+export default withRouter(connect(mapStateToProps)(ShowTime));

@@ -75,6 +75,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon-16111317082644.jpg"
@@ -119,6 +120,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/boc-tem-to-hop-giai-tri-moi-toanh-cua-gioi-ha-thanh-16056938333773.jpg"
@@ -166,6 +168,7 @@ class News extends Component {
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7957-tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu">
                       <img
+                        alt=""
                         src={
                           "./assets/images/news/tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu-16043752411629.png"
                         }
@@ -209,7 +212,10 @@ class News extends Component {
                   </div>
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7956-ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman">
-                      <img src="./assets/images/news/ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman-16041597587981.jpg" />
+                      <img
+                        alt=""
+                        src="./assets/images/news/ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman-16041597587981.jpg"
+                      />
                     </a>
                     <a href="https://tix.vn/goc-dien-anh/7956-ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman">
                       NGÔ THANH VÂN CHÍNH THỨC KHỞI ĐỘNG CUỘC THI THIẾT KẾ TRANG
@@ -252,6 +258,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7953-antebellum-4-ly-do-khong-the-bo-lo-sieu-pham-kinh-di-antebellum-bay-thuc-tai-kinh-hoang">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan-15970503793246.png"
                             }
@@ -271,6 +278,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7952-ac-quy-doi-dau-soan-ngoi-peninsula-tro-thanh-phim-dung-dau-doanh-thu-tai-han-quoc-mua-dich">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/khi-phu-nu-khong-con-o-the-tron-chay-cua-nan-nhan-15943684395106.jpg"
                             }
@@ -289,7 +297,10 @@ class News extends Component {
                     <div className="row">
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7951-da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan">
-                          <img src="./assets/images/news/movies-news/da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan-15970503793246.png" />
+                          <img
+                            alt=""
+                            src="./assets/images/news/movies-news/da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan-15970503793246.png"
+                          />
                         </a>
                       </div>
                       <div className="col-9">
@@ -304,7 +315,10 @@ class News extends Component {
                     <div className="row">
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7950-truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han">
-                          <img src="./assets/images/news/movies-news/truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han-15966122262210.png" />
+                          <img
+                            alt=""
+                            src="./assets/images/news/movies-news/truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han-15966122262210.png"
+                          />
                         </a>
                       </div>
                       <div className="col-9">
@@ -329,6 +343,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/boc-tem-to-hop-giai-tri-moi-toanh-cua-gioi-ha-thanh-16056938333773.jpg"
@@ -374,6 +389,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon-16111317082644.jpg"
@@ -422,6 +438,7 @@ class News extends Component {
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7957-tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu">
                       <img
+                        alt=""
                         src={
                           "./assets/images/news/tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu-16043752411629.png"
                         }
@@ -466,6 +483,7 @@ class News extends Component {
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7956-ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman">
                       <img
+                        alt=""
                         src={
                           "./assets/images/news/ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman-16041597587981.jpg"
                         }
@@ -512,6 +530,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7953-antebellum-4-ly-do-khong-the-bo-lo-sieu-pham-kinh-di-antebellum-bay-thuc-tai-kinh-hoang">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/tenet-cong-bo-ngay-khoi-chieu-chinh-thuc-tai-viet-nam-15959320275248.png"
                             }
@@ -531,6 +550,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7952-ac-quy-doi-dau-soan-ngoi-peninsula-tro-thanh-phim-dung-dau-doanh-thu-tai-han-quoc-mua-dich">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/khi-phu-nu-khong-con-o-the-tron-chay-cua-nan-nhan-15943684395106.jpg"
                             }
@@ -550,6 +570,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7951-da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan-15970503793246.png"
                             }
@@ -569,6 +590,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7950-truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han-15966122262210.png"
                             }
@@ -600,6 +622,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon-16111317082644.jpg"
@@ -645,6 +668,7 @@ class News extends Component {
                   <div className="col-6">
                     <a href="https://tix.vn/goc-dien-anh/7961-khai-truong-rap-xin-gia-ngon-chuan-xi-tai-sai-gon">
                       <img
+                        alt=""
                         className="img_fluid"
                         src={
                           "./assets/images/news/boc-tem-to-hop-giai-tri-moi-toanh-cua-gioi-ha-thanh-16056938333773.jpg"
@@ -693,6 +717,7 @@ class News extends Component {
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7957-tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu">
                       <img
+                        alt=""
                         src={
                           "./assets/images/news/tiec-trang-mau-chinh-thuc-can-moc-100-ty-chi-sau-2-tuan-cong-chieu-16043752411629.png"
                         }
@@ -737,6 +762,7 @@ class News extends Component {
                   <div className="col-4 movie__item">
                     <a href="https://tix.vn/goc-dien-anh/7956-ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman">
                       <img
+                        alt=""
                         src={
                           "./assets/images/news/ngo-thanh-van-chinh-thuc-khoi-dong-cuoc-thi-thiet-ke-trang-phuc-cho-sieu-anh-hung-dau-tien-cua-viet-nam-vinaman-16041597587981.jpg"
                         }
@@ -783,6 +809,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7953-antebellum-4-ly-do-khong-the-bo-lo-sieu-pham-kinh-di-antebellum-bay-thuc-tai-kinh-hoang">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/tenet-cong-bo-ngay-khoi-chieu-chinh-thuc-tai-viet-nam-15959320275248.png"
                             }
@@ -802,6 +829,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7952-ac-quy-doi-dau-soan-ngoi-peninsula-tro-thanh-phim-dung-dau-doanh-thu-tai-han-quoc-mua-dich">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/khi-phu-nu-khong-con-o-the-tron-chay-cua-nan-nhan-15943684395106.jpg"
                             }
@@ -821,6 +849,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7951-da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/da-n-my-nhan-trong-the-gio-i-die-n-a-nh-cu-a-qua-i-kie-t-christopher-nolan-15970503793246.png"
                             }
@@ -840,6 +869,7 @@ class News extends Component {
                       <div className="col-3">
                         <a href="https://tix.vn/goc-dien-anh/7950-truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han">
                           <img
+                            alt=""
                             src={
                               "./assets/images/news/movies-news/truy-cung-giet-tan-cuoc-tai-ngo-cua-hai-ong-hoang-phong-ve-xu-han-15966122262210.png"
                             }

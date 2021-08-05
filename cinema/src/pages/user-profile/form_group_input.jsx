@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form_group_input(props) {
+function FormGroupInput(props) {
   const { label, name, defaultValue, type, handleChange, id, error, disabled } =
     props;
   return (
@@ -8,7 +8,6 @@ function Form_group_input(props) {
       <label>{label}</label>
       <input
         onChange={handleChange}
-        type="text"
         className="form-control"
         name={name}
         id={id}
@@ -24,4 +23,4 @@ function Form_group_input(props) {
   );
 }
 
-export default Form_group_input;
+export default FormGroupInput;

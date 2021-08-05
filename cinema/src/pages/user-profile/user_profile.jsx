@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../components/loading/loading";
 import { userProfileApi } from "../../stores/actions/movie.action";
 import ModalUpdate from "./modalUpdate";
 
-import Trade_1 from "./trade_1";
-import Trade_2 from "./trade_2";
+import Trade1 from "./trade_1";
+import Trade2 from "./trade_2";
 
 function UserProfile() {
   const account = {
@@ -19,7 +19,7 @@ function UserProfile() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(userProfileApi(account));
-  }, []);
+  }, [dispatch]);
 
   //lên reducer lấy userprofile
   const userProfile = useSelector((state) => {
@@ -37,6 +37,7 @@ function UserProfile() {
       <section className="greeting">
         <h1 className="mb-4">Xin chào {userProfile?.hoTen}</h1>
         <img
+          alt=""
           width="20%"
           src={"./assets/images/user-profile/user_profile.png"}
         />
@@ -73,8 +74,8 @@ function UserProfile() {
               Cập nhật
             </button>
           </div>
-          <Trade_1 userProfile={userProfile} />
-          <Trade_2 userProfile={userProfile} />
+          <Trade1 userProfile={userProfile} />
+          <Trade2 userProfile={userProfile} />
         </div>
       </section>
 

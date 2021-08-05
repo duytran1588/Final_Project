@@ -1,6 +1,6 @@
 import React from "react";
 import format from "date-format";
-function Trade_1(props) {
+function Trade1(props) {
   const { userProfile } = props;
   return (
     <div>
@@ -79,4 +79,4 @@ function Trade_1(props) {
   );
 }
 
-export default Trade_1;
+export default Trade1;

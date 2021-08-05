@@ -312,6 +312,7 @@
                                 padding: 0 5px !important;
                                 margin-top: 2rem;
                                 .row {
+                                    align-items: center;
                                     display: flex !important;
                                     flex-wrap: nowrap !important;
                                     margin: 0 0 1rem 0;
@@ -319,6 +320,12 @@
                                     .col-3 {
                                         padding-left: 18px;
                                         max-width: 17% !important;
+                                        height: 5rem;
+                                        a {
+                                            img {
+                                                height: 100%;
+                                            }
+                                        }
                                     }
                                     .col-9 {
                                         a {
@@ -349,19 +356,44 @@
             max-width: 100%;
             ul {
                 li {
-                    a.active,
+                    a.active {
+                        font-size: 16px;
+                    }
                     a {
                         font-size: 16px;
+                        &:hover {
+                            font-size: 16px;
+                        }
                     }
-                    &:hover {
-                        font-size: 16px;
-                    }
-                    &:focus {
-                        font-size: 16px;
-                    }
+
                     margin-right: 4px;
                 }
                 justify-content: space-evenly;
+            }
+        }
+    }
+}
+
+
+
+@media screen and(max-width: "500px") {
+    #intro {
+        .small-container {
+            .tab-content {
+                .overall__info {
+                    .movie__info {
+                        .row {
+                            .cot__3 {
+                                .row {
+                                    margin-bottom: 0;
+                                    .col-3 {
+                                        height: 3rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

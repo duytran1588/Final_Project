@@ -98,7 +98,7 @@ class Header extends Component {
     const maLoaiNguoiDung = userLogin?.maLoaiNguoiDung;
     return maLoaiNguoiDung === "QuanTri" ? (
       <NavLink className="ml-3" to="/admin" exact>
-        <img style={{ width: "50px" }} src={admin} />
+        <img style={{ width: "50px" }} src={admin} alt="" />
       </NavLink>
     ) : (
       ""
@@ -192,7 +192,7 @@ class Header extends Component {
         <nav className="navbar-header navbar">
           <div className="brand-title">
             <NavLink to="/" exact>
-              <img style={{ width: "50px" }} src={logo} />
+              <img style={{ width: "50px" }} src={logo} alt="" />
             </NavLink>
             {this.renderAdminLogo()}
           </div>

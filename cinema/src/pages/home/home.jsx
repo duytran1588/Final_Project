@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
 import Carousel from "./carousel/carousel";
 
 import ComingMovie from "./coming-movie/coming-movie";

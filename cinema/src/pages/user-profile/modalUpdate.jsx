@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Form_group_input from "./form_group_input";
+import FormGroupInput from "./form_group_input";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  updateUserApi,
-  userProfileApi,
-} from "../../stores/actions/movie.action";
+import { useDispatch } from "react-redux";
+import { updateUserApi } from "../../stores/actions/movie.action";
 
 function ModalUpdate(props) {
   const { userProfile } = props;
@@ -160,7 +157,7 @@ function ModalUpdate(props) {
           <div className="modal-body">
             <div className="container">
               <div className="form-group">
-                <Form_group_input
+                <FormGroupInput
                   // dung defaultValue de type trong input (TH da duoc binding)
 
                   label={"Họ Tên"}
@@ -171,7 +168,7 @@ function ModalUpdate(props) {
                   id="userFullName"
                 />
 
-                <Form_group_input
+                <FormGroupInput
                   label={"Tài Khoản"}
                   name={"taiKhoan"}
                   type={"text"}
@@ -182,7 +179,7 @@ function ModalUpdate(props) {
                   disabled
                 />
 
-                <Form_group_input
+                <FormGroupInput
                   label={"Mật Khẩu"}
                   name={"matKhau"}
                   type={"password"}
@@ -191,7 +188,7 @@ function ModalUpdate(props) {
                   id="userPass"
                 />
 
-                <Form_group_input
+                <FormGroupInput
                   label={"Email"}
                   name={"email"}
                   type={"email"}
@@ -200,7 +197,7 @@ function ModalUpdate(props) {
                   id="userEmail"
                 />
 
-                <Form_group_input
+                <FormGroupInput
                   label={"Số Điện Thoại"}
                   name={"soDT"}
                   type={"number"}

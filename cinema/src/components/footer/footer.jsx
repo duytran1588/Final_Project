@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cgv from "./contacts/cgv.png";
 import bhd from "./contacts/f32670fd0eb083c9c4c804f0f3a252ed.png";
 import laban from "./contacts/laban.png";
@@ -27,7 +27,7 @@ import unknown from "./contacts/d1e6bd560daa9e20131ea8a0f62e87f8.png";
 const handleOver = (choose, id) => {
   let icon = document.getElementById(id);
   if (icon) {
-    if (choose == 1) {
+    if (choose === 1) {
       icon.style.visibility = "visible";
     } else {
       icon.style.visibility = "hidden";
@@ -36,7 +36,7 @@ const handleOver = (choose, id) => {
 };
 
 function Footer() {
-  const [contacts, setContacts] = useState([
+  const contacts = [
     {
       link: "https://www.cgv.vn/",
       logo: cgv,
@@ -137,7 +137,7 @@ function Footer() {
       logo: lotte,
       ma: "lotte",
     },
-  ]);
+  ];
   return (
     <section id="footer">
       <div className="small-container">
@@ -171,9 +171,10 @@ function Footer() {
                           handleOver(2, contact.ma);
                         }}
                         target="_blank"
+                        rel="noreferrer"
                         href={contact.link}
                       >
-                        <img src={contact.logo} />
+                        <img src={contact.logo} alt="logo" />
                         <p id={contact.ma}>{contact.ma}</p>
                       </a>
                     </div>
@@ -184,27 +185,27 @@ function Footer() {
           </li>
           <li className="app__logo">
             <p>Mobile App</p>
-            <a target="_blank" href="https://www.cgv.vn/">
-              <img src={android} />
+            <a target="_blank" rel="noreferrer" href="https://www.cgv.vn/">
+              <img src={android} alt="" />
             </a>
-            <a target="_blank" href="https://www.cgv.vn/">
-              <img src={apple} />
+            <a target="_blank" rel="noreferrer" href="https://www.cgv.vn/">
+              <img src={apple} alt="" />
             </a>
           </li>
           <li className="social__network">
             <p>Social</p>
-            <a target="_blank" href="https://www.cgv.vn/">
-              <img src={facebook} />
+            <a target="_blank" rel="noreferrer" href="https://www.cgv.vn/">
+              <img src={facebook} alt="" />
             </a>
-            <a target="_blank" href="https://www.cgv.vn/">
-              <img src={zalo} />
+            <a target="_blank" rel="noreferrer" href="https://www.cgv.vn/">
+              <img src={zalo} alt="" />
             </a>
           </li>
         </ul>
         <hr />
         <div className="row footer__ending">
           <div className="col-2">
-            <img src={zion} />
+            <img src={zion} alt="" />
           </div>
           <div className="col-8">
             <p className="text-white mb-0">
@@ -223,7 +224,7 @@ function Footer() {
           </div>
           <div className="col-2 text-right">
             <a href="http://online.gov.vn/Home/WebDetails/62782?AspxAutoDetectCookieSupport=1">
-              <img src={unknown} />
+              <img src={unknown} alt="" />
             </a>
           </div>
         </div>

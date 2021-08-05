@@ -94,7 +94,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, paginateArrow }) {
                     : () => paginate(number)
                 }
                 className={`page-link ${
-                  number == 1 ? "pagination_active" : ""
+                  number === 1 ? "pagination_active" : ""
                 } `}
               >
                 {number}
