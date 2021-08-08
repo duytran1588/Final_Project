@@ -13,8 +13,8 @@ function Home() {
     <div>
       <IconMoving />
       <Carousel />
-      <SelectMovie />
-      {/* <SelectMovieName/> */}
+      {/* <SelectMovie /> */}
+      <SelectMovieName/>
       <ComingMovie />
       <CinemaInfo />
       <News />
