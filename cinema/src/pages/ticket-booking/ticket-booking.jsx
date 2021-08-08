@@ -121,7 +121,6 @@ class TicketBooking extends Component {
 
   renderLastAisle() {
     const { chairList } = this.props;
-
     let items = [];
     if (chairList) {
       for (let i = 108; i < chairList.length; i++) {

@@ -1,34 +1,146 @@
 @import "../../../scss/helper/_variable.scss";
 @import "../../../scss/helper/mixin";
 
-.buyTicketForm{
-    
+.buyTicketForm {
+    font-family: semibold;
+
     position: relative;
     z-index: 1;
-    margin: -35px auto 0;
+    margin: -35px auto 2rem;
     padding: 10px 10px;
     display: flex;
     justify-content: space-between;
-    width: 63rem;
+    width: 65%;
     background-color: #ffffff;
     border-radius: 5px;
     border: solid rgba(0, 0, 0, 0.281) 1px;
     box-shadow: 1px 1px 1px 2px #0000004d;
-    .btnBuyTicket{
-        background-color: $color-black-1 !important;
+    .btnBuyTicket {
+        background-color: $color-black-1;
         color: $color-white-0 !important;
         padding: 10px 25px !important;
     }
-    .MuiSelect-select {
-        color: black !important;
+    .btnBuyTicket.active {
+        background-color: $color-red-1 !important;
     }
-
-   
+    form {
+        .container {
+            .row {
+                > div {
+                    width: 25%;
+                    select {
+                        width: 100%;
+                        height: 2rem;
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
-// for responsive 
-@include respond-to("large") { //max-width: 992px
-    .buyTicketForm{
-        display: none;
+//for responsive
+
+@media screen and (max-width: "1024px") {
+    //max-width: 992px
+    .buyTicketForm {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: "768px") {
+    .buyTicketForm {
+        form {
+            font-size: 14px;
+            .container {
+                .row {
+                    .btnBuyTicket {
+                        padding: 5px 12px !important;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "700px") {
+    .buyTicketForm {
+        form {
+            .container {
+                .row {
+                    .btnBuyTicket {
+                        padding: 5px 12px !important;
+                        font-size: 12px;
+                    }
+                    div {
+                        .form-control {
+                            font-size: 12px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "610px") {
+    .buyTicketForm {
+        width: 90%;
+    }
+}
+
+@media screen and(max-width: "530px") {
+    .buyTicketForm {
+        width: 98%;
+        form {
+            .container {
+                .row {
+                    .btnBuyTicket {
+                        padding: 5px 10px !important;
+                        font-size: 11px;
+                    }
+                    div {
+                        .form-control {
+                            font-size: 11px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "413px") {
+    .buyTicketForm {
+        form {
+            .container {
+                .row {
+                    > div {
+                        width: 22%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "353px") {
+    .buyTicketForm {
+        form {
+            .container {
+                .row {
+                    .btnBuyTicket {
+                        font-size: 9px;
+                    }
+                    div {
+                        .form-control {
+                            font-size: 11px !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

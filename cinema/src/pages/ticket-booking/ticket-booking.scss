@@ -939,6 +939,16 @@
         .cinema_form {
             .col-8 {
                 .container {
+                    .container {
+                        .explain {
+                            div {
+                                button {
+                                    height: 1.5rem !important;
+                                    width: 1.5rem !important;
+                                }
+                            }
+                        }
+                    }
                     .chairList {
                         .row {
                             .col-11 {
@@ -990,6 +1000,16 @@
         .cinema_form {
             .col-8 {
                 .container {
+                    .container {
+                        .explain {
+                            div {
+                                button {
+                                    height: 1rem !important;
+                                    width: 1rem !important;
+                                }
+                            }
+                        }
+                    }
                     .chairList {
                         .row {
                             .col-11 {
@@ -1034,57 +1054,6 @@
         }
     }
 }
-
-@media screen and(max-width: "436px") {
-    #booking-ticket {
-        .cinema_form {
-            .col-8 {
-                .container {
-                    .chairList {
-                        .row {
-                            .col-11 {
-                                .container {
-                                    padding: 0;
-                                    .row {
-                                        .first-aisle,
-                                        .second-aisle,
-                                        .last-aisle {
-                                            .container {
-                                                .row {
-                                                    .chair {
-                                                        button {
-                                                            display: flex;
-                                                            align-items: center;
-                                                            width: 17px !important;
-                                                            height: 17px !important;
-                                                            border-radius: 50%;
-                                                            font-size: 8px;
-                                                            padding: 0;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        .first-aisle {
-                                            max-width: 7% !important;
-                                        }
-                                        .second-aisle {
-                                            max-width: 30% !important;
-                                        }
-                                        .last-aisle {
-                                            max-width: 18% !important;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 @media screen and(max-width: "440px") {
     #booking-ticket {
         .cinema_form {
@@ -1120,6 +1089,55 @@
                                         }
                                         .second-aisle {
                                             max-width: 31% !important;
+                                        }
+                                        .last-aisle {
+                                            max-width: 18% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width: "436px") {
+    #booking-ticket {
+        .cinema_form {
+            .col-8 {
+                .container {
+                    .chairList {
+                        .row {
+                            .col-11 {
+                                .container {
+                                    padding: 0;
+                                    .row {
+                                        .first-aisle,
+                                        .second-aisle,
+                                        .last-aisle {
+                                            .container {
+                                                .row {
+                                                    .chair {
+                                                        button {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            width: 17px !important;
+                                                            height: 17px !important;
+                                                            border-radius: 50%;
+                                                            font-size: 8px;
+                                                            padding: 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .first-aisle {
+                                            max-width: 7% !important;
+                                        }
+                                        .second-aisle {
+                                            max-width: 30% !important;
                                         }
                                         .last-aisle {
                                             max-width: 18% !important;

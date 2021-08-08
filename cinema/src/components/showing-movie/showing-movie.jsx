@@ -50,9 +50,9 @@ function ShowingMovie(props) {
           onClick={() => {
             handleDetail(movie.maPhim);
           }}
-          className="btnTicket btn btn-success"
+          className="btnTicket btn btn-danger"
         >
-          Đặt vé
+          <FontAwesomeIcon className="mr-1" icon="phone-alt" /> Đặt vé
         </button>
       </div>
     </>

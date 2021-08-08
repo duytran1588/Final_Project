@@ -19,6 +19,7 @@ import {
   faVideo,
   faHome,
   faShoppingCart,
+  faPhoneAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Home from "./pages/home/home";
 import SignUp from "./pages/sign-up/signUp";
@@ -54,7 +55,8 @@ library.add(
   faFilm,
   faVideo,
   faHome,
-  faShoppingCart
+  faShoppingCart,
+  faPhoneAlt
 );
 
 function App() {
