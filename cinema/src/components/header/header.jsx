@@ -81,7 +81,7 @@ class Header extends Component {
     }
 
     setTimeout(this.handleHideToggleHeader, 300);
-    this.handleHome();
+    // this.handleHome();
   };
 
   handleSignOut = () => {
@@ -140,7 +140,7 @@ class Header extends Component {
     } else {
       renderUserToggle = (
         <li onClick={this.handleHideToggle}>
-          <NavLink to="sign-in">Đăng nhập</NavLink>
+          <NavLink to="/sign-in">Đăng nhập</NavLink>
         </li>
       );
     }
