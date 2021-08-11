@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import logo from "./logo/tix_logo_new.png";
+import { withRouter } from "react-router-dom";
 class SignUpModal extends Component {
   render() {
     const {
@@ -15,16 +16,37 @@ class SignUpModal extends Component {
     } = this.props;
     return (
       <form onSubmit={handleSubmit} className="sign_up_form">
+        {title === "Đăng ký" ? (
+          <div>
+            <button
+              onClick={() => {
+                this.props.history.push("/");
+              }}
+              type="button"
+              className="btn_Close_SignUp"
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
         {title !== "Đăng ký" ? (
           ""
         ) : (
-          <h1 className="text-center mt-0 mb-5">{title}</h1>
+          <div className="text-center mb-1">
+            <img src={logo} alt="" />
+          </div>
+        )}
+        {title === "Đăng ký" ? (
+          <p className="mb-5 text-center text-white">Thế giới phim trên đầu ngón tay</p>
+        ) : (
+          ""
         )}
         <div className="row">
           <div className="col-12">
             <div className="group">
               <input
-                // id="userAccount"
                 value={values.taiKhoan}
                 onChange={handleChangeValue}
                 name="taiKhoan"
@@ -89,7 +111,7 @@ class SignUpModal extends Component {
               />
               <span className="highlight" />
               <span className="bar" />
-              <label>email</label>
+              <label>Email</label>
               <span id="error_userMail" className="text-danger">
                 {errors.email}
               </span>
@@ -142,7 +164,7 @@ class SignUpModal extends Component {
               />
               <span className="highlight" />
               <span className="bar" />
-              <label>mật khẩu</label>
+              <label>Mật khẩu</label>
               <span className="text-danger">{errors.matKhau}</span>
             </div>
           </div>
@@ -160,10 +182,17 @@ class SignUpModal extends Component {
               className={
                 title !== "Đăng ký"
                   ? "btn text-light bg-success mr-2"
-                  : "btn text-light bg-success w-100"
+                  : "btn text-light w-100"
               }
               style={
-                title !== "Đăng ký" ? { width: "6rem" } : { fontSize: "25px" }
+                title !== "Đăng ký"
+                  ? { width: "6rem" }
+                  : {
+                      border: "solid 1px",
+                      fontSize: 16,
+                      paddingTop: 10,
+                      paddingBottom: 10,
+                    }
               }
             >
               {button}
@@ -186,9 +215,32 @@ class SignUpModal extends Component {
             )}
           </div>
         </div>
+        {title === "Đăng ký" ? (
+          <div className="mt-3 row">
+            <div className="col-12 guide_sign_in">
+              <button
+                onClick={() => {
+                  this.props.history.push("/sign-in");
+                }}
+                type="button"
+                className="btn bg-light w-100"
+                style={{
+                  border: "solid 1px",
+                  fontSize: 16,
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                }}
+              >
+                Đăng nhập
+              </button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </form>
     );
   }
 }
 
-export default SignUpModal;
+export default withRouter(SignUpModal);

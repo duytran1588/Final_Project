@@ -9,7 +9,6 @@ import { style } from "./headerStyle";
 import { connect } from "react-redux";
 import { signOutApi } from "../../stores/actions/movie.action";
 import logo from "./logo/tix_logo.png";
-// import admin_logo from "./logo/Admin_logo.jpg/";
 import admin from "./logo/server_admin.png";
 import { SIGN_IN } from "../../stores/constants/movie.const";
 import { Link } from "react-scroll";
@@ -81,7 +80,7 @@ class Header extends Component {
     }
 
     setTimeout(this.handleHideToggleHeader, 300);
-    // this.handleHome();
+   
   };
 
   handleSignOut = () => {

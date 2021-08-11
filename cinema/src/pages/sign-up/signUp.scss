@@ -2,22 +2,15 @@
 @import "../../scss/helper/mixin";
 /* form starting stylings ------------------------------- */
 .signUp {
-    margin-top: 4rem;
     background-image: url("./background-image/backapp.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     padding: 7rem 0 7rem;
-    height: 56rem;
+    height: 100%;
     .sign-up {
         .sign_up_form {
-            h1{
-                font-family: light;
-            }
+            height: 100%;
             width: 37%;
             margin: auto;
-            background-color: $color-white-0;
-            border: solid $color-black-3 1px;
+            background-image: linear-gradient(to bottom, rgba(20, 50, 93, 0.9), rgba(8, 22, 48, 0.9));
             padding: 2rem;
             .row {
                 .col-12 {
@@ -29,8 +22,8 @@
                             padding: 10px 10px 10px 5px;
                             display: block;
                             width: 100%;
-                            border: none;
-                            border-bottom: 1px solid #757575;
+                            border-radius: 3px;
+                            border: 1px solid white;
                             &:focus {
                                 outline: none;
                             }
@@ -97,59 +90,80 @@
                     }
                 }
             }
-            .row{
-                .col-12{
-                    button{
+            .row {
+                .col-12 {
+                    button {
                         font-family: light;
+                        transition: all 0.5s;
+                        &:hover {
+                            background-color: red;
+                        }
                     }
                 }
+                .guide_sign_in {
+                    button {
+                        transition: all 0.5s;
+                        &:hover {
+                            background-color: red !important;
+                            color: white;
+                        }
+                    }
+                }
+            }
+            position: relative;
+            .btn_Close_SignUp {
+                background: none;
+                border: none;
+                font-size: 48px;
+                color: white;
+                position: absolute;
+                top: -1rem;
+                right: 0.5rem;
+                -webkit-transform: rotate(40deg);
+                -moz-transform: rotate(40deg);
+                -o-transform: rotate(40deg);
             }
         }
     }
 }
 //responsive
 
-
-@include respond-to("large"){
-    .signUp{
-        .sign-up{
-            .sign_up_form{
+@include respond-to("large") {
+    .signUp {
+        .sign-up {
+            .sign_up_form {
                 width: 24rem;
             }
-           
         }
     }
 }
 
-@include respond-to("medium"){
-    .signUp{
-        .sign-up{
-            .sign_up_form{
+@include respond-to("medium") {
+    .signUp {
+        .sign-up {
+            .sign_up_form {
                 width: 23rem;
             }
-           
         }
     }
 }
 
-@include respond-to("small"){
-    .signUp{
-        height: 51rem;
-        padding: 5rem 0;    
-       
-       .sign-up{
-           .sign_up_form{
-               width: 68%;
-           }
-       }
+@include respond-to("small") {
+    .signUp {
+        padding: 5rem 0;
 
+        .sign-up {
+            .sign_up_form {
+                width: 68%;
+            }
+        }
     }
 }
 
 @include respond-to("super-small") {
     .signUp {
         padding: 4rem 0;
-        height: 41rem;
+
         .sign-up {
             .sign_up_form {
                 width: 80%;
@@ -168,5 +182,3 @@
         }
     }
 }
-
-

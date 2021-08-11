@@ -2,33 +2,25 @@
 @import "../../scss/helper/mixin";
 /* form starting stylings ------------------------------- */
 .signIn {
-    margin-top: 4rem;
     background-image: url("./background-image/backapp.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     padding: 7rem 0 7rem;
-    height: 47rem;
+    height: 100%;
     .sign-in {
         .sign_in_form {
-            h1 {
-                font-size: 2rem;
-                font-family: light;
-            }
+            font-family: light;
+            background-image: linear-gradient(to bottom, rgba(20, 50, 93, 0.9), rgba(8, 22, 48, 0.9));
             width: 22rem;
             margin: auto;
-            background-color: $color-white-0;
-            border: solid $color-black-3 1px;
             padding: 2rem;
-            height: 33rem;
+            height: 100%;
             .row {
                 .col-12 {
                     .group {
                         position: relative;
-                        margin-bottom: 4rem;
+                        margin-bottom: 2rem;
                         input {
-                            font-size: 20px;
-                            padding: 10px 10px 10px 5px;
+                            font-size: 16px;
+                            padding: 10px;
                             display: block;
                             width: 100%;
                             border: none;
@@ -103,15 +95,37 @@
                 .col-12 {
                     button {
                         font-family: light;
+                        transition: all 0.5s;
+                        &:hover {
+                            background-color: red;
+                        }
                     }
                 }
             }
             .row {
                 .guide {
-                    span {
+                    button {
                         font-family: light;
+                        transition: all 0.5s;
+                        &:hover {
+                            background-color: red !important;
+                            color: white;
+                        }
                     }
                 }
+            }
+            position: relative;
+            .btn_Close_SignIn {
+                background: none;
+                border: none;
+                font-size: 48px;
+                color: white;
+                position: absolute;
+                top: -1rem;
+                right: 0;
+                -webkit-transform: rotate(40deg);
+                -moz-transform: rotate(40deg);
+                -o-transform: rotate(40deg);
             }
         }
     }

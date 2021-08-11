@@ -1,0 +1,26 @@
+.icon_Home {
+    .iconHome {
+        color: red;
+        font-size: 2rem;
+        // margin: 1rem 0 0 1rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 3.5rem;
+        border: none;
+        box-shadow: none;
+        z-index: 1000;
+        animation: toHome 0.5s alternate ease infinite;
+    }
+}
+@keyframes toHome {
+    from {
+        transform: translateY(3px);
+    }
+    to {
+        transform: translateY(-1px);
+    }
+}

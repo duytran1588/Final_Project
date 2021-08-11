@@ -20,6 +20,9 @@ import {
   faHome,
   faShoppingCart,
   faPhoneAlt,
+  faArrowLeft,
+  faEnvelope,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Home from "./pages/home/home";
 import SignUp from "./pages/sign-up/signUp";
@@ -28,7 +31,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 
-import UserProfile from "./pages/user-profile/user_profile";
+import UserProfile from "./pages/user-profile/UserProfile";
 import MovieDetail from "./pages/movie-detail/movie-detail";
 import TicketBooking from "./pages/ticket-booking/ticket-booking";
 import Guard from "./components/HOC/guard";
@@ -38,6 +41,7 @@ import { useEffect } from "react";
 import { SIGN_IN } from "./stores/constants/movie.const";
 import { useDispatch } from "react-redux";
 import ShowTime from "./pages/admin/main_content/lich_chieu/show_time";
+import IconHome from "./components/iconhome/icon_home";
 
 library.add(
   faChevronRight,
@@ -56,7 +60,10 @@ library.add(
   faVideo,
   faHome,
   faShoppingCart,
-  faPhoneAlt
+  faPhoneAlt,
+  faArrowLeft,
+  faEnvelope,
+  faUser,
 );
 
 function App() {
@@ -79,12 +86,12 @@ function App() {
   }); //app js không lên reducer lấy dữ liệu nên không cần truyền tham số vào [] của useEffect
   return (
     <BrowserRouter>
-      <Header />
       <Switch>
         <Route path="/" exact>
+          <Header />
           <Home />
+          <Footer />
         </Route>
-        {/* <Test /> */}
         <Route path="/sign-up" exact>
           <SignUp />
         </Route>
@@ -92,22 +99,27 @@ function App() {
           <SignIn />
         </Route>
         <Route path="/user-profile" exact={true}>
-          <UserProfile />
+          <IconHome />
+          {/* <UserProfile /> */}
+          <UserProfile/>
         </Route>
         <Route path="/movie-detail/:maPhim" exact>
+          <IconHome />
           <MovieDetail />
         </Route>
         <Route path="/ticket-booking/:maLichChieu" exact>
+          <IconHome />
           <TicketBooking />
-          {/* <Test/> */}
         </Route>
         <Route path="/admin" exact>
           <Guard>
+            <Header />
             <Admin />
           </Guard>
         </Route>
         <Route path="/lich-chieu/:maPhim" exact>
           <Guard>
+            <Header />
             <ShowTime />
           </Guard>
         </Route>
@@ -115,7 +127,6 @@ function App() {
           <AdminHome />
         </Route>
       </Switch>
-      <Footer />
     </BrowserRouter>
   );
 }

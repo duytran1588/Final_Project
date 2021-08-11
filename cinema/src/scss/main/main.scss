@@ -9,6 +9,7 @@
 @import "../../components/selectComponent/select_component.scss";
 @import "node_modules/react-modal-video/scss/modal-video.scss";
 @import "../../components/header/header.scss";
+@import "../../components/iconhome/icon_home.scss";
 @import "../../pages/home/carousel/carousel.scss";
 @import "../../pages/sign-up/signUp.scss";
 @import "../../pages/home/select-movie-name/selectMovieName.scss";
@@ -17,7 +18,8 @@
 @import "../../pages/home/news/news.scss";
 @import "../../pages/home/mobile-app/mobile-app.scss";
 @import "../../components/footer/footer.scss";
-@import "../../pages/user-profile/user_profile.scss";
+// @import "../../pages/user-profile/user_profile.scss";
+@import "../../pages/user-profile/userProfile.scss";
 @import "../../pages/movie-detail/movie-detail.scss";
 @import "../../pages/ticket-booking/ticket-booking.scss";
 @import "../../components/loading/loading.scss";

@@ -1,7 +1,6 @@
 @import "../../scss/helper/variable";
 @import "../../scss/helper/mixin";
 .movie-detail {
-    margin-top: 4rem;
     > div {
         padding: 8rem 0;
         background-image: url("./movie-detail-background/night_half_moon.jpg");
@@ -431,7 +430,7 @@
 @include respond-to("extend_3") {
     //<= 700
     .movie-detail {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         div {
             padding: 2rem 0;
             .movie_detail_container {
@@ -472,7 +471,7 @@
 @include respond-to("small") {
     // <= 576px
     .movie-detail {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         div {
             padding: 2rem 0;
             .movie_detail_container {
@@ -535,7 +534,7 @@
 
 @media screen and (max-width: "380px") {
     .movie-detail {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         div {
             padding: 2rem 0;
             .movie_detail_container {

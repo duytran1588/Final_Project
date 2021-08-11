@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./signIn.scss";
 import Swal from "sweetalert2";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { signInApi } from "../../stores/actions/movie.action";
-
+import logo from "./background-image/tix_logo_new.png";
 class SignIn extends Component {
   state = {
     values: {
@@ -44,10 +44,7 @@ class SignIn extends Component {
     let { values, errors } = this.state;
     //Biến xác định form hợp lệ
     let valid = true;
-    //dùng for in để xét vòng lặp trog object
-    // let profileContent = "";
-    //th error
-    // let errorContent = "";
+
     for (let key in values) {
       if (values[key] === "") {
         valid = false;
@@ -83,7 +80,29 @@ class SignIn extends Component {
           <section>
             <div className="sign-in container">
               <form onSubmit={this.handleSignIn} className="sign_in_form">
-                <h1 className="text-center mt-0 mb-5">Đăng nhập</h1>
+                <div>
+                  <button
+                    onClick={() => {
+                      this.props.history.push("/");
+                    }}
+                    type="button"
+                    className="btn_Close_SignIn"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="text-center">
+                  <img alt="" src={logo} />
+                  <p
+                    style={{ fontSize: "15px", marginBottom: "7rem" }}
+                    className="text-white"
+                  >
+                    Thế giới phim trên đầu ngón tay
+                  </p>
+                  <p className="mb-5 text-white" style={{ fontSize: "20px" }}>
+                    Đăng nhập để được nhiều ưu đãi, mua vé và bảo mật thông tin!
+                  </p>
+                </div>
                 <div className="row">
                   <div className="col-12">
                     <div className="group">
@@ -115,7 +134,7 @@ class SignIn extends Component {
                       />
                       <span className="highlight" />
                       <span className="bar" />
-                      <label>mật khẩu</label>
+                      <label>Mật khẩu</label>
                       <span className="text-danger">
                         {this.state.errors.matKhau}
                       </span>
@@ -125,26 +144,35 @@ class SignIn extends Component {
                 <div className="mt-2 row">
                   <div className="col-12">
                     <button
-                      className="btn text-light bg-success w-100"
-                      style={{ fontSize: 25 }}
+                      className="btn text-light w-100"
+                      style={{
+                        border: "solid 1px",
+                        fontSize: 16,
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                      }}
                     >
                       Đăng nhập
                     </button>
                   </div>
                 </div>
-                <div className="mt-5 row">
-                  <div className="col-12 guide">
-                    <span>
-                      Bạn chưa có tài khoản? Vui lòng{" "}
-                      <NavLink
-                        to="/sign-up"
-                        exact
-                        className="text-danger"
-                        style={{ textDecoration: "none" }}
-                      >
-                        đăng ký
-                      </NavLink>
-                    </span>
+                <div className="mt-2 row">
+                  <div className="col-12 text-center guide">
+                    <button
+                      onClick={() => {
+                        this.props.history.push("/sign-up");
+                      }}
+                      type="button"
+                      style={{
+                        fontSize: 16,
+                        border: "solid 1px",
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                      }}
+                      className="btn w-100 bg-light"
+                    >
+                      Đăng ký
+                    </button>
                   </div>
                 </div>
               </form>

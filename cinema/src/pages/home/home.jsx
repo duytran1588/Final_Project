@@ -7,7 +7,6 @@ import MobileApp from "./mobile-app/mobile-app";
 import IconMoving from "../../components/icon_moving/icon_to_top";
 import SelectMovie from "./select-movie/select_Movie";
 
-
 function Home() {
   return (
     <div>
