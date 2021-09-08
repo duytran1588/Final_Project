@@ -15,26 +15,43 @@
                 text-align: center;
                 cursor: pointer;
                 height: 615px;
-                border: solid #c1c1c157 1px;
+                border: solid $color-black-light 1px;
+
                 ul {
+                    height: 100%;
                     list-style: none;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+
                     li {
                         position: relative;
+                        height: 4rem;
+                        width: 100%;
                         &:after {
                             content: "";
-                            width: 60%;
-                            border: dotted 1px #c1c1c157;
-                            bottom: 0;
+                            width: 70%;
+                            background-color: $color-black-light;
+                            height: 2px;
+                            bottom: -21px;
                             position: absolute;
                             left: 50%;
                             transform: translateX(-50%);
                         }
-                        padding: 13px;
+
                         a {
+                            width: 100%;
+                            height: 100%;
+
                             text-decoration: none;
                             border: none !important;
                             background: none !important; /*muốn tắt background-color -> background: none*/
                             img {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
                                 opacity: 0.5;
                                 transition: all 0.5s;
                                 &:hover {
@@ -62,15 +79,15 @@
             /*cột 2*/
             .col-md-4 {
                 height: 615px;
-                border-bottom: solid #c1c1c157 1px;
-                border-top: solid #c1c1c157 1px;
+                border-bottom: solid $color-black-light 1px;
+                border-top: solid $color-black-light 1px;
                 ul {
                     list-style-type: none;
                     padding-left: 5px;
                     li {
                         margin-top: 20px;
                         padding-bottom: 20px;
-                        border-bottom: dotted 1px #c1c1c157;
+                        border-bottom: solid $color-black-light 1px;
                         position: relative; /*để chỉnh thẻ a của nav-tabs */
                         > a {
                             width: 100%;
@@ -148,7 +165,7 @@
 
             /* cột 3 */
             .col-md-7 {
-                border: solid #c1c1c157 1px;
+                border: solid $color-black-light 1px;
                 overflow: auto;
                 height: 615px;
                 /*chỉnh scrollbar cho cột 3*/
@@ -167,12 +184,22 @@
                     li {
                         margin: -18px 0 3rem;
                         padding-top: 1rem;
-                        border-top: dotted 1px #c1c1c157;
+                        border-top: solid $color-black-light 1px;
                         .row {
                             .col-3 {
                                 max-width: 15%;
-                                img {
+                                .img-content {
+                                    //add
                                     height: 46px;
+                                    position: relative;
+                                    img {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: contain;
+                                    }
                                 }
                             }
                             .col-9 {
@@ -300,9 +327,9 @@
                 .col-md-1 {
                     max-width: 8.33% !important;
                     ul {
-                        padding: 0 14% !important;
+                        // padding: 0 14% !important;
                         li {
-                            padding: 13px 4px;
+                            // padding: 13px 4px;
                         }
                     }
                 }
@@ -370,6 +397,23 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: "900px") {
+    #schedule {
+        .small-container {
+            .row {
+                .col-md-1 {
+                    ul {
+                        li {
+                            width: 90%;
+                            margin: 0 auto;
                         }
                     }
                 }
@@ -553,6 +597,11 @@
     #schedule {
         .small-container {
             > .row {
+                .col-md-1 {
+                    ul {
+                        height: 84%;
+                    }
+                }
                 #addInfo {
                     padding: 0;
                     max-width: 40% !important;
@@ -610,6 +659,15 @@
                 }
                 .col-md-1 {
                     max-width: 14% !important;
+                    ul {
+                        height: 100%;
+                        li {
+                            &::after {
+                                bottom: -14px;
+                            }
+                            height: 2rem;
+                        }
+                    }
                 }
                 #sheduleInfo {
                     max-width: 49% !important;

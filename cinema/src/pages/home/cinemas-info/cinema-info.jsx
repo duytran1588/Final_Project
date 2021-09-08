@@ -149,7 +149,7 @@ function CinemaInfo() {
                       >
                         <img
                           alt=""
-                          className="img-fluid"
+                          // className="img-fluid"
                           src={changeHTTP(cinema.logo)}
                         />
                       </a>
@@ -251,12 +251,14 @@ function CinemaInfo() {
                                 {/*collapse in bootstrap 4*/}
                                 <div className="row">
                                   <div className="col-3">
-                                    <img
-                                      alt=""
-                                      className="img-fluid"
-                                      src={changeHTTP(phim.hinhAnh)}
-                                      width="100%"
-                                    />
+                                    <div className="img-content">
+                                      <img
+                                        alt=""
+                                        // className="img-fluid"
+                                        src={`${changeHTTP(phim.hinhAnh)}`}
+                                        width="100%"
+                                      />
+                                    </div>
                                   </div>
                                   <div className="col-9">
                                     <div className="film__title">
