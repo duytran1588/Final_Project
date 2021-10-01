@@ -63,13 +63,16 @@ library.add(
   faPhoneAlt,
   faArrowLeft,
   faEnvelope,
-  faUser,
+  faUser
 );
 
 function App() {
   const dispatch = useDispatch();
   const getUserFromLocal = () => {
     const user = localStorage.getItem("userLogin");
+    //test userSession
+      // const userSession = sessionStorage.getItem("userLoginSession");
+      // console.log("userSession", userSession);
     if (user) {
       dispatch({
         type: SIGN_IN,
@@ -101,7 +104,7 @@ function App() {
         <Route path="/user-profile" exact={true}>
           <IconHome />
           {/* <UserProfile /> */}
-          <UserProfile/>
+          <UserProfile />
         </Route>
         <Route path="/movie-detail/:maPhim" exact>
           <IconHome />

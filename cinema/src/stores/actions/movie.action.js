@@ -148,6 +148,9 @@ export const signInApi = (userSignIn, history) => {
 
       localStorage.setItem("userLogin", JSON.stringify(res.data));
 
+      //test sessionStorage
+      sessionStorage.setItem("userLoginSession", JSON.stringify(res.data));
+
       //báo đăng nhập thành công
 
       //trở về trang home hoặc currentPage

@@ -47,7 +47,7 @@ function ComingMovie() {
           slidesToScroll: 1,
           infinite: true,
           rows: 1,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -57,7 +57,7 @@ function ComingMovie() {
           slidesToScroll: 1,
           infinite: true,
           rows: 1,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -67,7 +67,7 @@ function ComingMovie() {
           slidesToScroll: 1,
           infinite: true,
           rows: 1,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -77,7 +77,7 @@ function ComingMovie() {
           slidesToScroll: 1,
           infinite: true,
           rows: 1,
-          arrows: false,
+          arrows: true,
         },
       },
     ],
@@ -153,7 +153,7 @@ function ComingMovie() {
       <div className="showing_coming tab-content">
         <div id="showing" className="tab-pane container active">
           <Slider {...settings}>
-            {movieList?.map((movie, index) => {
+            {movieListComing?.map((movie, index) => {
               const trailerId = getTrailerId(movie.trailer);
               return (
                 <ShowingMovie

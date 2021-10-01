@@ -156,7 +156,44 @@
         .tab-pane {
             .slick-slider {
                 .slick-next {
-                    right: 0% !important;
+                    right: 0%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "767px") {
+    .comingMovie {
+        .tab-content {
+            .tab-pane {
+                .slick-slider {
+                    button {
+                        top: 35%;
+                    }
+                    .slick-prev {
+                        left: 11%;
+                    }
+                    .slick-next {
+                        right: 14%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "452px") {
+    .comingMovie {
+        .tab-content {
+            .tab-pane {
+                .slick-slider {
+                    .slick-prev {
+                        left: 7%;
+                    }
+                    .slick-next {
+                        right: 10%;
+                    }
                 }
             }
         }
@@ -180,6 +217,35 @@
                 }
             }
             width: 16rem;
+        }
+        .tab-content {
+            .tab-pane {
+                .slick-slider {
+                    .slick-prev {
+                        left: 1%;
+                    }
+                    .slick-next {
+                        right: 5%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: "356px") {
+    .comingMovie{
+        .tab-content {
+            .tab-pane {
+                .slick-slider {
+                    .slick-prev {
+                        left: -3%;
+                    }
+                    .slick-next {
+                        right: 1%;
+                    }
+                }
+            }
         }
     }
 }

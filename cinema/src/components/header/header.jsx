@@ -15,15 +15,18 @@ import { Link } from "react-scroll";
 import GioHang from "./gioHang";
 
 class Header extends Component {
-  getUserFromLocal = () => {
-    const user = localStorage.getItem("userLogin");
-    if (user) {
-      this.props.dispatch({
-        type: SIGN_IN,
-        payload: JSON.parse(user),
-      });
-    }
-  };
+  // getUserFromLocal = () => {
+  //   const user = localStorage.getItem("userLogin");
+  //   //test userSession
+  //   const userSession = sessionStorage.getItem("userLoginSession");
+  //   console.log("userSession", userSession);
+  //   if (user) {
+  //     this.props.dispatch({
+  //       type: SIGN_IN,
+  //       payload: JSON.parse(user),
+  //     });
+  //   }
+  // };
   handleToggleHeader() {
     const navbar_header = document.getElementsByClassName("navbar-header")[0];
     if (navbar_header) {

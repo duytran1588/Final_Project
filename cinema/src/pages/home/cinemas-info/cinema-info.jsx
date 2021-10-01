@@ -253,7 +253,7 @@ function CinemaInfo() {
                                   <div className="col-3">
                                     <div className="img-content">
                                       <img
-                                        alt=""
+                                        alt="img"
                                         // className="img-fluid"
                                         src={`${changeHTTP(phim.hinhAnh)}`}
                                         width="100%"

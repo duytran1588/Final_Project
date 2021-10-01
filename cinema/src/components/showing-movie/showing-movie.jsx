@@ -20,7 +20,7 @@ function ShowingMovie(props) {
           width="100%"
           height="100%"
           src={src_img}
-          alt=""
+          alt="Đang cập nhật"
         />
         <button
           className="btnPlay-small"
