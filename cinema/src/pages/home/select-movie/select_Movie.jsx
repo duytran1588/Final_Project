@@ -15,7 +15,7 @@ function SelectMovie() {
   const listMovie = async () => {
     try {
       const res = await axios({
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03",
         method: "GET",
       });
       setMovieList(res.data);
