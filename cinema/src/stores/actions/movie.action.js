@@ -24,7 +24,7 @@ export const getMovieList = () => {
     try {
       const res = await axios({
         method: "GET",
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP04",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03",
       });
       dispatch({
         type: GET_MOVIE_LIST,
@@ -42,7 +42,7 @@ export const getMovieListComing = () => {
     try {
       const res = await axios({
         method: "GET",
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP04",
       });
       dispatch({
         type: GET_MOVIE_LIST_COMING,
