@@ -385,7 +385,12 @@
                                 .premiere {
                                     .row {
                                         div {
-                                            margin-bottom: 3rem !important;
+                                            margin-bottom: 3rem;
+
+                                            @include respond-to ('small') {
+                                                margin-bottom: 1.5rem;
+                                            }
+
                                             a {
                                                 padding: 12px 8px;
                                                 margin-right: 0.5rem;
