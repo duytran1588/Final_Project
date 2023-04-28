@@ -27,15 +27,12 @@ class News extends Component {
     const user = localStorage.getItem("userLogin");
     if (!user) {
       this.props.history.push("/sign-in");
-    } else {
-      console.log(`tab_${tabName}`);
-      let newTabName = { ...this.state[`tab_${tabName}`] };
-      console.log(newTabName.like_1);
+    } else { 
+      let newTabName = { ...this.state[`tab_${tabName}`] };    
       newTabName[`${like}_${number}`] += 1;
       this.setState({
         [`tab_${tabName}`]: { ...newTabName },
-      });
-      console.log(this.state.tab_dienAnh);
+      }); 
     }
   };
 

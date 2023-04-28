@@ -113,8 +113,7 @@ function MovieContent() {
           method: "POST",
           data: form_data,
         })
-          .then((res) => {
-            console.log(res);
+          .then((res) => {         
             //tắt modal
             const btn_close_movie_modal = document.getElementById(
               "btn_close_add_modal"
@@ -475,8 +474,7 @@ function MovieContent() {
             confirmButtonText: "Đóng",
           });
         });
-        promise.catch((err) => {
-          console.log(err);
+        promise.catch((err) => {      
           Swal.fire({
             title: err.response?.data,
             icon: "error", //success, error, warning

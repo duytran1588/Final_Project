@@ -24,7 +24,7 @@ export const getMovieList = () => {
     try {
       const res = await axios({
         method: "GET",
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP04",
       });
       dispatch({
         type: GET_MOVIE_LIST,
@@ -42,7 +42,7 @@ export const getMovieListComing = () => {
     try {
       const res = await axios({
         method: "GET",
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03",
       });
       dispatch({
         type: GET_MOVIE_LIST_COMING,
@@ -68,7 +68,7 @@ export const searchMovie = (movieName) => {
       });
       dispatch(stopLoadingAction());
     } catch (err) {
-      console.log("err");
+      console.log(err);
     }
   };
 };
@@ -238,7 +238,6 @@ export const updateUserApi = (user) => {
         confirmButtonText: "Thành công",
       });
     } catch (err) {
-      console.log(err.response.data);
       Swal.fire({
         title: err.response.data,
         icon: "error", //success, error, warning

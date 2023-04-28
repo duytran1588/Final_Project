@@ -170,7 +170,7 @@ function ComingMovie() {
 
         <div id="coming" className="tab-pane container fade">
           <Slider {...settings}>
-            {movieListComing?.map((movie, index) => {
+            {movieList?.map((movie, index) => {
               const trailerId = getTrailerId(movie.trailer);
               return (
                 <ShowingMovie

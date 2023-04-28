@@ -229,8 +229,7 @@ function ShowTimeModal(props) {
             });
             dispatch(getShowTimeList(maPhim));
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((err) => {      
             Swal.fire({
               title: err.response.data,
               icon: "error", //success, error, warning

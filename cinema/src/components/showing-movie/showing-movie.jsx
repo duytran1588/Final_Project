@@ -1,17 +1,19 @@
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import LinesEllipsis from "react-lines-ellipsis"; // to make ellipsis "..."
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"; // responsive of ellipsis
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ShowingMovie(props) {
   const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis); // dùng thẻ này de viet ngan tieu de phim
   const { trailerId, handleDetail, movie, handlePlay } = props;
-
+  const [fallback, setFallback] = useState('');
   //tách hinhAnh url thành http
   const src_img_http = movie.hinhAnh.split(":");
   let src_img_https = src_img_http[0] + "s";
   const src_img = src_img_https + ":" + src_img_http[1];
-
+  const handleError = () => {    
+    setFallback('https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg')
+  }
   return (
     <>
       <div className="card text-left ">
@@ -19,8 +21,9 @@ function ShowingMovie(props) {
           className="card-img-top"
           width="100%"
           height="100%"
-          src={src_img}
+          src={src_img || fallback}
           alt="Đang cập nhật"
+          onError={handleError}
         />
         <button
           className="btnPlay-small"

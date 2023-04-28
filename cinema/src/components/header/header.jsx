@@ -1,18 +1,17 @@
 import { withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from "react-redux";
+import { NavLink, withRouter } from "react-router-dom";
+import { Link } from "react-scroll";
+import { signOutApi } from "../../stores/actions/movie.action";
 import "../header/header.scss";
 import SelectComponent from "../selectComponent/select_component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink, withRouter } from "react-router-dom";
-import { style } from "./headerStyle";
-import { connect } from "react-redux";
-import { signOutApi } from "../../stores/actions/movie.action";
-import logo from "./logo/tix_logo.png";
-import admin from "./logo/server_admin.png";
-import { SIGN_IN } from "../../stores/constants/movie.const";
-import { Link } from "react-scroll";
 import GioHang from "./gioHang";
+import { style } from "./headerStyle";
+import admin from "./logo/server_admin.png";
+import logo from "./logo/tix_logo.png";
 
 class Header extends Component {
   // getUserFromLocal = () => {

@@ -21,7 +21,7 @@ export default (state = initialState, { type, payload }) => {
     case GET_MOVIE_LIST:
       let newMovieList = [...state.movieList];
       newMovieList = payload;
-      state.movieList = newMovieList;
+      state.movieList = newMovieList;   
       return { ...state };
     case GET_MOVIE_LIST_COMING:
       let newMovieListComing = [...state.movieListComing];
